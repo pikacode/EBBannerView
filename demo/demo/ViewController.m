@@ -38,13 +38,6 @@
 - (IBAction)buttonPressed:(UIButton*)sender {
     switch (sender.tag) {
         case 0:
-            /* [自定义内容,其他默认值]：            Use default values:
-             图标默认显示 app icon                    default is app icon
-             时间默认显示 "现在"                       default is localized "现在" = "now"
-             标题默认显示 app 名称                     default is "app name"
-             内容自定义                               custom content
-             样式根据系统自动判断                       default is the same style with stystem(ios 9/10/11)
-             */
             [EBBannerView showWithContent:@"aaaa"];
             break;
         case 1:
@@ -70,11 +63,6 @@
         }
             break;
         case 4:
-            /* [自定义全部内容]：                  Custom styles:
-             可以自定义显示的全部内容                    will show default values without set
-             不赋值的会显示默认内容                      values of the same style just need set onece
-             同一系统样式多次使用时不变的内容不需要重复赋值
-             */
         {
             EBBannerView *banner = [EBBannerView bannerViewWithStyle:EBBannerViewStyleiOS11];
             banner.icon = [UIImage imageNamed:@"icon"];
