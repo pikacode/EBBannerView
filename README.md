@@ -50,7 +50,7 @@ And more：
 
 ## Usage
 ```objc
-#import "EBBannerView.h"
+#import <EBBannerView.h>
 ```
 
 
@@ -156,7 +156,7 @@ banner.content = @"custom content";
 - pass an object when init the banner, and get it when clicked
 
 ```objc
-#import "EBBannerView.h"
+#import <EBBannerView.h>
 {...
   EBBannerView *banner = [EBBannerView bannerViewWithStyle:9];
   banner.object = aObject;

@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "EBBannerView"
-  s.version      = “1.0.0”
-  s.summary      = “App在前台时展示跟iOS9,10,11推送通知一样UI的横幅/自动提示音或振动，而且支持自定义样式。Show a banner the same UI with iOS9,10,11 nofitication(auto play sound/vibrate) on foreground, support custom UI.”
+  s.version      = "1.0.0"
+  s.summary      = "展示跟iOS9/10/11推送一样的横幅/提示音/振动，或自定义view。Show a banner the same with iOS9/10/11 nofitication(sound/vibrate), or customize."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -29,6 +29,7 @@ App在前台时展示跟iOS9,10,11推送通知一样UI的横幅/自动提示音�
                    DESC
 
   s.homepage     = "https://github.com/pikacode/EBBannerView"
+
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -39,7 +40,7 @@ App在前台时展示跟iOS9,10,11推送通知一样UI的横幅/自动提示音�
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = "MIT (example)"
+  s.license      = "MIT"
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
@@ -65,7 +66,7 @@ App在前台时展示跟iOS9,10,11推送通知一样UI的横幅/自动提示音�
   #
 
   # s.platform     = :ios
-   s.platform     = :ios, “8.0”
+   s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -80,7 +81,7 @@ App在前台时展示跟iOS9,10,11推送通知一样UI的横幅/自动提示音�
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "http://EXAMPLE/EBBannerView.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/pikacode/EBBannerView.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

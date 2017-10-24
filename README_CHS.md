@@ -44,7 +44,7 @@ QQ群: 345192153
 
 ## 使用
 ```objc
-#import "EBBannerView.h"
+#import <EBBannerView.h>
 ```
 
 
@@ -135,7 +135,7 @@ banner.content = @"自定义内容";
 - 如果初始化 banner 的时候传了 object 的值，在点击后可以获取到。
 
 ```objc
-#import "EBBannerView.h"
+#import <EBBannerView.h>
 {...
   banner.object = aObject;
 ...}
