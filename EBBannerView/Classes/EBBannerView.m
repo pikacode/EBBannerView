@@ -152,12 +152,12 @@ static NSTimer *_customHideTimer;
         }];
     }
     
-    CGRect frame = customView.frame;
+    CGRect frame = UIDevice.currentDevice.orientation == UIDeviceOrientationPortrait ? customView.portraitFrame : customView.landscapeFrame;
     frame.origin.y = -frame.size.height;
     customView.frame = frame;
-    
+
     [sharedWindow.rootViewController.view addSubview:customView];
-    
+
     NSTimeInterval animationTime = [customView respondsToSelector:@selector(animationTime)] ? customView.animationTime.floatValue : [EBBannerView defaultAnimationTime];
     NSTimeInterval stayTime = [customView respondsToSelector:@selector(stayTime)] ? customView.stayTime.floatValue : [EBBannerView defaultStayTime];
     
@@ -165,8 +165,10 @@ static NSTimer *_customHideTimer;
         customView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
     } completion:^(BOOL finished) {
         _customHideTimer = [NSTimer eb_scheduledTimerWithTimeInterval:stayTime block:^(NSTimer *timer) {
+            //可能旋转过
+            CGRect frame1 = UIDevice.currentDevice.orientation == UIDeviceOrientationPortrait ? customView.portraitFrame : customView.landscapeFrame;
             [UIView animateWithDuration:animationTime animations:^{
-                customView.frame = CGRectMake(0, -frame.size.height, frame.size.width, frame.size.height);
+                customView.frame = CGRectMake(0, -frame1.size.height, frame1.size.width, frame1.size.height);
             } completion:^(BOOL finished) {
                 [customView removeFromSuperview];
             }];

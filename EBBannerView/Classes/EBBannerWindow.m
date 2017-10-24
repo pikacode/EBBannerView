@@ -26,7 +26,7 @@
         }
     }];
     if (view) {
-        return view;
+        return [view hitTest:point withEvent:event];
     }else{
         return [super hitTest:point withEvent:event];
     }

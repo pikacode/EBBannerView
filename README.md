@@ -42,7 +42,7 @@ And more：
 ### pod
 
 	target 'YourTargetName' do
-		pod 'EBBannerView'
+	  pod 'EBBannerView'
 	end
 
 
@@ -60,7 +60,7 @@ there are 3 ways to use:
 #### 1.Show a iOS style banner with one line
 
 ```objc
-	[EBBannerView showWithContent:@"custom content"];
+[EBBannerView showWithContent:@"custom content"];
 ```
 
 ##### Parameters:
@@ -78,23 +78,23 @@ there are 3 ways to use:
 #### 2.Customize all values with a iOS style
 
 ```objc
-	//1.init a banner with ios9/10/11 style
-	EBBannerView *banner = [EBBannerView bannerViewWithStyle:EBBannerViewStyleiOS9];
+//1.init a banner with ios9/10/11 style
+EBBannerView *banner = [EBBannerView bannerViewWithStyle:EBBannerViewStyleiOS9];
  
- 	//2.assign custom values, if not assign will use default values
-	banner.content = @"custom content";
- 	//banner.icon = 
- 	//banner.title = 
-	//banner.date = @"2017-10-23";
- 	//...
+//2.set custom values, if not set will use default values
+banner.content = @"custom content";
+//banner.icon = 
+//banner.title = 
+//banner.date = @"2017-10-23";
+//...
  
- 	//3.show
-	[banner show];
+//3.show
+[banner show];
 ```
 
 ##### Parameters: 
 
-(if not assign will use default values)
+(if not set will use default values)
 
 - `style`：the iOS style, type enum : NSInteger {9/10/11}
 
@@ -137,14 +137,14 @@ there are 3 ways to use:
 
 {...
 //2.create a CustomView instance
-	CustomView *customView = [[CustomView alloc] initWith...];
+  CustomView *customView = [[CustomView alloc] initWith...];
 	
 //3.set portrait/landscape frame
-	customView.portraitFrame = CGRectMake(0, 1, 2, 3);
-	customView.landscapeFrame = CGRectMake(4, 5, 6, 7);
+  customView.portraitFrame = CGRectMake(0, 50, 100, 150);
+  customView.landscapeFrame = CGRectMake(200, 250, 300, 350);
 
 //4.show
-	[EBBannerView showWithCustomView:customView];
+  [EBBannerView showWithCustomView:customView];
 ...}
 ```
 
@@ -158,16 +158,16 @@ there are 3 ways to use:
 ```objc
 #import "EBBannerView.h"
 {...
-	EBBannerView *banner = [EBBannerView bannerViewWithStyle:9];
-	banner.object = aObject;
- 	[banner show];
+  EBBannerView *banner = [EBBannerView bannerViewWithStyle:9];
+  banner.object = aObject;
+  [banner show];
 ...}
 
 {...
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bannerViewDidClick:) name:EBBannerViewDidClickNotification object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bannerViewDidClick:) name:EBBannerViewDidClickNotification object:nil];
 ...}
 
 -(void)bannerViewDidClick:(NSNotification*)noti{
-	NSLog(@"%@",noti.object);
+  NSLog(@"%@",noti.object);
 }
 ```

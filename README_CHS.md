@@ -36,7 +36,7 @@ QQ群: 345192153
 ### pod 安装
 
 	target 'YourTargetName' do
-		pod 'EBBannerView'
+	  pod 'EBBannerView'
 	end
 
 
@@ -54,7 +54,7 @@ QQ群: 345192153
 #### 方式一：一行代码搞定之省心模式
 
 ```objc
-	[EBBannerView showWithContent:@"自定义内容"];
+[EBBannerView showWithContent:@"自定义内容"];
 ```
 
 ##### 参数说明
@@ -70,17 +70,17 @@ QQ群: 345192153
 #### 方式二：指定系统样式，并自定义内容
 
 ```objc
-	//1.根据指定样式初始化
-	EBBannerView *banner = [EBBannerView bannerViewWithStyle:EBBannerViewStyleiOS9];
+//1.根据指定样式初始化
+EBBannerView *banner = [EBBannerView bannerViewWithStyle:EBBannerViewStyleiOS9];
  
- 	//2.自定义赋值，没有指定的会使用默认值
-	banner.content = @"自定义内容";
- 	//banner.icon = 
- 	//banner.title = 
- 	//...
+//2.自定义赋值，没有指定的会使用默认值
+banner.content = @"自定义内容";
+//banner.icon = 
+//banner.title = 
+//...
  
- 	//3.展示
-	[banner show];
+//3.展示
+[banner show];
 ```
 
 ##### 参数说明 
@@ -116,14 +116,14 @@ QQ群: 345192153
 
 {...
 //2.创建 CustomView 实例
-	CustomView *customView = [[CustomView alloc] initWith...];
+  CustomView *customView = [[CustomView alloc] initWith...];
 	
 //3.分别指定横竖屏时的 frame
-	customView.portraitFrame = CGRectMake(0, 1, 2, 3);
-	customView.landscapeFrame = CGRectMake(4, 5, 6, 7);
+  customView.portraitFrame = CGRectMake(0, 50, 100, 150);
+  customView.landscapeFrame = CGRectMake(200, 250, 300, 350);
 
 //4.展示
-	[EBBannerView showWithCustomView:customView];
+  [EBBannerView showWithCustomView:customView];
 ...}
 ```
 
@@ -137,14 +137,14 @@ QQ群: 345192153
 ```objc
 #import "EBBannerView.h"
 {...
-   banner.object = aObject;
+  banner.object = aObject;
 ...}
 
 {...
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(eBBannerViewDidClick:) name:EBBannerViewDidClickNotification object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bannerViewDidClick:) name:EBBannerViewDidClickNotification object:nil];
 ...}
 
--(void)eBBannerViewDidClick:(NSNotification*)noti{
-	NSLog(@"%@",noti.object);
+-(void)bannerViewDidClick:(NSNotification*)noti{
+  NSLog(@"%@",noti.object);
 }
 ```

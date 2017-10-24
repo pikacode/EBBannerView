@@ -35,7 +35,7 @@ void EBSoundMuteNotificationCompletionProc(SystemSoundID  ssID,void* clientData)
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedDetecotr = [EBMuteDetector new];
-        NSURL* url = [[NSBundle bundleForClass:[self class]] URLForResource:@"EBMute" withExtension:@"mp3"];
+        NSURL* url = [[NSBundle bundleForClass:[self class]] URLForResource:@"EBMuteDetector" withExtension:@"mp3"];
         if (AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &sharedDetecotr->_soundId) == kAudioServicesNoError){
             AudioServicesAddSystemSoundCompletion(sharedDetecotr.soundId, CFRunLoopGetMain(), kCFRunLoopDefaultMode, EBSoundMuteNotificationCompletionProc,(__bridge void *)(self));
             UInt32 yes = 1;

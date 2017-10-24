@@ -77,8 +77,8 @@
             //自定义view
             CustomView *customView = [[NSBundle mainBundle] loadNibNamed:@"CustomView" owner:nil options:nil].lastObject;
             CGSize size = UIScreen.mainScreen.bounds.size;
-            customView.portraitFrame = CGRectMake(0, 0, size.width, 230);
-            customView.landscapeFrame = CGRectMake(0, 0, size.height, 330);
+            customView.portraitFrame = CGRectMake(0, 0, size.width, 200);
+            customView.landscapeFrame = CGRectMake(0, 0, size.height, 230);
             [EBBannerView showWithCustomView:customView];
         }
             break;
