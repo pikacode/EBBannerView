@@ -7,7 +7,6 @@
 //
 
 #import "EBBannerViewController.h"
-#import "EBBannerControllerView.h"
 
 @interface EBBannerViewController ()
 
@@ -15,17 +14,8 @@
 
 @implementation EBBannerViewController
 
--(void)viewDidLoad{
-    [super viewDidLoad];
-    self.view = [[EBBannerControllerView alloc] initWithFrame:UIScreen.mainScreen.bounds];
-}
-
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscape;
-}
-
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
 }
 
 @end

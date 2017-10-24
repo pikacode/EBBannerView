@@ -16,7 +16,6 @@
 		0D292C311F94A27200BA5B87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D292C2F1F94A27200BA5B87 /* LaunchScreen.storyboard */; };
 		0D292C341F94A27200BA5B87 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D292C331F94A27200BA5B87 /* main.m */; };
 		0D41FB7C1F9DBCB6006DE43F /* EBMuteDetector.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0D533E321F94A529003F264D /* EBMuteDetector.mp3 */; };
-		0D41FB7F1F9EEA80006DE43F /* EBBannerControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D41FB7E1F9EEA80006DE43F /* EBBannerControllerView.m */; };
 		0D533E391F94A538003F264D /* EBBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D533E2F1F94A529003F264D /* EBBannerView.m */; };
 		0D533E3B1F94A53E003F264D /* EBMuteDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D533E341F94A529003F264D /* EBMuteDetector.m */; };
 		0D533EE41F9850DC003F264D /* EBBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D533E301F94A529003F264D /* EBBannerView.xib */; };
@@ -45,8 +44,6 @@
 		0D292C3F1F94A27200BA5B87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D292C481F94A27200BA5B87 /* demoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = demoUITests.m; sourceTree = "<group>"; };
 		0D292C4A1F94A27200BA5B87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0D41FB7D1F9EEA80006DE43F /* EBBannerControllerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBBannerControllerView.h; sourceTree = "<group>"; };
-		0D41FB7E1F9EEA80006DE43F /* EBBannerControllerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EBBannerControllerView.m; sourceTree = "<group>"; };
 		0D533E2E1F94A529003F264D /* EBBannerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBBannerView.h; sourceTree = "<group>"; };
 		0D533E2F1F94A529003F264D /* EBBannerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EBBannerView.m; sourceTree = "<group>"; };
 		0D533E301F94A529003F264D /* EBBannerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EBBannerView.xib; sourceTree = "<group>"; };
@@ -147,8 +144,6 @@
 				0D6DE2BF1F9D89C300A8DBF7 /* EBBannerViewController.h */,
 				0D6DE2C01F9D89C300A8DBF7 /* EBBannerViewController.m */,
 				0D6DE2C11F9D89C300A8DBF7 /* EBBannerViewController.xib */,
-				0D41FB7D1F9EEA80006DE43F /* EBBannerControllerView.h */,
-				0D41FB7E1F9EEA80006DE43F /* EBBannerControllerView.m */,
 				0D6DE2B61F99D94000A8DBF7 /* EBCustomBannerView.h */,
 				0D6DE2B71F99D94000A8DBF7 /* EBCustomBannerView.m */,
 				0D6DE2B91F99DA1B00A8DBF7 /* EBBannerView+Categories.h */,
@@ -250,7 +245,6 @@
 				0D6DE2C21F9D89C300A8DBF7 /* EBBannerViewController.m in Sources */,
 				0D533E391F94A538003F264D /* EBBannerView.m in Sources */,
 				0D533E3B1F94A53E003F264D /* EBMuteDetector.m in Sources */,
-				0D41FB7F1F9EEA80006DE43F /* EBBannerControllerView.m in Sources */,
 				0DF8CCC61F9D975D0039A4FF /* EBBannerWindow.m in Sources */,
 				0D6DE2B81F99D94000A8DBF7 /* EBCustomBannerView.m in Sources */,
 				0D14C6921F98987D00A62A55 /* CustomView.m in Sources */,
