@@ -41,8 +41,7 @@ NSString *const EBBannerViewDidClickNotification = @"EBBannerViewDidClickNotific
 
 static NSArray <EBBannerView*>*sharedBannerViews;
 static EBBannerWindow *sharedWindow;
-static EBCustomBannerView *sharedCustomView;
-static NSTimer *_customHideTimer;
+static NSMutableArray <EBCustomBannerView*>*customViews;
 
 #pragma mark - public
 
@@ -66,6 +65,8 @@ static NSTimer *_customHideTimer;
             [[NSNotificationCenter defaultCenter] addObserver:obj selector:@selector(applicationDidChangeStatusBarOrientationNotification) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
             [obj addGestureRecognizer];
         }];
+        
+        customViews = [NSMutableArray<EBCustomBannerView*> array];
     });
 }
 
@@ -128,12 +129,8 @@ static NSTimer *_customHideTimer;
 +(void)showWithCustomView:(UIView<EBCustomBannerViewProtocol>*)customView{
     [EBBannerView sharedInit];
     
-    sharedCustomView = (EBCustomBannerView *)customView;
-    
-    if (_customHideTimer) {
-        [_customHideTimer invalidate];
-        _customHideTimer = nil;
-    }
+    EBCustomBannerView *customBannerView = (EBCustomBannerView*)customView;
+    [customViews addObject:customBannerView];
     
     if ([customView respondsToSelector:@selector(soundName)] || [customView respondsToSelector:@selector(soundID)]) {
         SystemSoundID soundID;
@@ -152,7 +149,7 @@ static NSTimer *_customHideTimer;
         }];
     }
     
-    CGRect frame = UIDevice.currentDevice.orientation == UIDeviceOrientationPortrait ? sharedCustomView.portraitFrame : sharedCustomView.landscapeFrame;
+    CGRect frame = UIDevice.currentDevice.orientation == UIDeviceOrientationPortrait ? customBannerView.portraitFrame : customBannerView.landscapeFrame;
     frame.origin.y = -frame.size.height;
     customView.frame = frame;
 
@@ -164,13 +161,14 @@ static NSTimer *_customHideTimer;
     [UIView animateWithDuration:animationTime animations:^{
         customView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
     } completion:^(BOOL finished) {
-        _customHideTimer = [NSTimer eb_scheduledTimerWithTimeInterval:stayTime block:^(NSTimer *timer) {
+        [NSTimer eb_scheduledTimerWithTimeInterval:stayTime block:^(NSTimer *timer) {
             //可能旋转过
-            CGRect frame1 = UIDevice.currentDevice.orientation == UIDeviceOrientationPortrait ? sharedCustomView.portraitFrame : sharedCustomView.landscapeFrame;
+            CGRect frame1 = UIDevice.currentDevice.orientation == UIDeviceOrientationPortrait ? customBannerView.portraitFrame : customBannerView.landscapeFrame;
             [UIView animateWithDuration:animationTime animations:^{
                 customView.frame = CGRectMake(0, -frame1.size.height, frame1.size.width, frame1.size.height);
             } completion:^(BOOL finished) {
                 [customView removeFromSuperview];
+                [customViews removeObject:customBannerView];
             }];
         } repeats:NO];
     }];
@@ -188,7 +186,7 @@ static NSTimer *_customHideTimer;
 }
 
 -(void)applicationDidChangeStatusBarOrientationNotification{
-    if (!self.superview && !sharedCustomView.superview) {
+    if (!self.superview && customViews.count == 0) {
         return;
     }
     CGSize size = UIScreen.mainScreen.bounds.size;
@@ -196,10 +194,14 @@ static NSTimer *_customHideTimer;
     CGFloat h = MAX(size.width, size.height);
     if (UIDeviceOrientationIsLandscape(UIDevice.currentDevice.orientation)) {
         self.frame = CGRectMake(0, 0, h, self.standardHeight);
-        sharedCustomView.frame = sharedCustomView.landscapeFrame;
+        [customViews enumerateObjectsUsingBlock:^(EBCustomBannerView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.frame = obj.landscapeFrame;
+        }];
     }else{
         self.frame = CGRectMake(0, 0, w, self.standardHeight);
-        sharedCustomView.frame = sharedCustomView.portraitFrame;
+        [customViews enumerateObjectsUsingBlock:^(EBCustomBannerView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.frame = obj.portraitFrame;
+        }];
     }
 }
 

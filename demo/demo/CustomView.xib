@@ -35,10 +35,6 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UI6-iC-3Gl">
-                                    <rect key="frame" x="220" y="25" width="46" height="30"/>
-                                    <state key="normal" title="Button"/>
-                                </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaL-79-kni">
                                     <rect key="frame" x="85" y="15" width="42" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -50,11 +46,9 @@
                             <constraints>
                                 <constraint firstItem="o7p-po-lSV" firstAttribute="leading" secondItem="Z05-Yg-uFJ" secondAttribute="leading" constant="20" id="3ki-jm-iPx"/>
                                 <constraint firstItem="zaL-79-kni" firstAttribute="top" secondItem="o7p-po-lSV" secondAttribute="top" id="57G-4W-Thq"/>
-                                <constraint firstAttribute="trailing" secondItem="UI6-iC-3Gl" secondAttribute="trailing" constant="20" id="8Ia-zJ-A6T"/>
                                 <constraint firstItem="zaL-79-kni" firstAttribute="leading" secondItem="o7p-po-lSV" secondAttribute="trailing" constant="15" id="YlV-yd-VUk"/>
                                 <constraint firstItem="o7p-po-lSV" firstAttribute="centerY" secondItem="Z05-Yg-uFJ" secondAttribute="centerY" id="Yu9-QY-DAB"/>
                                 <constraint firstAttribute="height" constant="80" id="seY-Mz-mmm"/>
-                                <constraint firstItem="UI6-iC-3Gl" firstAttribute="centerY" secondItem="Z05-Yg-uFJ" secondAttribute="centerY" id="xaK-LO-1y4"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -80,10 +74,6 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IsJ-wD-tuR">
-                                    <rect key="frame" x="220" y="25" width="46" height="30"/>
-                                    <state key="normal" title="Button"/>
-                                </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1c-4k-ip8">
                                     <rect key="frame" x="85" y="15" width="42" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -94,8 +84,6 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="O1c-4k-ip8" firstAttribute="leading" secondItem="ail-dh-hDn" secondAttribute="trailing" constant="15" id="5Xm-mc-7sZ"/>
-                                <constraint firstAttribute="trailing" secondItem="IsJ-wD-tuR" secondAttribute="trailing" constant="20" id="KXc-vj-sma"/>
-                                <constraint firstItem="IsJ-wD-tuR" firstAttribute="centerY" secondItem="yQI-Ce-hKt" secondAttribute="centerY" id="Qv5-Bg-JFr"/>
                                 <constraint firstItem="ail-dh-hDn" firstAttribute="centerY" secondItem="yQI-Ce-hKt" secondAttribute="centerY" id="V3x-xy-6Fz"/>
                                 <constraint firstItem="ail-dh-hDn" firstAttribute="leading" secondItem="yQI-Ce-hKt" secondAttribute="leading" constant="20" id="dOT-Ud-LmK"/>
                                 <constraint firstAttribute="height" constant="80" id="uQE-CD-Ue3"/>
@@ -126,17 +114,29 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UI6-iC-3Gl">
+                    <rect key="frame" x="278" y="73" width="46" height="30"/>
+                    <state key="normal" title="Button"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IsJ-wD-tuR">
+                    <rect key="frame" x="278" y="158" width="46" height="30"/>
+                    <state key="normal" title="Button"/>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="thh-v5-0CR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="JK6-Az-Wr0"/>
                 <constraint firstAttribute="bottom" secondItem="thh-v5-0CR" secondAttribute="bottom" constant="20" id="KMk-9H-Lnp"/>
                 <constraint firstItem="thh-v5-0CR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="50" id="M31-wx-FBh"/>
+                <constraint firstItem="IsJ-wD-tuR" firstAttribute="centerY" secondItem="yQI-Ce-hKt" secondAttribute="centerY" id="OIU-Ml-u18"/>
+                <constraint firstItem="UI6-iC-3Gl" firstAttribute="trailing" secondItem="Z05-Yg-uFJ" secondAttribute="trailing" constant="-20" id="OZD-Ky-4jR"/>
+                <constraint firstItem="UI6-iC-3Gl" firstAttribute="centerY" secondItem="Z05-Yg-uFJ" secondAttribute="centerY" id="aQm-VF-b3h"/>
+                <constraint firstItem="IsJ-wD-tuR" firstAttribute="trailing" secondItem="yQI-Ce-hKt" secondAttribute="trailing" constant="-20" id="acO-Fd-mG9"/>
                 <constraint firstItem="Z05-Yg-uFJ" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" constant="-116" id="vjv-1E-dpZ"/>
                 <constraint firstAttribute="trailing" secondItem="thh-v5-0CR" secondAttribute="trailing" constant="50" id="vsg-kw-LGF"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-971" y="83"/>
+            <point key="canvasLocation" x="-971" y="82.5"/>
         </view>
     </objects>
     <resources>
