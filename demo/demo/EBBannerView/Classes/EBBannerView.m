@@ -152,7 +152,7 @@ static NSTimer *_customHideTimer;
         }];
     }
     
-    CGRect frame = UIDevice.currentDevice.orientation == UIDeviceOrientationPortrait ? customView.portraitFrame : customView.landscapeFrame;
+    CGRect frame = UIDevice.currentDevice.orientation == UIDeviceOrientationPortrait ? sharedCustomView.portraitFrame : sharedCustomView.landscapeFrame;
     frame.origin.y = -frame.size.height;
     customView.frame = frame;
 
@@ -166,7 +166,7 @@ static NSTimer *_customHideTimer;
     } completion:^(BOOL finished) {
         _customHideTimer = [NSTimer eb_scheduledTimerWithTimeInterval:stayTime block:^(NSTimer *timer) {
             //可能旋转过
-            CGRect frame1 = UIDevice.currentDevice.orientation == UIDeviceOrientationPortrait ? customView.portraitFrame : customView.landscapeFrame;
+            CGRect frame1 = UIDevice.currentDevice.orientation == UIDeviceOrientationPortrait ? sharedCustomView.portraitFrame : sharedCustomView.landscapeFrame;
             [UIView animateWithDuration:animationTime animations:^{
                 customView.frame = CGRectMake(0, -frame1.size.height, frame1.size.width, frame1.size.height);
             } completion:^(BOOL finished) {
