@@ -15,15 +15,16 @@
 		0D292C2E1F94A27200BA5B87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D292C2D1F94A27200BA5B87 /* Assets.xcassets */; };
 		0D292C311F94A27200BA5B87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D292C2F1F94A27200BA5B87 /* LaunchScreen.storyboard */; };
 		0D292C341F94A27200BA5B87 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D292C331F94A27200BA5B87 /* main.m */; };
-		0D41FB7C1F9DBCB6006DE43F /* EBMuteDetector.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0D533E321F94A529003F264D /* EBMuteDetector.mp3 */; };
-		0D533E391F94A538003F264D /* EBBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D533E2F1F94A529003F264D /* EBBannerView.m */; };
-		0D533E3B1F94A53E003F264D /* EBMuteDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D533E341F94A529003F264D /* EBMuteDetector.m */; };
-		0D533EE41F9850DC003F264D /* EBBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D533E301F94A529003F264D /* EBBannerView.xib */; };
-		0D6DE2B81F99D94000A8DBF7 /* EBCustomBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6DE2B71F99D94000A8DBF7 /* EBCustomBannerView.m */; };
-		0D6DE2BB1F99DA1B00A8DBF7 /* EBBannerView+Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6DE2BA1F99DA1B00A8DBF7 /* EBBannerView+Categories.m */; };
-		0D6DE2C21F9D89C300A8DBF7 /* EBBannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6DE2C01F9D89C300A8DBF7 /* EBBannerViewController.m */; };
-		0D6DE2C31F9D89C300A8DBF7 /* EBBannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6DE2C11F9D89C300A8DBF7 /* EBBannerViewController.xib */; };
-		0DF8CCC61F9D975D0039A4FF /* EBBannerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF8CCC51F9D975D0039A4FF /* EBBannerWindow.m */; };
+		0D41FBB41F9F3E51006DE43F /* EBBannerView+Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D41FBA51F9F3E51006DE43F /* EBBannerView+Categories.m */; };
+		0D41FBB51F9F3E51006DE43F /* EBBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D41FBA61F9F3E51006DE43F /* EBBannerView.m */; };
+		0D41FBB61F9F3E51006DE43F /* EBBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D41FBA71F9F3E51006DE43F /* EBBannerView.xib */; };
+		0D41FBB71F9F3E51006DE43F /* EBBannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D41FBA91F9F3E51006DE43F /* EBBannerViewController.m */; };
+		0D41FBB81F9F3E51006DE43F /* EBBannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D41FBAA1F9F3E51006DE43F /* EBBannerViewController.xib */; };
+		0D41FBB91F9F3E51006DE43F /* EBBannerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D41FBAC1F9F3E51006DE43F /* EBBannerWindow.m */; };
+		0D41FBBA1F9F3E51006DE43F /* EBCustomBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D41FBAE1F9F3E51006DE43F /* EBCustomBannerView.m */; };
+		0D41FBBB1F9F3E51006DE43F /* EBMuteDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D41FBB01F9F3E51006DE43F /* EBMuteDetector.m */; };
+		0D41FBBC1F9F3E51006DE43F /* EBMuteDetector.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0D41FBB11F9F3E51006DE43F /* EBMuteDetector.mp3 */; };
+		0D41FBC81FA03CE3006DE43F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D41FBC71FA03CE3006DE43F /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +36,6 @@
 		0D292C251F94A27200BA5B87 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0D292C271F94A27200BA5B87 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		0D292C281F94A27200BA5B87 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		0D292C2B1F94A27200BA5B87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0D292C2D1F94A27200BA5B87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D292C301F94A27200BA5B87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D292C321F94A27200BA5B87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -44,21 +44,25 @@
 		0D292C3F1F94A27200BA5B87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D292C481F94A27200BA5B87 /* demoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = demoUITests.m; sourceTree = "<group>"; };
 		0D292C4A1F94A27200BA5B87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0D533E2E1F94A529003F264D /* EBBannerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBBannerView.h; sourceTree = "<group>"; };
-		0D533E2F1F94A529003F264D /* EBBannerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EBBannerView.m; sourceTree = "<group>"; };
-		0D533E301F94A529003F264D /* EBBannerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EBBannerView.xib; sourceTree = "<group>"; };
-		0D533E321F94A529003F264D /* EBMuteDetector.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = EBMuteDetector.mp3; sourceTree = "<group>"; };
-		0D533E331F94A529003F264D /* EBMuteDetector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBMuteDetector.h; sourceTree = "<group>"; };
-		0D533E341F94A529003F264D /* EBMuteDetector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EBMuteDetector.m; sourceTree = "<group>"; };
-		0D6DE2B61F99D94000A8DBF7 /* EBCustomBannerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBCustomBannerView.h; sourceTree = "<group>"; };
-		0D6DE2B71F99D94000A8DBF7 /* EBCustomBannerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EBCustomBannerView.m; sourceTree = "<group>"; };
-		0D6DE2B91F99DA1B00A8DBF7 /* EBBannerView+Categories.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EBBannerView+Categories.h"; sourceTree = "<group>"; };
-		0D6DE2BA1F99DA1B00A8DBF7 /* EBBannerView+Categories.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "EBBannerView+Categories.m"; sourceTree = "<group>"; };
-		0D6DE2BF1F9D89C300A8DBF7 /* EBBannerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBBannerViewController.h; sourceTree = "<group>"; };
-		0D6DE2C01F9D89C300A8DBF7 /* EBBannerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EBBannerViewController.m; sourceTree = "<group>"; };
-		0D6DE2C11F9D89C300A8DBF7 /* EBBannerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EBBannerViewController.xib; sourceTree = "<group>"; };
-		0DF8CCC41F9D975D0039A4FF /* EBBannerWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBBannerWindow.h; sourceTree = "<group>"; };
-		0DF8CCC51F9D975D0039A4FF /* EBBannerWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EBBannerWindow.m; sourceTree = "<group>"; };
+		0D41FBA41F9F3E51006DE43F /* EBBannerView+Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EBBannerView+Categories.h"; sourceTree = "<group>"; };
+		0D41FBA51F9F3E51006DE43F /* EBBannerView+Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EBBannerView+Categories.m"; sourceTree = "<group>"; };
+		0D41FBA61F9F3E51006DE43F /* EBBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBBannerView.m; sourceTree = "<group>"; };
+		0D41FBA71F9F3E51006DE43F /* EBBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBBannerView.xib; sourceTree = "<group>"; };
+		0D41FBA81F9F3E51006DE43F /* EBBannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBBannerViewController.h; sourceTree = "<group>"; };
+		0D41FBA91F9F3E51006DE43F /* EBBannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBBannerViewController.m; sourceTree = "<group>"; };
+		0D41FBAA1F9F3E51006DE43F /* EBBannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBBannerViewController.xib; sourceTree = "<group>"; };
+		0D41FBAB1F9F3E51006DE43F /* EBBannerWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBBannerWindow.h; sourceTree = "<group>"; };
+		0D41FBAC1F9F3E51006DE43F /* EBBannerWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBBannerWindow.m; sourceTree = "<group>"; };
+		0D41FBAD1F9F3E51006DE43F /* EBCustomBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBCustomBannerView.h; sourceTree = "<group>"; };
+		0D41FBAE1F9F3E51006DE43F /* EBCustomBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBCustomBannerView.m; sourceTree = "<group>"; };
+		0D41FBAF1F9F3E51006DE43F /* EBMuteDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBMuteDetector.h; sourceTree = "<group>"; };
+		0D41FBB01F9F3E51006DE43F /* EBMuteDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBMuteDetector.m; sourceTree = "<group>"; };
+		0D41FBB11F9F3E51006DE43F /* EBMuteDetector.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = EBMuteDetector.mp3; sourceTree = "<group>"; };
+		0D41FBB31F9F3E51006DE43F /* EBBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBBannerView.h; sourceTree = "<group>"; };
+		0D41FBC31F9F3EF5006DE43F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		0D41FBC61FA03CB5006DE43F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0D41FBC71FA03CE3006DE43F /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		0D41FBC91FA03CFE006DE43F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,13 +97,14 @@
 		0D292C231F94A27200BA5B87 /* demo */ = {
 			isa = PBXGroup;
 			children = (
-				0D292C561F94A31F00BA5B87 /* EBBannerView */,
+				0D41FBA21F9F3E51006DE43F /* EBBannerView */,
 				0D292C271F94A27200BA5B87 /* ViewController.h */,
 				0D292C281F94A27200BA5B87 /* ViewController.m */,
 				0D14C6901F98987D00A62A55 /* CustomView.h */,
 				0D14C6911F98987D00A62A55 /* CustomView.m */,
 				0D14C6931F98988700A62A55 /* CustomView.xib */,
 				0D292C2A1F94A27200BA5B87 /* Main.storyboard */,
+				0D41FBC71FA03CE3006DE43F /* Localizable.strings */,
 				0D292C2D1F94A27200BA5B87 /* Assets.xcassets */,
 				0D292C321F94A27200BA5B87 /* Info.plist */,
 				0D6DE2BC1F99E10B00A8DBF7 /* other files */,
@@ -125,32 +130,32 @@
 			path = demoUITests;
 			sourceTree = "<group>";
 		};
-		0D292C561F94A31F00BA5B87 /* EBBannerView */ = {
+		0D41FBA21F9F3E51006DE43F /* EBBannerView */ = {
 			isa = PBXGroup;
 			children = (
-				0D533E2E1F94A529003F264D /* EBBannerView.h */,
-				0D533E2D1F94A529003F264D /* Classes */,
+				0D41FBB31F9F3E51006DE43F /* EBBannerView.h */,
+				0D41FBA31F9F3E51006DE43F /* Classes */,
 			);
 			path = EBBannerView;
 			sourceTree = "<group>";
 		};
-		0D533E2D1F94A529003F264D /* Classes */ = {
+		0D41FBA31F9F3E51006DE43F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0D533E2F1F94A529003F264D /* EBBannerView.m */,
-				0D533E301F94A529003F264D /* EBBannerView.xib */,
-				0DF8CCC41F9D975D0039A4FF /* EBBannerWindow.h */,
-				0DF8CCC51F9D975D0039A4FF /* EBBannerWindow.m */,
-				0D6DE2BF1F9D89C300A8DBF7 /* EBBannerViewController.h */,
-				0D6DE2C01F9D89C300A8DBF7 /* EBBannerViewController.m */,
-				0D6DE2C11F9D89C300A8DBF7 /* EBBannerViewController.xib */,
-				0D6DE2B61F99D94000A8DBF7 /* EBCustomBannerView.h */,
-				0D6DE2B71F99D94000A8DBF7 /* EBCustomBannerView.m */,
-				0D6DE2B91F99DA1B00A8DBF7 /* EBBannerView+Categories.h */,
-				0D6DE2BA1F99DA1B00A8DBF7 /* EBBannerView+Categories.m */,
-				0D533E331F94A529003F264D /* EBMuteDetector.h */,
-				0D533E341F94A529003F264D /* EBMuteDetector.m */,
-				0D533E321F94A529003F264D /* EBMuteDetector.mp3 */,
+				0D41FBA61F9F3E51006DE43F /* EBBannerView.m */,
+				0D41FBA71F9F3E51006DE43F /* EBBannerView.xib */,
+				0D41FBA41F9F3E51006DE43F /* EBBannerView+Categories.h */,
+				0D41FBA51F9F3E51006DE43F /* EBBannerView+Categories.m */,
+				0D41FBA81F9F3E51006DE43F /* EBBannerViewController.h */,
+				0D41FBA91F9F3E51006DE43F /* EBBannerViewController.m */,
+				0D41FBAA1F9F3E51006DE43F /* EBBannerViewController.xib */,
+				0D41FBAB1F9F3E51006DE43F /* EBBannerWindow.h */,
+				0D41FBAC1F9F3E51006DE43F /* EBBannerWindow.m */,
+				0D41FBAD1F9F3E51006DE43F /* EBCustomBannerView.h */,
+				0D41FBAE1F9F3E51006DE43F /* EBCustomBannerView.m */,
+				0D41FBAF1F9F3E51006DE43F /* EBMuteDetector.h */,
+				0D41FBB01F9F3E51006DE43F /* EBMuteDetector.m */,
+				0D41FBB11F9F3E51006DE43F /* EBMuteDetector.mp3 */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 0D292C181F94A27200BA5B87;
 			productRefGroup = 0D292C221F94A27200BA5B87 /* Products */;
@@ -224,11 +230,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D41FBBC1F9F3E51006DE43F /* EBMuteDetector.mp3 in Resources */,
+				0D41FBB61F9F3E51006DE43F /* EBBannerView.xib in Resources */,
 				0D292C311F94A27200BA5B87 /* LaunchScreen.storyboard in Resources */,
 				0D14C6941F98988700A62A55 /* CustomView.xib in Resources */,
-				0D533EE41F9850DC003F264D /* EBBannerView.xib in Resources */,
-				0D6DE2C31F9D89C300A8DBF7 /* EBBannerViewController.xib in Resources */,
-				0D41FB7C1F9DBCB6006DE43F /* EBMuteDetector.mp3 in Resources */,
+				0D41FBB81F9F3E51006DE43F /* EBBannerViewController.xib in Resources */,
+				0D41FBC81FA03CE3006DE43F /* Localizable.strings in Resources */,
 				0D292C2E1F94A27200BA5B87 /* Assets.xcassets in Resources */,
 				0D292C2C1F94A27200BA5B87 /* Main.storyboard in Resources */,
 			);
@@ -241,16 +248,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D41FBB91F9F3E51006DE43F /* EBBannerWindow.m in Sources */,
 				0D292C291F94A27200BA5B87 /* ViewController.m in Sources */,
-				0D6DE2C21F9D89C300A8DBF7 /* EBBannerViewController.m in Sources */,
-				0D533E391F94A538003F264D /* EBBannerView.m in Sources */,
-				0D533E3B1F94A53E003F264D /* EBMuteDetector.m in Sources */,
-				0DF8CCC61F9D975D0039A4FF /* EBBannerWindow.m in Sources */,
-				0D6DE2B81F99D94000A8DBF7 /* EBCustomBannerView.m in Sources */,
 				0D14C6921F98987D00A62A55 /* CustomView.m in Sources */,
+				0D41FBBB1F9F3E51006DE43F /* EBMuteDetector.m in Sources */,
+				0D41FBBA1F9F3E51006DE43F /* EBCustomBannerView.m in Sources */,
 				0D292C341F94A27200BA5B87 /* main.m in Sources */,
+				0D41FBB51F9F3E51006DE43F /* EBBannerView.m in Sources */,
+				0D41FBB71F9F3E51006DE43F /* EBBannerViewController.m in Sources */,
 				0D292C261F94A27200BA5B87 /* AppDelegate.m in Sources */,
-				0D6DE2BB1F99DA1B00A8DBF7 /* EBBannerView+Categories.m in Sources */,
+				0D41FBB41F9F3E51006DE43F /* EBBannerView+Categories.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,7 +267,8 @@
 		0D292C2A1F94A27200BA5B87 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0D292C2B1F94A27200BA5B87 /* Base */,
+				0D41FBC61FA03CB5006DE43F /* en */,
+				0D41FBC91FA03CFE006DE43F /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -269,6 +277,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				0D292C301F94A27200BA5B87 /* Base */,
+				0D41FBC31F9F3EF5006DE43F /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -280,6 +289,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -335,6 +345,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

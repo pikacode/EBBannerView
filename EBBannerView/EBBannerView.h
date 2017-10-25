@@ -8,24 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol EBCustomBannerViewProtocol <NSObject>
-@required
-    @property(nonatomic, assign)CGRect portraitFrame;
-    @property(nonatomic, assign)CGRect landscapeFrame;
-@optional
-    @property(nonatomic, strong)NSNumber *soundID;
-    @property(nonatomic, strong)NSString *soundName;
-    @property(nonatomic, strong)NSNumber *animationTime;
-    @property(nonatomic, strong)NSNumber *stayTime;
-@end
 
-extern NSString *const EBBannerViewDidClickNotification;    //监听点击弹窗的事件
+@protocol EBCustomBannerViewProtocol;
 
 typedef enum : NSInteger {
     EBBannerViewStyleiOS9 = 9,
     EBBannerViewStyleiOS10 = 10,
     EBBannerViewStyleiOS11 = 11
 } EBBannerViewStyle;
+
+//-----------------------------------------------------------------
 
 @interface EBBannerView : UIView
 
@@ -47,4 +39,19 @@ typedef enum : NSInteger {
 @property(nonatomic, strong)NSString *soundName;
 
 @end
+
+//-----------------------------------------------------------------
+
+@protocol EBCustomBannerViewProtocol <NSObject>
+@required
+@property(nonatomic, assign)CGRect portraitFrame;
+@property(nonatomic, assign)CGRect landscapeFrame;
+@optional
+@property(nonatomic, strong)NSNumber *soundID;
+@property(nonatomic, strong)NSString *soundName;
+@property(nonatomic, strong)NSNumber *animationTime;
+@property(nonatomic, strong)NSNumber *stayTime;
+@end
+
+extern NSString *const EBBannerViewDidClickNotification;//监听点击弹窗的事件
 

@@ -92,7 +92,8 @@ App在前台时展示跟iOS9,10,11推送通知一样UI的横幅/自动提示音�
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "EBBannerView", "EBBannerView/Classes/*.{h,m}"
+  s.source_files  = "EBBannerView", "EBBannerView/Classes/*.{h,m}", "EBBannerView/Classes/*.{lproj}/Localizable.strings"
+
 #  s.exclude_files = "Classes/Exclude"
 
    s.public_header_files = "EBBannerView/EBBannerView.h"
