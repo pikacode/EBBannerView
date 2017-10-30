@@ -1,0 +1,3 @@
+target 'demo’ do
+  pod 'EBBannerView', :path => "/Users/wxc/Desktop/EBBannerView"
+end

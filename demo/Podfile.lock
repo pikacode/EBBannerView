@@ -1,0 +1,16 @@
+PODS:
+  - EBBannerView (1.0.0)
+
+DEPENDENCIES:
+  - EBBannerView (from `/Users/wxc/Desktop/EBBannerView`)
+
+EXTERNAL SOURCES:
+  EBBannerView:
+    :path: /Users/wxc/Desktop/EBBannerView
+
+SPEC CHECKSUMS:
+  EBBannerView: b98dfc2eee6dad04dcc234c7681ba467c56662ad
+
+PODFILE CHECKSUM: 98e487bd24941135d770fbb7add2989396f0cc49
+
+COCOAPODS: 1.2.1

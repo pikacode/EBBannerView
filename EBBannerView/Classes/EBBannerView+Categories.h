@@ -8,6 +8,10 @@
 
 #import "EBBannerView.h"
 
+#define WEAK_SELF(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+#define ScreenWidth [UIScreen mainScreen].bounds.size.width
+#define ScreenHeight [UIScreen mainScreen].bounds.size.height
+
 @interface EBBannerView (EBCategory)
 
 +(UIImage*)defaultIcon;

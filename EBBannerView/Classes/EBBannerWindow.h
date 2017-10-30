@@ -10,4 +10,6 @@
 
 @interface EBBannerWindow : UIWindow
 
++(instancetype)sharedWindow;
+
 @end

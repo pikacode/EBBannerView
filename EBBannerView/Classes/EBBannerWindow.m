@@ -7,8 +7,29 @@
 //
 
 #import "EBBannerWindow.h"
+#import "EBBannerViewController.h"
+#import "EBBannerView+Categories.h"
 
 @implementation EBBannerWindow
+
+static EBBannerWindow *sharedWindow;
++(instancetype)sharedWindow{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedWindow = [[self alloc] initWithFrame:CGRectZero];
+        sharedWindow.windowLevel = UIWindowLevelAlert;
+        sharedWindow.layer.masksToBounds = NO;
+        UIWindow *originKeyWindow = UIApplication.sharedApplication.keyWindow;
+        [sharedWindow makeKeyAndVisible];
+        [originKeyWindow makeKeyAndVisible];
+        
+        EBBannerViewController *vc = [EBBannerViewController new];
+        vc.view.backgroundColor = [UIColor clearColor];
+        vc.view.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+        sharedWindow.rootViewController = vc;
+    });
+    return sharedWindow;
+}
 
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -26,7 +47,8 @@
         }
     }];
     if (view) {
-        return [view hitTest:point withEvent:event];
+        CGPoint point1 = [self convertPoint:point toView:view];
+        return [view hitTest:point1 withEvent:event];
     }else{
         return [super hitTest:point withEvent:event];
     }

@@ -9,7 +9,6 @@
 #import "EBBannerView.h"
 #import "EBMuteDetector.h"
 #import <AudioToolbox/AudioToolbox.h>
-#import "EBBannerViewController.h"
 #import "EBCustomBannerView.h"
 #import "EBBannerView+Categories.h"
 #import "EBBannerWindow.h"
@@ -35,32 +34,15 @@ NSString *const EBBannerViewDidClickNotification = @"EBBannerViewDidClickNotific
 
 @implementation EBBannerView
 
-#define ScreenWidth [UIScreen mainScreen].bounds.size.width
-#define ScreenHeight [UIScreen mainScreen].bounds.size.height
-#define WEAK_SELF(weakSelf)  __weak __typeof(&*self)weakSelf = self;
-
 static NSArray <EBBannerView*>*sharedBannerViews;
 static EBBannerWindow *sharedWindow;
-static EBCustomBannerView *sharedCustomView;
-static NSTimer *_customHideTimer;
 
 #pragma mark - public
 
-+(void)sharedInit{
++(void)sharedBannerViewInit{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedWindow = [[EBBannerWindow alloc] initWithFrame:CGRectZero];
-        sharedWindow.windowLevel = UIWindowLevelAlert;
-        sharedWindow.layer.masksToBounds = NO;
-        UIWindow *originKeyWindow = UIApplication.sharedApplication.keyWindow;
-        [sharedWindow makeKeyAndVisible];
-        [originKeyWindow makeKeyAndVisible];
-        
-        EBBannerViewController *vc = [EBBannerViewController new];
-        vc.view.backgroundColor = [UIColor clearColor];
-        vc.view.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
-        sharedWindow.rootViewController = vc;
-        
+        sharedWindow = [EBBannerWindow sharedWindow];
         sharedBannerViews = [[NSBundle mainBundle] loadNibNamed:@"EBBannerView" owner:nil options:nil];
         [sharedBannerViews enumerateObjectsUsingBlock:^(EBBannerView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [[NSNotificationCenter defaultCenter] addObserver:obj selector:@selector(applicationDidChangeStatusBarOrientationNotification) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
@@ -70,7 +52,7 @@ static NSTimer *_customHideTimer;
 }
 
 +(EBBannerView*)bannerViewWithStyle:(EBBannerViewStyle)style{
-    [EBBannerView sharedInit];
+    [EBBannerView sharedBannerViewInit];
     EBBannerView *bannerView = sharedBannerViews[style-9];
     bannerView.style = style;
     if (style == EBBannerViewStyleiOS9) {
@@ -104,7 +86,7 @@ static NSTimer *_customHideTimer;
     self.dateLabel.text = self.date;
     self.contentLabel.text = self.content;
     self.lineView.hidden = (self.style == EBBannerViewStyleiOS9 && self.calculatedHeight < 34);
-    
+
     [sharedWindow.rootViewController.view addSubview:self];
     
     self.frame = CGRectMake(0, -self.standardHeight, ScreenWidth, self.standardHeight);
@@ -125,57 +107,6 @@ static NSTimer *_customHideTimer;
     [bannerView show];
 }
 
-+(void)showWithCustomView:(UIView<EBCustomBannerViewProtocol>*)customView{
-    [EBBannerView sharedInit];
-    
-    sharedCustomView = (EBCustomBannerView *)customView;
-    
-    if (_customHideTimer) {
-        [_customHideTimer invalidate];
-        _customHideTimer = nil;
-    }
-    
-    if ([customView respondsToSelector:@selector(soundName)] || [customView respondsToSelector:@selector(soundID)]) {
-        SystemSoundID soundID;
-        if ([customView respondsToSelector:@selector(soundName)]) {
-            NSURL *url = [[NSBundle mainBundle] URLForResource:customView.soundName withExtension:nil];
-            AudioServicesCreateSystemSoundID((__bridge CFURLRef)(url), &soundID);
-        }else{
-            soundID = customView.soundID.intValue;
-        }
-        [[EBMuteDetector sharedDetecotr] detectComplete:^(BOOL isMute) {
-            if (isMute) {
-                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-            }else{
-                AudioServicesPlaySystemSound(soundID);
-            }
-        }];
-    }
-    
-    CGRect frame = UIDevice.currentDevice.orientation == UIDeviceOrientationPortrait ? customView.portraitFrame : customView.landscapeFrame;
-    frame.origin.y = -frame.size.height;
-    customView.frame = frame;
-
-    [sharedWindow.rootViewController.view addSubview:customView];
-
-    NSTimeInterval animationTime = [customView respondsToSelector:@selector(animationTime)] ? customView.animationTime.floatValue : [EBBannerView defaultAnimationTime];
-    NSTimeInterval stayTime = [customView respondsToSelector:@selector(stayTime)] ? customView.stayTime.floatValue : [EBBannerView defaultStayTime];
-    
-    [UIView animateWithDuration:animationTime animations:^{
-        customView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
-    } completion:^(BOOL finished) {
-        _customHideTimer = [NSTimer eb_scheduledTimerWithTimeInterval:stayTime block:^(NSTimer *timer) {
-            //可能旋转过
-            CGRect frame1 = UIDevice.currentDevice.orientation == UIDeviceOrientationPortrait ? customView.portraitFrame : customView.landscapeFrame;
-            [UIView animateWithDuration:animationTime animations:^{
-                customView.frame = CGRectMake(0, -frame1.size.height, frame1.size.width, frame1.size.height);
-            } completion:^(BOOL finished) {
-                [customView removeFromSuperview];
-            }];
-        } repeats:NO];
-    }];
-}
-
 #pragma mark - private
 
 -(void)hide{
@@ -188,7 +119,7 @@ static NSTimer *_customHideTimer;
 }
 
 -(void)applicationDidChangeStatusBarOrientationNotification{
-    if (!self.superview && !sharedCustomView.superview) {
+    if (!self.superview) {
         return;
     }
     CGSize size = UIScreen.mainScreen.bounds.size;
@@ -196,10 +127,8 @@ static NSTimer *_customHideTimer;
     CGFloat h = MAX(size.width, size.height);
     if (UIDeviceOrientationIsLandscape(UIDevice.currentDevice.orientation)) {
         self.frame = CGRectMake(0, 0, h, self.standardHeight);
-        sharedCustomView.frame = sharedCustomView.landscapeFrame;
     }else{
         self.frame = CGRectMake(0, 0, w, self.standardHeight);
-        sharedCustomView.frame = sharedCustomView.portraitFrame;
     }
 }
 

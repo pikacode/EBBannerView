@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-
 @protocol EBCustomBannerViewProtocol;
+@class EBCustomBannerView;
 
 typedef enum : NSInteger {
     EBBannerViewStyleiOS9 = 9,
@@ -17,41 +17,27 @@ typedef enum : NSInteger {
     EBBannerViewStyleiOS11 = 11
 } EBBannerViewStyle;
 
-//-----------------------------------------------------------------
-
 @interface EBBannerView : UIView
 
+//show system version style with default values
 +(void)showWithContent:(NSString*)content;
 
-+(EBBannerView*)bannerViewWithStyle:(EBBannerViewStyle)style;
+//get a specific style banner, customize values below, then call 'show'
++(instancetype)bannerViewWithStyle:(EBBannerViewStyle)style;
 -(void)show;
 
-+(void)showWithCustomView:(UIView<EBCustomBannerViewProtocol>*)view;
-
-@property(nonatomic, strong)UIImage  *icon;
-@property(nonatomic, strong)NSString *title;
-@property(nonatomic, strong)NSString *date;
+@property(nonatomic, strong)UIImage  *icon;//default is app icon
+@property(nonatomic, strong)NSString *title;//default is app name
+@property(nonatomic, strong)NSString *date;//default is "now" = "现在"
 @property(nonatomic, strong)NSString *content;
-@property(nonatomic, assign)NSTimeInterval animationTime;
-@property(nonatomic, assign)NSTimeInterval stayTime;
+@property(nonatomic, assign)NSTimeInterval animationTime;//default is 0.3
+@property(nonatomic, assign)NSTimeInterval stayTime;//default is 4.0
 @property(nonatomic, strong)id object;
-@property(nonatomic, assign)UInt32 soundID;
+@property(nonatomic, assign)UInt32 soundID;//default is 1312
 @property(nonatomic, strong)NSString *soundName;
 
 @end
 
-//-----------------------------------------------------------------
-
-@protocol EBCustomBannerViewProtocol <NSObject>
-@required
-@property(nonatomic, assign)CGRect portraitFrame;
-@property(nonatomic, assign)CGRect landscapeFrame;
-@optional
-@property(nonatomic, strong)NSNumber *soundID;
-@property(nonatomic, strong)NSString *soundName;
-@property(nonatomic, strong)NSNumber *animationTime;
-@property(nonatomic, strong)NSNumber *stayTime;
-@end
-
+//add observer for this notification to handle tap event and get the 'object' above
 extern NSString *const EBBannerViewDidClickNotification;//监听点击弹窗的事件
 
