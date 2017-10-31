@@ -92,10 +92,10 @@ static EBBannerWindow *sharedWindow;
     self.frame = CGRectMake(0, -self.standardHeight, ScreenWidth, self.standardHeight);
     
     WEAK_SELF(weakSelf);
-    [UIView animateWithDuration:self.animationTime animations:^{
+    [UIView animateWithDuration:self.animationDuration animations:^{
         weakSelf.frame = CGRectMake(0, 0, ScreenWidth, weakSelf.standardHeight);
     } completion:^(BOOL finished) {
-        _hideTimer = [NSTimer scheduledTimerWithTimeInterval:weakSelf.stayTime target:weakSelf selector:@selector(hide) userInfo:nil repeats:NO];
+        _hideTimer = [NSTimer scheduledTimerWithTimeInterval:weakSelf.stayDuration target:weakSelf selector:@selector(hide) userInfo:nil repeats:NO];
     }];
 }
 
@@ -111,7 +111,7 @@ static EBBannerWindow *sharedWindow;
 
 -(void)hide{
     WEAK_SELF(weakSelf);
-    [UIView animateWithDuration:self.animationTime animations:^{
+    [UIView animateWithDuration:self.animationDuration animations:^{
         weakSelf.frame = CGRectMake(0, -weakSelf.standardHeight, ScreenWidth, weakSelf.standardHeight);
     } completion:^(BOOL finished) {
         [weakSelf removeFromSuperview];
@@ -162,7 +162,7 @@ static EBBannerWindow *sharedWindow;
             self.isExpand = YES;
             WEAK_SELF(weakSelf);
             CGFloat originHeight = self.contentLabel.frame.size.height;
-            [UIView animateWithDuration:self.animationTime animations:^{
+            [UIView animateWithDuration:self.animationDuration animations:^{
                 weakSelf.frame = CGRectMake(0, 0, ScreenWidth, weakSelf.standardHeight + weakSelf.calculatedHeight - originHeight + 1);
             } completion:^(BOOL finished) {
                 weakSelf.frame = CGRectMake(0, 0, ScreenWidth, weakSelf.standardHeight + weakSelf.calculatedHeight - originHeight + 1);
@@ -201,18 +201,18 @@ static EBBannerWindow *sharedWindow;
     return _content;
 }
 
--(NSTimeInterval)animationTime{
-    if (!_animationTime) {
-        _animationTime = [EBBannerView defaultAnimationTime];
+-(NSTimeInterval)animationDuration{
+    if (!_animationDuration) {
+        _animationDuration = [EBBannerView defaultAnimationTime];
     }
-    return _animationTime;
+    return _animationDuration;
 }
 
--(NSTimeInterval)stayTime{
-    if (!_stayTime) {
-        _stayTime = [EBBannerView defaultStayTime];;
+-(NSTimeInterval)stayDuration{
+    if (!_stayDuration) {
+        _stayDuration = [EBBannerView defaultStayTime];;
     }
-    return _stayTime;
+    return _stayDuration;
 }
 
 -(CGFloat)standardHeight{

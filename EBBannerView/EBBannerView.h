@@ -30,8 +30,8 @@ typedef enum : NSInteger {
 @property(nonatomic, strong)NSString *title;//default is app name
 @property(nonatomic, strong)NSString *date;//default is "now" = "现在"
 @property(nonatomic, strong)NSString *content;
-@property(nonatomic, assign)NSTimeInterval animationTime;//default is 0.3
-@property(nonatomic, assign)NSTimeInterval stayTime;//default is 4.0
+@property(nonatomic, assign)NSTimeInterval animationDuration;//default is 0.3
+@property(nonatomic, assign)NSTimeInterval stayDuration;//default is 4.0
 @property(nonatomic, strong)id object;
 @property(nonatomic, assign)UInt32 soundID;//default is 1312
 @property(nonatomic, strong)NSString *soundName;
