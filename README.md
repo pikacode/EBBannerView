@@ -116,9 +116,9 @@ banner.content = @"custom content";
 
 - `content`：the content, type NSString
 
-- `animationTime`：the animation time(show/hide the banner), type NSTimeInterval
+- `animationDuration`：the animation time(show/hide the banner), type NSTimeInterval
 
-- `stayTime`：how long the banner will stay before hide, type NSTimeInterval
+- `stayDuration`：how long the banner will stay before hide, type NSTimeInterval
 
 - `soundID`：the sound will play when the banner is showing (when the mute is turn on iPhone will vibrate), type UInt32
 

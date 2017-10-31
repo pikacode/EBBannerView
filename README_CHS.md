@@ -108,8 +108,8 @@ banner.content = @"自定义内容";
 - `title`：标题，默认值 app 的名称，类型 NSString
 - `date`：时间，默认值 NSLocalizedString(@"现在", nil)，类型 NSString
 - `content`：内容，类型 NSString
-- `animationTime`：显示/隐藏动画时间，类型 NSTimeInterval
-- `stayTime`：隐藏之前停留显示的时间，类型 NSTimeInterval
+- `animationDuration`：显示/隐藏动画时间，类型 NSTimeInterval
+- `stayDuration`：隐藏之前停留显示的时间，类型 NSTimeInterval
 - `soundID`：播放的提示音（静音时会自动振动），类型 UInt32
   - 该参数是 iOS 系统自带的声音 id，默认使用的是`三全音`，id = 1312
   - 其他系统声音 id 可以在这里查询到 [iOS Predefined sounds](http://iphonedevwiki.net/index.php/AudioServices#) 备用地址 [AudioServices sounds](http://www.cocoachina.com/bbs/read.php?tid=134344)
