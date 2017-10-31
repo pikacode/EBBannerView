@@ -10,4 +10,6 @@
 
 @interface EBBannerViewController : UIViewController
 
++(void)setSupportedInterfaceOrientations:(UIInterfaceOrientationMask)orientations;
+
 @end

@@ -14,8 +14,14 @@
 
 @implementation EBBannerViewController
 
+static UIInterfaceOrientationMask supportedOrientations;
+
++(void)setSupportedInterfaceOrientations:(UIInterfaceOrientationMask)orientations{
+    supportedOrientations = orientations;
+}
+
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations{
-    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscape;
+    return supportedOrientations;
 }
 
 @end

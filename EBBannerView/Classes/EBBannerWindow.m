@@ -24,6 +24,7 @@ static EBBannerWindow *sharedWindow;
         [originKeyWindow makeKeyAndVisible];
         
         EBBannerViewController *vc = [EBBannerViewController new];
+        [EBBannerViewController setSupportedInterfaceOrientations:UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscape];
         vc.view.backgroundColor = [UIColor clearColor];
         vc.view.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
         sharedWindow.rootViewController = vc;
