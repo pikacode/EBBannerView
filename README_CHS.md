@@ -3,6 +3,9 @@ view [English README.md](/README.md)
 Email：pikacode@qq.com
 
 QQ群: 345192153
+
+
+
 # EBBannerView
 
 只需一行代码即可：
@@ -23,17 +26,26 @@ QQ群: 345192153
 - 完全自定义弹出的 view，自定义 view 在横竖屏时可以定制不同的 frame
 - 自定义 view 在横竖屏时支持分别从不同方向弹出（屏幕上下左右中心）
 - 监听点击事件、传值
-- 支持模拟器和真机
+
 
 
 
 ## 效果
 
-  ![](https://github.com/pikacode/EBBannerView/screenshot/screenshot01.gif)
+### 系统推送通知样式：
+
+  ![](screenshot/1.gif)
+
+
+
+### 自定义样式：
+
+  ![](screenshot/2.gif)
 
 
 
 ## 安装
+
 ### pod 安装
 
 	target 'YourTargetName' do
@@ -42,29 +54,30 @@ QQ群: 345192153
 
 
 
-
 ## 使用
+
+
+
+### 系统样式
+
+---
+
 ```objc
 #import <EBBannerView.h>
 ```
 
+系统样式有两种使用方式：
 
 
-有以下三种使用方式：
 
 #### 方式一：一行代码搞定之省心模式
+
+根据系统不同自动展示 iOS 9/10/11 的样式，并自动展示 app 名称 图标等。
 
 ```objc
 [EBBannerView showWithContent:@"自定义内容"];
 ```
 
-##### 参数说明
-
-- 图标默认显示：app 的图标
-- 标题默认显示：app 的名称
-- 时间默认显示：NSLocalizedString(@"现在", nil)
-- `content`：指定展示的内容，类型 NSString
-- 样式：根据系统判断自动展示 iOS9/10/11 的样式
 
 
 
@@ -84,14 +97,16 @@ banner.content = @"自定义内容";
 [banner show];
 ```
 
+
+
 ##### 参数说明 
 
 （以下参数不赋值时均使用默认值）
 
-- `style`：需要展示的样式，类型 enum : NSInteger {9/10/11}
-- `icon`：图片，类型 UIImage
-- `title`：标题，类型 NSString
-- `date`：时间，类型 NSString
+- `style`：需要展示的样式，默认值 系统类型，类型 enum : NSInteger {9/10/11}
+- `icon`：图片，默认值 app 的图标，类型 UIImage
+- `title`：标题，默认值 app 的名称，类型 NSString
+- `date`：时间，默认值 NSLocalizedString(@"现在", nil)，类型 NSString
 - `content`：内容，类型 NSString
 - `animationTime`：显示/隐藏动画时间，类型 NSTimeInterval
 - `stayTime`：隐藏之前停留显示的时间，类型 NSTimeInterval
@@ -105,32 +120,71 @@ banner.content = @"自定义内容";
 
 
 
-#### 方式三：完全自定义展示的 view
+
+### 自定义样式
+
+---
 
 ```objc
-//1.新建类 CustomView，需遵从 EBCustomBannerViewProtocol 协议
-@interface CustomView : UIView<EBCustomBannerViewProtocol>
-@property(nonatomic, assign)CGRect portraitFrame;
-@property(nonatomic, assign)CGRect landscapeFrame;
-//...其他参数可选添加
-@end
+#import <EBCustomBannerView.h>
+```
 
-{...
-//2.创建 CustomView 实例
-  CustomView *customView = [[CustomView alloc] initWith...];
-	
-//3.分别指定横竖屏时的 frame
-  customView.portraitFrame = CGRectMake(0, 50, 100, 150);
-  customView.landscapeFrame = CGRectMake(200, 250, 300, 350);
+自定义样式有两种使用方式：
 
-//4.展示
-  [EBBannerView showWithCustomView:customView];
-...}
+
+
+#### 方式一：构造并立刻展示：
+
+```objc
+UIView *view = ...;//需要展示的某个 view
+
+[EBCustomBannerView showCustomView:view block:^(EBCustomBannerViewMaker *make) {
+	make.portraitFrame = ...;//竖屏时的 frame
+	make.portraitMode = EBCustomViewAppearModeTop;//竖屏时弹出方向
+	make.soundID = 1312;//声音
+	make.stayDuration = 3.0;//停留时间
+	//......
+}];
 ```
 
 
 
-## 监听、处理点击事件、传值
+#### 方式二：构造并稍后展示：
+
+```objc
+UIView *view = ...;//需要展示的某个 view
+
+//1.传入 view，并构造必要的参数
+EBCustomBannerView *customView = [EBCustomBannerView customView:view block:^(EBCustomBannerViewMaker *make) {
+	make.portraitFrame = ...;//竖屏时的 frame
+	make.portraitMode = EBCustomViewAppearModeTop;//竖屏时弹出方向
+	make.soundID = 1312;//声音
+	make.stayDuration = 3.0;//停留时间
+	//......
+}];
+
+//2.展示
+[customView show];
+//[customView hide];
+```
+
+
+
+##### 参数说明：
+
+- `portraitFrame`：竖屏时的 frame，默认值 view.frame，类型 CGRect
+- `landscapeFrame`：横屏时的 frame，默认值 view.frame，类型 CGRect
+- `soundID`：参见系统样式中参数说明
+- `soundName`：参见系统样式中参数说明
+- `animationDuration`：参见系统样式中参数说明
+- `stayDuration`：参见系统样式中参数说明
+- `portraitMode`：竖屏时 view 出现的方向，上/下/左/右/中，默认值 Top，类型 enum
+- `landscapeMode`：横屏时 view 出现的方向，上/下/左/右/中，默认值 Top，类型 enum
+- `centerModeDurations`：view 从中心出现的动画时间，默认值 @[@0.3, @0.2, @0.1]，中心出现的动画 `animationDuration` 参数无效
+
+
+
+## 监听、处理点击事件、传值（系统样式）
 
 - 通过监听`EBBannerViewDidClickNotification`通知，处理点击事件。
 - 如果初始化 banner 的时候传了 object 的值，在点击后可以获取到。

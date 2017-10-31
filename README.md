@@ -4,6 +4,8 @@ Email：pikacode@qq.com
 
 QQ群: 345192153
 
+
+
 # EBBannerView
 
 Only one line to show:
@@ -22,18 +24,25 @@ And more：
 
 - autosize portrait/landscape frame
 - show a custom view with different frame in portrait/landscape
+- custom view has different animation mode, appear from top/left/right/left/center
 
 
 - NSNotification with click event and pass a value
-- support simulator
-
 
 
 
 
 ## Screenshot
 
-  ![](https://github.com/pikacode/EBBannerView/screenshot/screenshot02.gif)
+### System style:
+
+  ![](screenshot/3.gif)
+
+
+
+### Custom style:
+
+  ![](screenshot/4.gif)
 
 
 
@@ -49,28 +58,27 @@ And more：
 
 
 ## Usage
+
+
+### System style
+
+---
+
 ```objc
 #import <EBBannerView.h>
 ```
 
+2 ways to use:
 
 
-there are 3 ways to use:
 
 #### 1.Show a iOS style banner with one line
+
+up to system version，will show iOS 9/10/11 style，auto show app icon/name.
 
 ```objc
 [EBBannerView showWithContent:@"custom content"];
 ```
-
-##### Parameters:
-
-- default icon: app icon
-- default title: app name
-- `default date`: u should set localized string @"现在" =  @"now"
-- `content`：banner content, NSString
-- default style：will show iOS9/10/11 style up to system version
-
 
 
 
@@ -92,17 +100,19 @@ banner.content = @"custom content";
 [banner show];
 ```
 
+
+
 ##### Parameters: 
 
 (if not set will use default values)
 
-- `style`：the iOS style, type enum : NSInteger {9/10/11}
+- `style`：the iOS style, default is up to system version, type enum : NSInteger {9/10/11}
 
-- `icon`：the icon, type UIImage
+- `icon`：the icon, default is app icon, type UIImage
 
-- `title`：the title, type NSString
+- `title`：the title, default is app name, type NSString
 
-- `date`：the date, type NSString
+- `date`：the date, default is localized string @"现在" =  @"now", type NSString
 
 - `content`：the content, type NSString
 
@@ -124,33 +134,70 @@ banner.content = @"custom content";
 
 
 
+### Custom style
 
-#### 3.Show a totally custom view
+---
 
 ```objc
-//1.create new class CustomView and implement EBCustomBannerViewProtocol
-@interface CustomView : UIView<EBCustomBannerViewProtocol>
-@property(nonatomic, assign)CGRect portraitFrame;
-@property(nonatomic, assign)CGRect landscapeFrame;
-//... optional properties
-@end
+#import <EBCustomBannerView.h>
+```
 
-{...
-//2.create a CustomView instance
-  CustomView *customView = [[CustomView alloc] initWith...];
-	
-//3.set portrait/landscape frame
-  customView.portraitFrame = CGRectMake(0, 50, 100, 150);
-  customView.landscapeFrame = CGRectMake(200, 250, 300, 350);
+2 ways to use:
 
-//4.show
-  [EBBannerView showWithCustomView:customView];
-...}
+
+
+#### 1.create and show immediately
+
+```objc
+UIView *view = ...;//the view want to show
+
+[EBCustomBannerView showCustomView:view block:^(EBCustomBannerViewMaker *make) {
+	make.portraitFrame = ...;//frame in portrait
+	make.portraitMode = EBCustomViewAppearModeTop;//appear from top in portrait
+	make.soundID = 1312;
+	make.stayDuration = 3.0;
+	//......
+}];
 ```
 
 
 
-## Handle click event and pass value
+#### 2.create and show after
+
+```objc
+UIView *view = ...;//the view want to show
+
+//1.
+EBCustomBannerView *customView = [EBCustomBannerView customView:view block:^(EBCustomBannerViewMaker *make) {
+	make.portraitFrame = ...;
+	make.portraitMode = EBCustomViewAppearModeTop;
+	make.soundID = 1312;
+	make.stayDuration = 3.0;
+	//......
+}];
+
+//2.
+[customView show];
+//[customView hide];
+```
+
+
+
+##### Parameters:
+
+- `portraitFrame`:  frame in portrait，default is view.frame，type CGRect
+- `landscapeFrame`: frame in landscape，default is view.frame，type CGRect
+- `soundID`: (the same as `system style`'s)
+- `soundName`: (the same as `system style`'s)
+- `animationDuration`: (the same as `system style`'s)
+- `stayDuration`: (the same as `system style`'s)
+- `portraitMode`: in portrait view appears from top/bottom/left/right/center, default is top, type enum
+- `landscapeMode`: in landscape view appears from top/bottom/left/right/center, default is top, type enum
+- `centerModeDurations`: the animation time of view appears from center, default is @[@0.3, @0.2, @0.1],  `animationDuration` is invalid for center animation
+
+
+
+## Handle click event and pass value (system style)
 
 - add an observer for `EBBannerViewDidClickNotification` and handle click event
 - pass an object when init the banner, and get it when clicked
