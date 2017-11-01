@@ -56,7 +56,7 @@ static EBBannerWindow *sharedWindow;
     if (style < 9) {
         style = 9;
     }
-    EBBannerView *bannerView = sharedBannerViews[style-9 < 0 ?: 0];
+    EBBannerView *bannerView = sharedBannerViews[style-9];
     bannerView.style = style;
     if (style == EBBannerViewStyleiOS9) {
         bannerView.dateLabel.textColor = [[UIImage colorAtPoint:bannerView.dateLabel.center] colorWithAlphaComponent:0.7];
