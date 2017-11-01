@@ -11,5 +11,6 @@
 @interface EBBannerViewController : UIViewController
 
 +(void)setSupportedInterfaceOrientations:(UIInterfaceOrientationMask)orientations;
++(void)setStatusBarHidden:(BOOL)hidden;
 
 @end

@@ -25,6 +25,7 @@ static EBBannerWindow *sharedWindow;
         
         EBBannerViewController *vc = [EBBannerViewController new];
         [EBBannerViewController setSupportedInterfaceOrientations:UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscape];
+        [EBBannerViewController setStatusBarHidden:NO];
         vc.view.backgroundColor = [UIColor clearColor];
         vc.view.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
         sharedWindow.rootViewController = vc;

@@ -29,8 +29,17 @@ static UIInterfaceOrientationMask supportedOrientations;
     supportedOrientations = orientations;
 }
 
++(void)setStatusBarHidden:(BOOL)hidden{
+    statusBarHidden = hidden;
+}
+
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations{
     return supportedOrientations;
+}
+
+static BOOL statusBarHidden;
+-(BOOL)prefersStatusBarHidden{
+    return statusBarHidden;
 }
 
 @end
