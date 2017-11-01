@@ -14,6 +14,15 @@
 
 @implementation EBBannerViewController
 
+- (instancetype)init
+{
+    self = [self initWithNibName:@"EBBannerViewController" bundle:nil];
+    if (self) {
+        
+    }
+    return self;
+}
+
 static UIInterfaceOrientationMask supportedOrientations;
 
 +(void)setSupportedInterfaceOrientations:(UIInterfaceOrientationMask)orientations{
