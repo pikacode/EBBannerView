@@ -43,7 +43,7 @@ static EBBannerWindow *sharedWindow;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedWindow = [EBBannerWindow sharedWindow];
-        sharedBannerViews = [[NSBundle mainBundle] loadNibNamed:@"EBBannerView" owner:nil options:nil];
+        sharedBannerViews = [[NSBundle bundleForClass:self.class] loadNibNamed:@"EBBannerView" owner:nil options:nil];
         [sharedBannerViews enumerateObjectsUsingBlock:^(EBBannerView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [[NSNotificationCenter defaultCenter] addObserver:obj selector:@selector(applicationDidChangeStatusBarOrientationNotification) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
             [obj addGestureRecognizer];

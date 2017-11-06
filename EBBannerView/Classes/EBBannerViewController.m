@@ -16,7 +16,7 @@
 
 - (instancetype)init
 {
-    self = [self initWithNibName:@"EBBannerViewController" bundle:nil];
+    self = [self initWithNibName:@"EBBannerViewController" bundle:[NSBundle bundleForClass:self.class]];
     if (self) {
         
     }
