@@ -76,6 +76,7 @@
     CGImageRef cgImage = viewImage.CGImage;
     NSUInteger width = viewImage.size.width;
     NSUInteger height = viewImage.size.height;
+    viewImage = nil;
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     int bytesPerPixel = 4;
     int bytesPerRow = bytesPerPixel * 1;
@@ -86,6 +87,7 @@
     CGContextSetBlendMode(context, kCGBlendModeCopy);
     CGContextTranslateCTM(context, -pointX, pointY-(CGFloat)height);
     CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, (CGFloat)width, (CGFloat)height), cgImage);
+    UIGraphicsEndImageContext();
     CGContextRelease(context);
     CGFloat red = (CGFloat)pixelData[0] / 255.0f;
     CGFloat green = (CGFloat)pixelData[1] / 255.0f;
