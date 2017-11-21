@@ -12,6 +12,7 @@
 #import "EBCustomBannerView.h"
 #import "EBBannerView+Categories.h"
 #import "EBBannerWindow.h"
+#import <sys/utsname.h>
 
 NSString *const EBBannerViewDidClickNotification = @"EBBannerViewDidClickNotification";
 
@@ -96,10 +97,42 @@ static EBBannerWindow *sharedWindow;
     
     WEAK_SELF(weakSelf);
     [UIView animateWithDuration:self.animationDuration animations:^{
-        weakSelf.frame = CGRectMake(0, 0, ScreenWidth, weakSelf.standardHeight);
+        weakSelf.frame = CGRectMake(0, [self bannerFinalYPosition], ScreenWidth, weakSelf.standardHeight);
     } completion:^(BOOL finished) {
         _hideTimer = [NSTimer scheduledTimerWithTimeInterval:weakSelf.stayDuration target:weakSelf selector:@selector(hide) userInfo:nil repeats:NO];
     }];
+}
+
+-(CGFloat)bannerFinalYPosition{
+    CGFloat YPosition = 0.0f;
+
+    //The Y position of the banner notification view in Portrait orientation for iPhone X is 30pt
+    if ([self iSiPhoneX] && UIDeviceOrientationIsPortrait(UIDevice.currentDevice.orientation)) {
+        YPosition = 30.0f;
+    }
+
+    return YPosition;
+}
+
+-(BOOL)iSiPhoneX{
+    static BOOL isiPhoneX = NO;
+    static dispatch_once_t onceToken;
+
+    dispatch_once(&onceToken, ^{
+#if TARGET_IPHONE_SIMULATOR
+        NSString *model = NSProcessInfo.processInfo.environment[@"SIMULATOR_MODEL_IDENTIFIER"];
+#else
+
+        struct utsname systemInfo;
+        uname(&systemInfo);
+
+        NSString *model = [NSString stringWithCString:systemInfo.machine
+                                             encoding:NSUTF8StringEncoding];
+#endif
+        isiPhoneX = [model isEqualToString:@"iPhone10,3"] || [model isEqualToString:@"iPhone10,6"];
+    });
+
+    return isiPhoneX;
 }
 
 +(void)showWithContent:(NSString*)content{
