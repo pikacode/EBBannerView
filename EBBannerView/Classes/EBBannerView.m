@@ -30,6 +30,10 @@ NSString *const EBBannerViewDidClickNotification = @"EBBannerViewDidClickNotific
 @property (nonatomic, assign, readonly)CGFloat calculatedHeight;
 @property(nonatomic, assign)EBBannerViewStyle style;
 
+@property (nonatomic, assign, readonly)CGFloat fixedX;
+@property (nonatomic, assign, readonly)CGFloat fixedY;
+@property (nonatomic, assign, readonly)CGFloat fixedWidth;
+
 @end
 
 @implementation EBBannerView
@@ -92,11 +96,11 @@ static EBBannerWindow *sharedWindow;
 
     [sharedWindow.rootViewController.view addSubview:self];
     
-    self.frame = CGRectMake(0, -self.standardHeight, ScreenWidth, self.standardHeight);
+    self.frame = CGRectMake(self.fixedX, -self.standardHeight, self.fixedWidth, self.standardHeight);
     
     WEAK_SELF(weakSelf);
     [UIView animateWithDuration:self.animationDuration animations:^{
-        weakSelf.frame = CGRectMake(0, 0, ScreenWidth, weakSelf.standardHeight);
+        weakSelf.frame = CGRectMake(weakSelf.fixedX, weakSelf.fixedY, weakSelf.fixedWidth, weakSelf.standardHeight);
     } completion:^(BOOL finished) {
         _hideTimer = [NSTimer scheduledTimerWithTimeInterval:weakSelf.stayDuration target:weakSelf selector:@selector(hide) userInfo:nil repeats:NO];
     }];
@@ -115,7 +119,7 @@ static EBBannerWindow *sharedWindow;
 -(void)hide{
     WEAK_SELF(weakSelf);
     [UIView animateWithDuration:self.animationDuration animations:^{
-        weakSelf.frame = CGRectMake(0, -weakSelf.standardHeight, ScreenWidth, weakSelf.standardHeight);
+        weakSelf.frame = CGRectMake(weakSelf.fixedX, -weakSelf.standardHeight, weakSelf.fixedWidth, weakSelf.standardHeight);
     } completion:^(BOOL finished) {
         [weakSelf removeFromSuperview];
     }];
@@ -125,14 +129,7 @@ static EBBannerWindow *sharedWindow;
     if (!self.superview) {
         return;
     }
-    CGSize size = UIScreen.mainScreen.bounds.size;
-    CGFloat w = MIN(size.width, size.height);
-    CGFloat h = MAX(size.width, size.height);
-    if (UIDeviceOrientationIsLandscape(UIDevice.currentDevice.orientation)) {
-        self.frame = CGRectMake(0, 0, h, self.standardHeight);
-    }else{
-        self.frame = CGRectMake(0, 0, w, self.standardHeight);
-    }
+    self.frame = CGRectMake(self.fixedX, self.fixedY, self.fixedWidth, self.standardHeight);
 }
 
 -(void)addGestureRecognizer{
@@ -166,9 +163,9 @@ static EBBannerWindow *sharedWindow;
             WEAK_SELF(weakSelf);
             CGFloat originHeight = self.contentLabel.frame.size.height;
             [UIView animateWithDuration:self.animationDuration animations:^{
-                weakSelf.frame = CGRectMake(0, 0, ScreenWidth, weakSelf.standardHeight + weakSelf.calculatedHeight - originHeight + 1);
+                weakSelf.frame = CGRectMake(weakSelf.fixedX, weakSelf.fixedY, weakSelf.fixedWidth, weakSelf.standardHeight + weakSelf.calculatedHeight - originHeight + 1);
             } completion:^(BOOL finished) {
-                weakSelf.frame = CGRectMake(0, 0, ScreenWidth, weakSelf.standardHeight + weakSelf.calculatedHeight - originHeight + 1);
+                weakSelf.frame = CGRectMake(weakSelf.fixedX, weakSelf.fixedY, weakSelf.fixedWidth, weakSelf.standardHeight + weakSelf.calculatedHeight - originHeight + 1);
             }];
         }
     }
@@ -249,6 +246,32 @@ static EBBannerWindow *sharedWindow;
         _soundID = [EBBannerView defaultSoundID];
     }
     return _soundID;
+}
+
+-(BOOL)isiPhoneX{
+    static BOOL isiPhoneX = NO;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        CGSize size = UIScreen.mainScreen.bounds.size;
+        isiPhoneX = MAX(size.width, size.height) == 812;
+    });
+    return isiPhoneX;
+}
+
+-(CGFloat)fixedX{
+    return ([self isiPhoneX] && ![self isPortrait]) ? 128 : 0;
+}
+
+-(CGFloat)fixedY{
+    return ([self isiPhoneX] && [self isPortrait]) ? 33 : 0;
+}
+
+-(CGFloat)fixedWidth{
+    return ([self isiPhoneX] && ![self isPortrait]) ? 556 : ScreenWidth;
+}
+
+-(BOOL)isPortrait{
+    return UIDeviceOrientationIsPortrait(UIDevice.currentDevice.orientation);
 }
 
 @end
