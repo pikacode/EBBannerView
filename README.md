@@ -88,12 +88,12 @@ up to system version，will show iOS 9/10/11 style，auto show app icon/name.
 ```objc
 //1.create a banner, custom all values
 EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
-	make.style = EBBannerViewStyleiOS9;//custom system, default is current
-  	//make.style = 9;
-	make.content = @"MINE eye hath played the painter and hath stelled";
-	//make.object = ...
-	//make.icon = ...
-	//make.title = ...
+    make.style = EBBannerViewStyleiOS9;//custom system, default is current
+    //make.style = 9;
+    make.content = @"MINE eye hath played the painter and hath stelled";
+    //make.object = ...
+    //make.icon = ...
+    //make.title = ...
     //make.soundID = ...
 }];
  
@@ -146,11 +146,11 @@ EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) 
 UIView *view = ...;//the view want to show
 
 [EBCustomBannerView showCustomView:view block:^(EBCustomBannerViewMaker *make) {
-	make.portraitFrame = ...;//frame in portrait
-	make.portraitMode = EBCustomViewAppearModeTop;//appear from top in portrait
-	make.soundID = 1312;
-	make.stayDuration = 3.0;
-	//......
+    make.portraitFrame = ...;//frame in portrait
+    make.portraitMode = EBCustomViewAppearModeTop;//appear from top in portrait
+    make.soundID = 1312;
+    make.stayDuration = 3.0;
+    //......
 }];
 ```
 
@@ -163,11 +163,11 @@ UIView *view = ...;//the view want to show
 
 //1.
 EBCustomBannerView *customView = [EBCustomBannerView customView:view block:^(EBCustomBannerViewMaker *make) {
-	make.portraitFrame = ...;
-	make.portraitMode = EBCustomViewAppearModeTop;
-	make.soundID = 1312;
-	make.stayDuration = 3.0;
-	//......
+    make.portraitFrame = ...;
+    make.portraitMode = EBCustomViewAppearModeTop;
+    make.soundID = 1312;
+    make.stayDuration = 3.0;
+    //......
 }];
 
 //2.
@@ -201,18 +201,18 @@ EBCustomBannerView *customView = [EBCustomBannerView customView:view block:^(EBC
 ```objc
 #import <EBBannerView.h>
 {...
-	EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
-		...
-		make.object = aObject;
-		...
-	}];
+    EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
+        ...
+        make.object = aObject;
+        ...
+    }];
 ...}
 
 {...
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bannerViewDidClick:) name:EBBannerViewDidClickNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bannerViewDidClick:) name:EBBannerViewDidClickNotification object:nil];
 ...}
 
 -(void)bannerViewDidClick:(NSNotification*)noti{
-	NSLog(@"%@",noti.object);
+    NSLog(@"%@",noti.object);
 }
 ```
