@@ -11,12 +11,6 @@
 @protocol EBCustomBannerViewProtocol;
 @class EBCustomBannerView, EBBannerViewMaker;
 
-typedef enum : NSInteger {
-    EBBannerViewStyleiOS9 = 9,
-    EBBannerViewStyleiOS10 = 10,
-    EBBannerViewStyleiOS11 = 11
-} EBBannerViewStyle;
-
 @interface EBBannerView : UIView
 
 //show system version style with default values
@@ -27,6 +21,12 @@ typedef enum : NSInteger {
 -(void)show;
 
 @end
+
+typedef enum : NSInteger {
+    EBBannerViewStyleiOS9 = 9,
+    EBBannerViewStyleiOS10 = 10,
+    EBBannerViewStyleiOS11 = 11
+} EBBannerViewStyle;
 
 @interface EBBannerViewMaker : NSObject
 

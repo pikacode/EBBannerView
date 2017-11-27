@@ -28,6 +28,10 @@
         case 0:
 //⭐️1.current system style (当前系统样式)
             [EBBannerView showWithContent:@"aaaa"];
+            //完全等同于
+//            [[EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
+//                make.content = content;
+//            }] show];
             break;
         case 1:
         {

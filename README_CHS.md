@@ -196,14 +196,18 @@ EBCustomBannerView *customView = [EBCustomBannerView customView:view block:^(EBC
 ```objc
 #import <EBBannerView.h>
 {...
-  banner.object = aObject;
+	EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
+		...
+		make.object = aObject;
+		...
+	}];
 ...}
 
 {...
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bannerViewDidClick:) name:EBBannerViewDidClickNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bannerViewDidClick:) name:EBBannerViewDidClickNotification object:nil];
 ...}
 
 -(void)bannerViewDidClick:(NSNotification*)noti{
-  NSLog(@"%@",noti.object);
+	NSLog(@"%@",noti.object);
 }
 ```
