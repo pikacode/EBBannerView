@@ -81,19 +81,21 @@ QQ群: 345192153
 
 
 
-#### 方式二：指定系统样式，并自定义内容
+#### 方式二：指定不同系统样式，并自定义所有内容
 
 ```objc
-//1.根据指定样式初始化
-EBBannerView *banner = [EBBannerView bannerViewWithStyle:EBBannerViewStyleiOS9];
+//1.构造 banner，自定义赋值，没有指定的会使用默认值
+EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
+	make.style = EBBannerViewStyleiOS9;//指定系统样式，不指定自动依据系统显示不同样式
+	//make.style = 9;//展示 iOS9 样式
+	make.content = @"MINE eye hath played the painter and hath stelled";
+	//make.object = ...
+	//make.icon = ...
+	//make.title = ...
+	//make.soundID = ...
+}];
  
-//2.自定义赋值，没有指定的会使用默认值
-banner.content = @"自定义内容";
-//banner.icon = 
-//banner.title = 
-//...
- 
-//3.展示
+//2.展示
 [banner show];
 ```
 
@@ -103,13 +105,14 @@ banner.content = @"自定义内容";
 
 （以下参数不赋值时均使用默认值）
 
-- `style`：需要展示的样式，默认值 系统类型，类型 enum : NSInteger {9/10/11}
+- `style`：需要展示的样式，默认值 系统类型，可以直接传 `UIDevice.currentDevice.systemVersion.intValue` 来自动适配不同系统，类型 enum : NSInteger {9/10/11}
 - `icon`：图片，默认值 app 的图标，类型 UIImage
 - `title`：标题，默认值 app 的名称，类型 NSString
 - `date`：时间，默认值 NSLocalizedString(@"现在", nil)，类型 NSString
 - `content`：内容，类型 NSString
 - `animationDuration`：显示/隐藏动画时间，类型 NSTimeInterval
 - `stayDuration`：隐藏之前停留显示的时间，类型 NSTimeInterval
+- `object`：监听点击事件 `EBBannerViewDidClickNotification` 后可以获取到，见后文，默认值为 `content`，类型 id
 - `soundID`：播放的提示音（静音时会自动振动），类型 UInt32
   - 该参数是 iOS 系统自带的声音 id，默认使用的是`三全音`，id = 1312
   - 其他系统声音 id 可以在这里查询到 [iOS Predefined sounds](http://iphonedevwiki.net/index.php/AudioServices#) 备用地址 [AudioServices sounds](http://www.cocoachina.com/bbs/read.php?tid=134344)
@@ -186,8 +189,9 @@ EBCustomBannerView *customView = [EBCustomBannerView customView:view block:^(EBC
 
 ## 监听、处理点击事件、传值（系统样式）
 
-- 通过监听`EBBannerViewDidClickNotification`通知，处理点击事件。
-- 如果初始化 banner 的时候传了 object 的值，在点击后可以获取到。
+- 通过监听 `EBBannerViewDidClickNotification` 通知，处理点击事件
+  - 如果初始化 banner 的时候传了 object 的值，在点击后可以获取到
+  - 如果初始化没传，默认是 `content` 的值
 
 ```objc
 #import <EBBannerView.h>

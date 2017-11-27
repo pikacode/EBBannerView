@@ -28,11 +28,12 @@ NSString *const EBBannerViewDidClickNotification = @"EBBannerViewDidClickNotific
 @property (nonatomic, assign)BOOL isExpand;
 @property(nonatomic, assign, readonly)CGFloat standardHeight;
 @property (nonatomic, assign, readonly)CGFloat calculatedHeight;
-@property(nonatomic, assign)EBBannerViewStyle style;
 
 @property (nonatomic, assign, readonly)CGFloat fixedX;
 @property (nonatomic, assign, readonly)CGFloat fixedY;
 @property (nonatomic, assign, readonly)CGFloat fixedWidth;
+
+@property(nonatomic, strong)EBBannerViewMaker *maker;
 
 @end
 
@@ -55,14 +56,15 @@ static EBBannerWindow *sharedWindow;
     });
 }
 
-+(EBBannerView*)bannerViewWithStyle:(EBBannerViewStyle)style{
++(instancetype)bannerWithBlock:(void(^)(EBBannerViewMaker *make))block{
     [EBBannerView sharedBannerViewInit];
-    if (style < 9) {
-        style = 9;
-    }
-    EBBannerView *bannerView = sharedBannerViews[style-9];
-    bannerView.style = style;
-    if (style == EBBannerViewStyleiOS9) {
+    EBBannerViewMaker *maker = [EBBannerViewMaker new];
+    block(maker);
+    maker.style = MAX(maker.style, 9);
+    
+    EBBannerView *bannerView = sharedBannerViews[maker.style-9];
+    bannerView.maker = maker;
+    if (maker.style == EBBannerViewStyleiOS9) {
         bannerView.dateLabel.textColor = [[UIImage colorAtPoint:bannerView.dateLabel.center] colorWithAlphaComponent:0.7];
         CGPoint lineCenter = bannerView.lineView.center;
         bannerView.lineView.backgroundColor = [[UIImage colorAtPoint:CGPointMake(lineCenter.x, lineCenter.y - 7)] colorWithAlphaComponent:0.5];
@@ -75,9 +77,9 @@ static EBBannerWindow *sharedWindow;
         [_hideTimer invalidate];
         _hideTimer = nil;
     }
-    SystemSoundID soundID = self.soundID;
-    if (self.soundName) {
-        NSURL *url = [[NSBundle mainBundle] URLForResource:self.soundName withExtension:nil];
+    SystemSoundID soundID = _maker.soundID;
+    if (_maker.soundName) {
+        NSURL *url = [[NSBundle mainBundle] URLForResource:_maker.soundName withExtension:nil];
         AudioServicesCreateSystemSoundID((__bridge CFURLRef)(url), &soundID);
     }
     [[EBMuteDetector sharedDetecotr] detectComplete:^(BOOL isMute) {
@@ -88,37 +90,35 @@ static EBBannerWindow *sharedWindow;
         }
     }];
     
-    self.imageView.image = self.icon;
-    self.titleLabel.text = self.title;
-    self.dateLabel.text = self.date;
-    self.contentLabel.text = self.content;
-    self.lineView.hidden = (self.style == EBBannerViewStyleiOS9 && self.calculatedHeight < 34);
+    self.imageView.image = _maker.icon;
+    self.titleLabel.text = _maker.title;
+    self.dateLabel.text = _maker.date;
+    self.contentLabel.text = _maker.content;
+    self.lineView.hidden = (_maker.style == EBBannerViewStyleiOS9 && self.calculatedHeight < 34);
 
     [sharedWindow.rootViewController.view addSubview:self];
     
     self.frame = CGRectMake(self.fixedX, -self.standardHeight, self.fixedWidth, self.standardHeight);
     
     WEAK_SELF(weakSelf);
-    [UIView animateWithDuration:self.animationDuration animations:^{
+    [UIView animateWithDuration:_maker.animationDuration animations:^{
         weakSelf.frame = CGRectMake(weakSelf.fixedX, weakSelf.fixedY, weakSelf.fixedWidth, weakSelf.standardHeight);
     } completion:^(BOOL finished) {
-        _hideTimer = [NSTimer scheduledTimerWithTimeInterval:weakSelf.stayDuration target:weakSelf selector:@selector(hide) userInfo:nil repeats:NO];
+        _hideTimer = [NSTimer scheduledTimerWithTimeInterval:weakSelf.maker.stayDuration target:weakSelf selector:@selector(hide) userInfo:nil repeats:NO];
     }];
 }
 
 +(void)showWithContent:(NSString*)content{
-    EBBannerViewStyle style = [UIDevice currentDevice].systemVersion.intValue;
-    EBBannerView *bannerView = [EBBannerView bannerViewWithStyle:style];
-    bannerView.content = content;
-    bannerView.soundID = 1312;
-    [bannerView show];
+    [[EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
+        make.content = content;
+    }] show];
 }
 
 #pragma mark - private
 
 -(void)hide{
     WEAK_SELF(weakSelf);
-    [UIView animateWithDuration:self.animationDuration animations:^{
+    [UIView animateWithDuration:_maker.animationDuration animations:^{
         weakSelf.frame = CGRectMake(weakSelf.fixedX, -weakSelf.standardHeight, weakSelf.fixedWidth, weakSelf.standardHeight);
     } completion:^(BOOL finished) {
         [weakSelf removeFromSuperview];
@@ -146,7 +146,7 @@ static EBBannerWindow *sharedWindow;
 }
 
 -(void)tapGesture:(UITapGestureRecognizer*)tapGesture{
-    [[NSNotificationCenter defaultCenter] postNotificationName:EBBannerViewDidClickNotification object:self.object];
+    [[NSNotificationCenter defaultCenter] postNotificationName:EBBannerViewDidClickNotification object:_maker.object];
     [self hide];
 }
 
@@ -157,12 +157,12 @@ static EBBannerWindow *sharedWindow;
 }
 
 -(void)swipeDownGesture:(UISwipeGestureRecognizer*)gesture{
-    if (self.style == EBBannerViewStyleiOS9) {
+    if (_maker.style == EBBannerViewStyleiOS9) {
         if (gesture.direction == UISwipeGestureRecognizerDirectionDown && !self.lineView.hidden) {
             self.isExpand = YES;
             WEAK_SELF(weakSelf);
             CGFloat originHeight = self.contentLabel.frame.size.height;
-            [UIView animateWithDuration:self.animationDuration animations:^{
+            [UIView animateWithDuration:_maker.animationDuration animations:^{
                 weakSelf.frame = CGRectMake(weakSelf.fixedX, weakSelf.fixedY, weakSelf.fixedWidth, weakSelf.standardHeight + weakSelf.calculatedHeight - originHeight + 1);
             } completion:^(BOOL finished) {
                 weakSelf.frame = CGRectMake(weakSelf.fixedX, weakSelf.fixedY, weakSelf.fixedWidth, weakSelf.standardHeight + weakSelf.calculatedHeight - originHeight + 1);
@@ -173,51 +173,9 @@ static EBBannerWindow *sharedWindow;
 
 #pragma mark - @property
 
--(UIImage *)icon{
-    if (!_icon) {
-        _icon = [EBBannerView defaultIcon];
-    }
-    return _icon;
-}
-
--(NSString *)title{
-    if (!_title) {
-        _title = [EBBannerView defaultTitle];
-    }
-    return _title ?: @"";
-}
-
--(NSString *)date{
-    if (!_date) {
-        _date = [EBBannerView defaultDate];
-    }
-    return _date;
-}
-
--(NSString *)content{
-    if (!_content) {
-        _content = @"";
-    }
-    return _content;
-}
-
--(NSTimeInterval)animationDuration{
-    if (!_animationDuration) {
-        _animationDuration = [EBBannerView defaultAnimationTime];
-    }
-    return _animationDuration;
-}
-
--(NSTimeInterval)stayDuration{
-    if (!_stayDuration) {
-        _stayDuration = [EBBannerView defaultStayTime];;
-    }
-    return _stayDuration;
-}
-
 -(CGFloat)standardHeight{
     CGFloat height;
-    switch (self.style) {
+    switch (_maker.style) {
         case EBBannerViewStyleiOS9:
             height = 70;
             break;
@@ -239,13 +197,6 @@ static EBBannerWindow *sharedWindow;
     NSDictionary *dict = [NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:self.contentLabel.font.pointSize] forKey:NSFontAttributeName];
     CGFloat calculatedHeight = [self.contentLabel.text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size.height;
     return calculatedHeight;
-}
-
--(UInt32)soundID{
-    if (_soundID == 0) {
-        _soundID = [EBBannerView defaultSoundID];
-    }
-    return _soundID;
 }
 
 -(BOOL)isiPhoneX{

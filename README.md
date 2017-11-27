@@ -83,20 +83,21 @@ up to system version，will show iOS 9/10/11 style，auto show app icon/name.
 
 
 
-#### 2.Customize all values with a iOS style
+#### 2.Customize all values include iOS style
 
 ```objc
-//1.init a banner with ios9/10/11 style
-EBBannerView *banner = [EBBannerView bannerViewWithStyle:EBBannerViewStyleiOS9];
+//1.create a banner, custom all values
+EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
+	make.style = EBBannerViewStyleiOS9;//custom system, default is current
+  	//make.style = 9;
+	make.content = @"MINE eye hath played the painter and hath stelled";
+	//make.object = ...
+	//make.icon = ...
+	//make.title = ...
+    //make.soundID = ...
+}];
  
-//2.set custom values, if not set will use default values
-banner.content = @"custom content";
-//banner.icon = 
-//banner.title = 
-//banner.date = @"2017-10-23";
-//...
- 
-//3.show
+//2.show
 [banner show];
 ```
 
@@ -106,27 +107,20 @@ banner.content = @"custom content";
 
 (if not set will use default values)
 
-- `style`：the iOS style, default is up to system version, type enum : NSInteger {9/10/11}
-
+- `style`：the iOS style, default is `UIDevice.currentDevice.systemVersion.intValue`, type enum : NSInteger {9/10/11}
 - `icon`：the icon, default is app icon, type UIImage
-
 - `title`：the title, default is app name, type NSString
-
 - `date`：the date, default is localized string @"现在" =  @"now", type NSString
-
 - `content`：the content, type NSString
-
 - `animationDuration`：the animation time(show/hide the banner), type NSTimeInterval
-
 - `stayDuration`：how long the banner will stay before hide, type NSTimeInterval
-
+- `object`：you can set it when create, then get it when clicked by adding an observer (see below), default is `content`，type id
 - `soundID`：the sound will play when the banner is showing (when the mute is turn on iPhone will vibrate), type UInt32
 
   - it's iOS system sound id, default push notification sound "Tritone" is 1312
   - More sound id to see here [iOS Predefined sounds](http://iphonedevwiki.net/index.php/AudioServices#) or here [AudioServices sounds](http://www.cocoachina.com/bbs/read.php?tid=134344)
 
   - You can download all the system sounds [UISounds.zip](/UISounds.zip) , listen and choose one which you perfer, then check out it's `id` with the form above
-
 - `soundName`：play a cusome sound file, type NSString
   - drag the file to Xcode proj
   - pass the file name and extension，e.g. `banner.soundName = @"sound.mp3"` 
@@ -194,6 +188,8 @@ EBCustomBannerView *customView = [EBCustomBannerView customView:view block:^(EBC
 - `portraitMode`: in portrait view appears from top/bottom/left/right/center, default is top, type enum
 - `landscapeMode`: in landscape view appears from top/bottom/left/right/center, default is top, type enum
 - `centerModeDurations`: the animation time of view appears from center, default is @[@0.3, @0.2, @0.1],  `animationDuration` is invalid for center animation
+
+
 
 
 

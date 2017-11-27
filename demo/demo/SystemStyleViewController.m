@@ -32,39 +32,46 @@
         case 1:
         {
 //⭐️2.iOS 9 style with short text (iOS 9 样式/少量文字)
-            EBBannerView *banner = [EBBannerView bannerViewWithStyle:EBBannerViewStyleiOS9];
-            banner.content = @"MINE eye hath played the painter and hath stelled";
-            //banner.object = ...
+            EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
+                make.style = EBBannerViewStyleiOS9;
+                make.content = @"MINE eye hath played the painter and hath stelled";
+                //make.object = ...
+            }];
             [banner show];
         }
             break;
         case 2:
         {
 //⭐️3.iOS 9 style with long text (iOS 9 样式/大量文字)
-            EBBannerView *banner = [EBBannerView bannerViewWithStyle:EBBannerViewStyleiOS9];
-            banner.content = @"MINE eye hath played the painter and hath stelled Thy beauty's form in table of my heart;My body is the frame wherein 'tis held,And perspective it is best painter's art.For through the painter must you see his skillTo fine where your true image pictured lies,Which in my bosom's shop is hanging still,That hath his windows glazèd with thine eyes.";
+            EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
+                make.style = EBBannerViewStyleiOS9;
+                make.content = @"MINE eye hath played the painter and hath stelled Thy beauty's form in table of my heart;My body is the frame wherein 'tis held,And perspective it is best painter's art.For through the painter must you see his skillTo fine where your true image pictured lies,Which in my bosom's shop is hanging still,That hath his windows glazèd with thine eyes.";
+            }];
             [banner show];
         }
             break;
         case 3:
         {
 //⭐️4.iOS 10 style (iOS 10 样式)
-            EBBannerView *banner = [EBBannerView bannerViewWithStyle:10];
-            banner.content = @"ios 10 style";
+            EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
+                make.style = 10;
+                make.content = @"ios 10 style";
+            }];
             [banner show];
         }
             break;
         case 4:
         {
 //⭐️5.iOS 11 style (iOS 11 样式)
-            EBBannerView *banner = [EBBannerView bannerViewWithStyle:EBBannerViewStyleiOS11];
-            banner.icon = [UIImage imageNamed:@"icon"];
-            banner.title = @"custom title";
-            banner.content = @"ios 11 style";
-            banner.date = @"2017 10 19";
+            EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
+                make.style = 11;
+                make.icon = [UIImage imageNamed:@"icon"];
+                make.title = @"custom title";
+                make.content = @"ios 11 style";
+                make.date = @"2017 10 19";
+            }];
             [banner show];
         }
-            break;
             break;
         default:
             break;

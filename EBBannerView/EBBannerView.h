@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol EBCustomBannerViewProtocol;
-@class EBCustomBannerView;
+@class EBCustomBannerView, EBBannerViewMaker;
 
 typedef enum : NSInteger {
     EBBannerViewStyleiOS9 = 9,
@@ -23,16 +23,21 @@ typedef enum : NSInteger {
 +(void)showWithContent:(NSString*)content;
 
 //get a specific style banner, customize values below, then call 'show'
-+(instancetype)bannerViewWithStyle:(EBBannerViewStyle)style;
++(instancetype)bannerWithBlock:(void(^)(EBBannerViewMaker *make))block;
 -(void)show;
 
+@end
+
+@interface EBBannerViewMaker : NSObject
+
+@property(nonatomic, assign)EBBannerViewStyle style;//default is UIDevice.currentDevice.systemVersion.intValue
 @property(nonatomic, strong)UIImage  *icon;//default is app icon
 @property(nonatomic, strong)NSString *title;//default is app name
 @property(nonatomic, strong)NSString *date;//default is "now" = "现在"
 @property(nonatomic, strong)NSString *content;
 @property(nonatomic, assign)NSTimeInterval animationDuration;//default is 0.3
 @property(nonatomic, assign)NSTimeInterval stayDuration;//default is 4.0
-@property(nonatomic, strong)id object;
+@property(nonatomic, strong)id object;//default is content
 @property(nonatomic, assign)UInt32 soundID;//default is 1312
 @property(nonatomic, strong)NSString *soundName;
 
@@ -40,4 +45,3 @@ typedef enum : NSInteger {
 
 //add observer for this notification to handle tap event and get the 'object' above
 extern NSString *const EBBannerViewDidClickNotification;//监听点击弹窗的事件
-

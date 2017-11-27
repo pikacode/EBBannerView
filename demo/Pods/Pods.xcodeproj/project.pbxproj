@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,7 @@
 		B4336F39FACDD47D0F6F3CF55CB53548 /* EBBannerView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3A408DDC6FAEEEC9EA8628952F31FD /* EBBannerView-dummy.m */; };
 		B5B942C1B51E6C5AFD2AF815F5C90BE8 /* EBBannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDC466D951D716CC422C8B843A72ABD /* EBBannerViewController.m */; };
 		FBD2E0545B76EF2B02B2924B98DBEBD1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8CF8EFD6756001B541C5A63D74D26F0 /* AudioToolbox.framework */; };
+		FC2003071FCC128A0012D473 /* EBBannerViewMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2003051FCC128A0012D473 /* EBBannerViewMaker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		066CF95A9EFE9ACC1FA96055517BC643 /* libPods-demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-demo.a"; path = "libPods-demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		066CF95A9EFE9ACC1FA96055517BC643 /* libPods-demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EB63ACAC56AE4DD065A13A052C5A55E /* EBBannerViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EBBannerViewController.h; sourceTree = "<group>"; };
 		146B8E133707B9109954F841E9A4445F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		1B5A451619AC9A94BE8753F07DF9CE9F /* EBBannerView+Categories.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EBBannerView+Categories.m"; sourceTree = "<group>"; };
@@ -48,13 +49,13 @@
 		287C1DFC87866352DB7BF094DDDA0253 /* Pods-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-demo.release.xcconfig"; sourceTree = "<group>"; };
 		33663BB3DB196C8DD0BFB225E6249624 /* Pods-demo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-demo-acknowledgements.markdown"; sourceTree = "<group>"; };
 		46DC28498642AA6A9483965EA4ABE245 /* EBBannerView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EBBannerView-prefix.pch"; sourceTree = "<group>"; };
-		48D3FEDCC5A26BB35B5092A47E59ADA9 /* libEBBannerView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libEBBannerView.a; path = libEBBannerView.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		48D3FEDCC5A26BB35B5092A47E59ADA9 /* libEBBannerView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEBBannerView.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E8E49723EE6F45B9D3997654D283090 /* EBMuteDetector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EBMuteDetector.m; sourceTree = "<group>"; };
 		6E3A408DDC6FAEEEC9EA8628952F31FD /* EBBannerView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EBBannerView-dummy.m"; sourceTree = "<group>"; };
 		735464A508A21DEC44C022C0EBCFD368 /* EBBannerWindow.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EBBannerWindow.m; sourceTree = "<group>"; };
 		7D6802DD277C1EB58BED4DD2037C7483 /* EBMuteDetector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EBMuteDetector.h; sourceTree = "<group>"; };
 		7EB9386348212CC3AC5CD41BD864CA77 /* Pods-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-demo.debug.xcconfig"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9A9B4D22769A386FB122AB76B00F3960 /* EBCustomBannerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EBCustomBannerView.m; sourceTree = "<group>"; };
 		9EEBE57F88B6512B5487A2090F4D0CB7 /* EBBannerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EBBannerView.h; sourceTree = "<group>"; };
 		A8CF8EFD6756001B541C5A63D74D26F0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
@@ -69,6 +70,7 @@
 		E4B2F09BB1072EEE540EB2192F3EF0EE /* EBMuteDetector.mp3 */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = audio.mp3; path = EBMuteDetector.mp3; sourceTree = "<group>"; };
 		ED3751CA73DD5B4DC4184BF941B8F6CC /* Pods-demo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-demo-acknowledgements.plist"; sourceTree = "<group>"; };
 		FB15D096CFE80336FBB9F3F7000208F5 /* EBBannerWindow.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EBBannerWindow.h; sourceTree = "<group>"; };
+		FC2003051FCC128A0012D473 /* EBBannerViewMaker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EBBannerViewMaker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +128,6 @@
 				24C4314DB9D5CC54589A911934F00C65 /* EBCustomBannerView.h */,
 				E3093568273AB2CCC0D2C21EC8ED04E9 /* Classes */,
 			);
-			name = EBBannerView;
 			path = EBBannerView;
 			sourceTree = "<group>";
 		};
@@ -135,7 +136,6 @@
 			children = (
 				8C5010FD7BE72F9A64E661B63A2389BB /* Classes */,
 			);
-			name = EBBannerView;
 			path = EBBannerView;
 			sourceTree = "<group>";
 		};
@@ -165,7 +165,6 @@
 				B44E073116A5AD8F01107C663DAF2BD0 /* EBBannerViewController.xib */,
 				E4B2F09BB1072EEE540EB2192F3EF0EE /* EBMuteDetector.mp3 */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -208,17 +207,17 @@
 			isa = PBXGroup;
 			children = (
 				B541DBD2724B2AF12D1F3A5CA2A22994 /* EBBannerView.m */,
+				FC2003051FCC128A0012D473 /* EBBannerViewMaker.m */,
+				9A9B4D22769A386FB122AB76B00F3960 /* EBCustomBannerView.m */,
 				D9D1CFD3D97AAD9B2CFCBAC114E57202 /* EBBannerView+Categories.h */,
 				1B5A451619AC9A94BE8753F07DF9CE9F /* EBBannerView+Categories.m */,
 				0EB63ACAC56AE4DD065A13A052C5A55E /* EBBannerViewController.h */,
 				CEDC466D951D716CC422C8B843A72ABD /* EBBannerViewController.m */,
 				FB15D096CFE80336FBB9F3F7000208F5 /* EBBannerWindow.h */,
 				735464A508A21DEC44C022C0EBCFD368 /* EBBannerWindow.m */,
-				9A9B4D22769A386FB122AB76B00F3960 /* EBCustomBannerView.m */,
 				7D6802DD277C1EB58BED4DD2037C7483 /* EBMuteDetector.h */,
 				4E8E49723EE6F45B9D3997654D283090 /* EBMuteDetector.m */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -326,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC2003071FCC128A0012D473 /* EBBannerViewMaker.m in Sources */,
 				178F7CE04B1A9FED0E630331E0611567 /* EBBannerView+Categories.m in Sources */,
 				B4336F39FACDD47D0F6F3CF55CB53548 /* EBBannerView-dummy.m in Sources */,
 				8559F65198DC77C684E25AD8A630C707 /* EBBannerView.m in Sources */,
