@@ -222,7 +222,7 @@ static EBBannerWindow *sharedWindow;
 }
 
 -(BOOL)isPortrait{
-    return UIDeviceOrientationIsPortrait(UIDevice.currentDevice.orientation);
+    return ScreenWidth < ScreenHeight;
 }
 
 @end

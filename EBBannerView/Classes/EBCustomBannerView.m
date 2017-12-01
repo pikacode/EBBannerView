@@ -220,10 +220,6 @@ static EBBannerWindow *sharedWindow;
             hideFrame.origin.y = ScreenHeight;
             break;
         case EBCustomViewAppearModeCenter:
-            /*
-             
-             */
-            
             break;
         default:
             break;
@@ -233,6 +229,10 @@ static EBBannerWindow *sharedWindow;
 
 -(EBCustomBannerViewAppearMode)currentAppearMode{
     return [self currentIsLandscape] ? _maker.landscapeMode : _maker.portraitMode;
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

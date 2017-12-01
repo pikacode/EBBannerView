@@ -86,13 +86,13 @@ QQ群: 345192153
 ```objc
 //1.构造 banner，自定义赋值，没有指定的会使用默认值
 EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
-    make.style = EBBannerViewStyleiOS9;//指定系统样式，不指定自动依据系统显示不同样式
-    //make.style = 9;//展示 iOS9 样式
-    make.content = @"MINE eye hath played the painter and hath stelled";
-    //make.object = ...
-    //make.icon = ...
-    //make.title = ...
-    //make.soundID = ...
+   make.style = EBBannerViewStyleiOS9;//指定系统样式，不指定自动依据系统显示不同样式
+   //make.style = 9;//展示 iOS9 样式
+   make.content = @"MINE eye hath played the painter and hath stelled";
+   //make.object = ...
+   //make.icon = ...
+   //make.title = ...
+   //make.soundID = ...
 }];
  
 //2.展示
@@ -142,11 +142,11 @@ EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) 
 UIView *view = ...;//需要展示的某个 view
 
 [EBCustomBannerView showCustomView:view block:^(EBCustomBannerViewMaker *make) {
-    make.portraitFrame = ...;//竖屏时的 frame
-    make.portraitMode = EBCustomViewAppearModeTop;//竖屏时弹出方向
-    make.soundID = 1312;//声音
-    make.stayDuration = 3.0;//停留时间
-    //......
+   make.portraitFrame = ...;//竖屏时的 frame
+   make.portraitMode = EBCustomViewAppearModeTop;//竖屏时弹出方向
+   make.soundID = 1312;//声音
+   make.stayDuration = 3.0;//停留时间
+   //......
 }];
 ```
 
@@ -159,11 +159,11 @@ UIView *view = ...;//需要展示的某个 view
 
 //1.传入 view，并构造必要的参数
 EBCustomBannerView *customView = [EBCustomBannerView customView:view block:^(EBCustomBannerViewMaker *make) {
-    make.portraitFrame = ...;//竖屏时的 frame
-    make.portraitMode = EBCustomViewAppearModeTop;//竖屏时弹出方向
-    make.soundID = 1312;//声音
-    make.stayDuration = 3.0;//停留时间
-    //......
+   make.portraitFrame = ...;//竖屏时的 frame
+   make.portraitMode = EBCustomViewAppearModeTop;//竖屏时弹出方向
+   make.soundID = 1312;//声音
+   make.stayDuration = 3.0;//停留时间
+   //......
 }];
 
 //2.展示
@@ -195,19 +195,20 @@ EBCustomBannerView *customView = [EBCustomBannerView customView:view block:^(EBC
 
 ```objc
 #import <EBBannerView.h>
-{...
-    EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
-        ...
-        make.object = aObject;
-        ...
-    }];
-...}
+{
+   ...
+   EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
+      ...
+      make.object = aObject;
+   }];
+}
 
-{...
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bannerViewDidClick:) name:EBBannerViewDidClickNotification object:nil];
-...}
+{
+   ...
+   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bannerViewDidClick:) name:EBBannerViewDidClickNotification object:nil];
+}
 
 -(void)bannerViewDidClick:(NSNotification*)noti{
-    NSLog(@"%@",noti.object);
+   NSLog(@"%@",noti.object);
 }
 ```
