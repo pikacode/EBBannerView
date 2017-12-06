@@ -1,16 +1,17 @@
 PODS:
-  - EBBannerView (1.0.0)
+  - EBBannerView (1.0.5)
 
 DEPENDENCIES:
   - EBBannerView (from `/Users/wxc/Desktop/EBBannerView`)
 
 EXTERNAL SOURCES:
   EBBannerView:
-    :path: /Users/wxc/Desktop/EBBannerView
+    :path: !ruby/object:Pathname
+    path: /Users/wxc/Desktop/EBBannerView
 
 SPEC CHECKSUMS:
-  EBBannerView: b98dfc2eee6dad04dcc234c7681ba467c56662ad
+  EBBannerView: d9757746d79965fc83d4120d59e970027827f8d0
 
-PODFILE CHECKSUM: 98e487bd24941135d770fbb7add2989396f0cc49
+PODFILE CHECKSUM: 69f54876fb420b410f127e6cafd4b957cd3f933b
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1
