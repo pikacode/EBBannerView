@@ -23,9 +23,9 @@
 		CC50385323B81FC0F1B320A9DADD637A /* EBBannerView+Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = A256466073957CFC6628E54613EDDD4A /* EBBannerView+Categories.m */; };
 		DB3DFA66271DD7BF7ADF34F8D18BDBBA /* EBCustomBannerView.h in Headers */ = {isa = PBXBuildFile; fileRef = DE78251E7A23C2D8DD38EBDFA3E738C3 /* EBCustomBannerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EB7A02E534B7D0D98737D603951BAAB3 /* EBBannerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C37B39044BF5ABFB04BA6CA3613F934 /* EBBannerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F1FF527900B7359A95DFF9557F7647A7 /* EBBannerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 07F17F49EF4E53FEE96ADB9108FE20D2 /* EBBannerViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F3FA6F925EE7252ED5BFEDBF6C3D917F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8CF8EFD6756001B541C5A63D74D26F0 /* AudioToolbox.framework */; };
 		F5333BFA385B661561FBE22BEDF7A7B7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFB6B7FC76E6ADD9304DE482664DF189 /* UIKit.framework */; };
+		FE445234D7BF7AF3E0C2DF0B1AF13BB1 /* EBBannerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 07F17F49EF4E53FEE96ADB9108FE20D2 /* EBBannerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -217,7 +217,7 @@
 			files = (
 				5AD4BB6406A8786277AFCC0801CA2354 /* EBBannerView+Categories.h in Headers */,
 				EB7A02E534B7D0D98737D603951BAAB3 /* EBBannerView.h in Headers */,
-				F1FF527900B7359A95DFF9557F7647A7 /* EBBannerViewController.h in Headers */,
+				FE445234D7BF7AF3E0C2DF0B1AF13BB1 /* EBBannerViewController.h in Headers */,
 				10056A21B6142485A1195CB15EBF7E08 /* EBBannerWindow.h in Headers */,
 				DB3DFA66271DD7BF7ADF34F8D18BDBBA /* EBCustomBannerView.h in Headers */,
 				8E499C19616C887DA81193FC273A506E /* EBMuteDetector.h in Headers */,
