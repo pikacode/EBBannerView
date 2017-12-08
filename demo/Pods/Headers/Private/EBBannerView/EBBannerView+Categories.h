@@ -1,1 +1,1 @@
-../../../../../EBBannerView/Classes/EBBannerView+Categories.h
+../../../EBBannerView/EBBannerView/Classes/EBBannerView+Categories.h

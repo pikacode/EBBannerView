@@ -7,8 +7,10 @@
 //
 
 #import "SystemStyleViewController.h"
-
 #import <EBBannerView.h>
+
+//#import <EBBannerViewController.h> 可以控制 banner 是否会跟随屏幕旋转 
+//use this to change supported interface orientations
 
 @implementation SystemStyleViewController
 

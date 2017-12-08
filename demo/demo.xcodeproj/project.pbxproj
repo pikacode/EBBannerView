@@ -262,9 +262,9 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-demo/Pods-demo-resources.sh",
-				"${PODS_ROOT}/../../EBBannerView/Classes/EBBannerView.xib",
-				"${PODS_ROOT}/../../EBBannerView/Classes/EBBannerViewController.xib",
-				"${PODS_ROOT}/../../EBBannerView/Classes/EBMuteDetector.mp3",
+				"${PODS_ROOT}/EBBannerView/EBBannerView/Classes/EBBannerView.xib",
+				"${PODS_ROOT}/EBBannerView/EBBannerView/Classes/EBBannerViewController.xib",
+				"${PODS_ROOT}/EBBannerView/EBBannerView/Classes/EBMuteDetector.mp3",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (

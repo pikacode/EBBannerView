@@ -20,7 +20,10 @@
     "EBBannerView/Classes/*.{h,m}",
     "EBBannerView/Classes/*.{lproj}/Localizable.strings"
   ],
-  "public_header_files": "EBBannerView/*.{h}",
+  "public_header_files": [
+    "EBBannerView/*.{h}",
+    "EBBannerView/Classes/EBBannerViewController.h"
+  ],
   "resources": "EBBannerView/Classes/*.{xib,mp3}",
   "frameworks": [
     "UIKit",
