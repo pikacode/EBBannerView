@@ -108,6 +108,21 @@ static EBBannerWindow *sharedWindow;
     }] show];
 }
 
++(void)clearMemoryForStyle:(EBBannerViewStyle)style{
+    // next version
+}
+
++(void)clearMemories{
+    // next version
+}
+
+
+
+
+
+
+
+
 #pragma mark - private
 
 +(instancetype)bannerViewWithStyle:(EBBannerViewStyle)style{

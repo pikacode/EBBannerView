@@ -45,6 +45,9 @@ typedef enum : NSInteger {
 @property(nonatomic, assign)UInt32 soundID;//default is 1312
 @property(nonatomic, strong)NSString *soundName;
 
+
+
+// next version
 /*
  coverLastOnes:
     YES: new banner will cover last ones by animation
