@@ -39,30 +39,24 @@ NSString *const EBBannerViewDidClickNotification = @"EBBannerViewDidClickNotific
 
 @implementation EBBannerView
 
-static NSArray <EBBannerView*>*sharedBannerViews;
+static NSMutableArray <EBBannerView*>*sharedBannerViews;
 static EBBannerWindow *sharedWindow;
 
 #pragma mark - public
 
-+(void)sharedBannerViewInit{
++(instancetype)bannerWithBlock:(void(^)(EBBannerViewMaker *make))block{
+    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedWindow = [EBBannerWindow sharedWindow];
-        sharedBannerViews = [[NSBundle bundleForClass:self.class] loadNibNamed:@"EBBannerView" owner:nil options:nil];
-        [sharedBannerViews enumerateObjectsUsingBlock:^(EBBannerView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [[NSNotificationCenter defaultCenter] addObserver:obj selector:@selector(applicationDidChangeStatusBarOrientationNotification) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
-            [obj addGestureRecognizer];
-        }];
     });
-}
-
-+(instancetype)bannerWithBlock:(void(^)(EBBannerViewMaker *make))block{
-    [EBBannerView sharedBannerViewInit];
+    
     EBBannerViewMaker *maker = [EBBannerViewMaker new];
     block(maker);
     maker.style = MAX(maker.style, 9);
     
-    EBBannerView *bannerView = sharedBannerViews[maker.style-9];
+    EBBannerView *bannerView = [EBBannerView bannerViewWithStyle:maker.style];
+
     bannerView.maker = maker;
     if (maker.style == EBBannerViewStyleiOS9) {
         bannerView.dateLabel.textColor = [[UIImage colorAtPoint:bannerView.dateLabel.center] colorWithAlphaComponent:0.7];
@@ -115,6 +109,22 @@ static EBBannerWindow *sharedWindow;
 }
 
 #pragma mark - private
+
++(instancetype)bannerViewWithStyle:(EBBannerViewStyle)style{
+    __block EBBannerView *bannerView;
+    [sharedBannerViews enumerateObjectsUsingBlock:^(EBBannerView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.maker.style == style) {
+            bannerView = obj;
+        }
+    }];
+    if (bannerView == nil) {
+        bannerView = [[NSBundle bundleForClass:self.class] loadNibNamed:@"EBBannerView" owner:nil options:nil][style-9];
+        [[NSNotificationCenter defaultCenter] addObserver:bannerView selector:@selector(applicationDidChangeStatusBarOrientationNotification) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
+        [bannerView addGestureRecognizer];
+        [sharedBannerViews addObject:bannerView];
+    }
+    return bannerView;
+}
 
 -(void)hide{
     WEAK_SELF(weakSelf);

@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "EBBannerView"
-  s.version      = "1.0.5"
+  s.version      = "1.0.6"
   s.summary      = "展示跟iOS9/10/11推送一样的横幅/提示音/振动，或自定义view|Show a banner the same with iOS9/10/11 nofitication(sound/vibrate), or customize."
 
   # This description is used to generate tags and improve search results.
@@ -96,7 +96,7 @@ App在前台时展示跟iOS9,10,11推送通知一样UI的横幅/自动提示音�
 
 #  s.exclude_files = "Classes/Exclude"
 
-   s.public_header_files = "EBBannerView/*.{h}", "EBBannerView/Classes/EBBannerViewController.h"
+   s.public_header_files = "EBBannerView/*.{h}"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

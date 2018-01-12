@@ -1,3 +1,4 @@
 target 'demo’ do
-  pod 'EBBannerView', '1.0.5'
+   pod 'EBBannerView', '1.0.5'
+#	pod 'EBBannerView', :path => '/Users/wtsd/Desktop/EBBannerView/'
 end

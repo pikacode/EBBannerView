@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSInteger {
+    EBBannerViewStyleiOS9 = 9,
+    EBBannerViewStyleiOS10 = 10,
+    EBBannerViewStyleiOS11 = 11
+} EBBannerViewStyle;
+
 @protocol EBCustomBannerViewProtocol;
 @class EBCustomBannerView, EBBannerViewMaker;
 
@@ -20,13 +26,11 @@
 +(instancetype)bannerWithBlock:(void(^)(EBBannerViewMaker *make))block;
 -(void)show;
 
-@end
+//release shared banner
++(void)clearMemoryForStyle:(EBBannerViewStyle)style;
++(void)clearMemories;
 
-typedef enum : NSInteger {
-    EBBannerViewStyleiOS9 = 9,
-    EBBannerViewStyleiOS10 = 10,
-    EBBannerViewStyleiOS11 = 11
-} EBBannerViewStyle;
+@end
 
 @interface EBBannerViewMaker : NSObject
 
@@ -41,7 +45,26 @@ typedef enum : NSInteger {
 @property(nonatomic, assign)UInt32 soundID;//default is 1312
 @property(nonatomic, strong)NSString *soundName;
 
+/*
+ coverLastOnes:
+    YES: new banner will cover last ones by animation
+    NO:  new banner will instead last one, which will disappear immediately
+ 
+    e.g.
+                         set 'NO'                     set 'YES'
+    show:"aaa"      [banner_A "aaa"](shared)      [banner_A "aaa"](shared)
+    show:"bbb"      [banner_A "bbb"]              [banner_B "bbb"]
+    show:"ccc"      [banner_A "ccc"]              [banner_C "ccc"] or [banner_A "ccc"](if A is hidden)
+                                                  B will be released after hidding
+ 
+    show:"ddd"      [banner_A "ddd"]              [banner_D "ddd"] or [banner_A "ddd"] (if A is hidden)
+                                                  B,C will be released after hidding
+ */
+@property(nonatomic, assign)BOOL coverLastOnes;//default is NO
+
 @end
 
 //add observer for this notification to handle tap event and get the 'object' above
 extern NSString *const EBBannerViewDidClickNotification;//监听点击弹窗的事件
+
+ 
