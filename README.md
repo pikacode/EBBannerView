@@ -14,7 +14,7 @@ Only one line to show:
 - auto play a sound or vibrate when the banner is showing
 
 
-- iOS 9 style support swipe down gesture for a long text
+- support swipe down gesture for a long text
 
 And more：
 
