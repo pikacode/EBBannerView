@@ -27,7 +27,7 @@ NSString *const EBBannerViewDidClickNotification = @"EBBannerViewDidClickNotific
 
 @property (nonatomic, assign)BOOL isExpand;
 @property(nonatomic, assign, readonly)CGFloat standardHeight;
-@property (nonatomic, assign, readonly)CGFloat calculatedHeight;
+@property (nonatomic, assign, readonly)CGFloat calculatedContentHeight;
 
 @property (nonatomic, assign, readonly)CGFloat fixedX;
 @property (nonatomic, assign, readonly)CGFloat fixedY;
@@ -88,7 +88,7 @@ static EBBannerWindow *sharedWindow;
     self.titleLabel.text = _maker.title;
     self.dateLabel.text = _maker.date;
     self.contentLabel.text = _maker.content;
-    self.lineView.hidden = (_maker.style == EBBannerViewStyleiOS9 && self.calculatedHeight < 34);
+    self.lineView.hidden = self.calculatedContentHeight < 34;
 
     [sharedWindow.rootViewController.view addSubview:self];
     
@@ -109,11 +109,11 @@ static EBBannerWindow *sharedWindow;
 }
 
 +(void)clearMemoryForStyle:(EBBannerViewStyle)style{
-    // next version
+    // next version to do
 }
 
 +(void)clearMemories{
-    // next version
+    // next version to do
 }
 
 
@@ -182,17 +182,15 @@ static EBBannerWindow *sharedWindow;
 }
 
 -(void)swipeDownGesture:(UISwipeGestureRecognizer*)gesture{
-    if (_maker.style == EBBannerViewStyleiOS9) {
-        if (gesture.direction == UISwipeGestureRecognizerDirectionDown && !self.lineView.hidden) {
-            self.isExpand = YES;
-            WEAK_SELF(weakSelf);
-            CGFloat originHeight = self.contentLabel.frame.size.height;
-            [UIView animateWithDuration:_maker.animationDuration animations:^{
-                weakSelf.frame = CGRectMake(weakSelf.fixedX, weakSelf.fixedY, weakSelf.fixedWidth, weakSelf.standardHeight + weakSelf.calculatedHeight - originHeight + 1);
-            } completion:^(BOOL finished) {
-                weakSelf.frame = CGRectMake(weakSelf.fixedX, weakSelf.fixedY, weakSelf.fixedWidth, weakSelf.standardHeight + weakSelf.calculatedHeight - originHeight + 1);
-            }];
-        }
+    if (gesture.direction == UISwipeGestureRecognizerDirectionDown && !self.lineView.hidden) {
+        self.isExpand = YES;
+        WEAK_SELF(weakSelf);
+        CGFloat originContentHeight = self.contentLabel.frame.size.height;
+        [UIView animateWithDuration:_maker.animationDuration animations:^{
+            weakSelf.frame = CGRectMake(weakSelf.fixedX, weakSelf.fixedY, weakSelf.fixedWidth, weakSelf.standardHeight + weakSelf.calculatedContentHeight - originContentHeight + 1);
+        } completion:^(BOOL finished) {
+            weakSelf.frame = CGRectMake(weakSelf.fixedX, weakSelf.fixedY, weakSelf.fixedWidth, weakSelf.standardHeight + weakSelf.calculatedContentHeight - originContentHeight + 1);
+        }];
     }
 }
 
@@ -217,7 +215,7 @@ static EBBannerWindow *sharedWindow;
     return height;
 }
 
--(CGFloat)calculatedHeight{
+-(CGFloat)calculatedContentHeight{
     CGSize size = CGSizeMake(self.contentLabel.frame.size.width, MAXFLOAT);
     NSDictionary *dict = [NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:self.contentLabel.font.pointSize] forKey:NSFontAttributeName];
     CGFloat calculatedHeight = [self.contentLabel.text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size.height;

@@ -26,6 +26,7 @@ typedef enum : NSInteger {
 +(instancetype)bannerWithBlock:(void(^)(EBBannerViewMaker *make))block;
 -(void)show;
 
+// next version to do:
 //release shared banner
 +(void)clearMemoryForStyle:(EBBannerViewStyle)style;
 +(void)clearMemories;
@@ -47,7 +48,7 @@ typedef enum : NSInteger {
 
 
 
-// next version
+// next version to do
 /*
  coverLastOnes:
     YES: new banner will cover last ones by animation

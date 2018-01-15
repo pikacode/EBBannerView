@@ -106,14 +106,14 @@
                 <outlet property="lineView" destination="3XN-Ja-hWT" id="Roq-j6-DrO"/>
                 <outlet property="titleLabel" destination="SfK-LV-meM" id="tuB-fl-IqT"/>
             </connections>
-            <point key="canvasLocation" x="82" y="-134"/>
+            <point key="canvasLocation" x="82" y="-139.5"/>
         </view>
         <view clipsSubviews="YES" tag="10" contentMode="scaleToFill" id="FuQ-h0-Tnu" userLabel="Banner View iOS 10" customClass="EBBannerView">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7yW-Dq-ZqA">
-                    <rect key="frame" x="8" y="8" width="304" height="58"/>
+                    <rect key="frame" x="8" y="8" width="304" height="74"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JiX-vA-bbX">
                             <rect key="frame" x="0.0" y="0.0" width="304" height="36"/>
@@ -154,17 +154,34 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggN-eQ-t44">
-                            <rect key="frame" x="0.0" y="36" width="304" height="22"/>
+                            <rect key="frame" x="0.0" y="36" width="304" height="38"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PlN-Fu-byf">
-                                    <rect key="frame" x="15" y="2.5" width="281" height="17"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PlN-Fu-byf">
+                                    <rect key="frame" x="15" y="13.5" width="281" height="11"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NF0-Jl-Zb9" userLabel="line">
+                                    <rect key="frame" x="132" y="31" width="40" height="4"/>
+                                    <color key="backgroundColor" red="0.792156862745098" green="0.792156862745098" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="4" id="EpJ-gN-cOO"/>
+                                        <constraint firstAttribute="width" constant="40" id="jSQ-Il-7hO"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="2"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="PlN-Fu-byf" firstAttribute="leading" secondItem="ggN-eQ-t44" secondAttribute="leading" constant="15" id="7IU-4e-1iU"/>
+                                <constraint firstAttribute="bottom" secondItem="NF0-Jl-Zb9" secondAttribute="bottom" constant="3" id="KaL-RE-UI0"/>
+                                <constraint firstItem="NF0-Jl-Zb9" firstAttribute="centerX" secondItem="ggN-eQ-t44" secondAttribute="centerX" id="bg1-eG-9DB"/>
+                                <constraint firstItem="NF0-Jl-Zb9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="PlN-Fu-byf" secondAttribute="bottom" constant="6" id="e51-ht-XRX"/>
                                 <constraint firstAttribute="bottom" secondItem="PlN-Fu-byf" secondAttribute="bottom" constant="8" id="i37-lN-GSM"/>
                                 <constraint firstAttribute="trailing" secondItem="PlN-Fu-byf" secondAttribute="trailing" constant="8" id="mni-O1-Wrk"/>
                                 <constraint firstItem="PlN-Fu-byf" firstAttribute="centerY" secondItem="ggN-eQ-t44" secondAttribute="centerY" id="tc3-dv-lKE"/>
@@ -206,16 +223,17 @@
                 <outlet property="contentLabel" destination="PlN-Fu-byf" id="FYl-Qw-U0i"/>
                 <outlet property="dateLabel" destination="0d1-ud-Cqn" id="6wJ-K8-JKG"/>
                 <outlet property="imageView" destination="M5S-BA-9WJ" id="QyC-qP-gbo"/>
+                <outlet property="lineView" destination="NF0-Jl-Zb9" id="Z5f-fc-wUB"/>
                 <outlet property="titleLabel" destination="cdU-tQ-e7r" id="cq0-yc-9hf"/>
             </connections>
-            <point key="canvasLocation" x="82" y="8"/>
+            <point key="canvasLocation" x="82" y="5"/>
         </view>
         <view clipsSubviews="YES" tag="11" contentMode="scaleToFill" id="bKA-bm-N9w" userLabel="Banner View iOS 11" customClass="EBBannerView">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kDy-gB-6fk">
-                    <rect key="frame" x="8" y="8" width="304" height="58"/>
+                    <rect key="frame" x="8" y="8" width="304" height="74"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tRG-wn-Jup">
                             <rect key="frame" x="0.0" y="0.0" width="304" height="36"/>
@@ -256,20 +274,37 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JIx-cL-R5w">
-                            <rect key="frame" x="0.0" y="36" width="304" height="22"/>
+                            <rect key="frame" x="0.0" y="36" width="304" height="38"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qui-ab-szz">
-                                    <rect key="frame" x="15" y="2.5" width="281" height="17"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qui-ab-szz">
+                                    <rect key="frame" x="15" y="13" width="281" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMP-J1-Z5p" userLabel="line">
+                                    <rect key="frame" x="132" y="31" width="40" height="4"/>
+                                    <color key="backgroundColor" red="0.792156862745098" green="0.792156862745098" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="40" id="iFl-gs-CFT"/>
+                                        <constraint firstAttribute="height" constant="4" id="rZJ-Kb-Qm2"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="2"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="qui-ab-szz" firstAttribute="leading" secondItem="JIx-cL-R5w" secondAttribute="leading" constant="15" id="51P-kJ-o26"/>
+                                <constraint firstItem="UMP-J1-Z5p" firstAttribute="top" relation="greaterThanOrEqual" secondItem="qui-ab-szz" secondAttribute="bottom" constant="6" id="Hrv-ul-evk"/>
+                                <constraint firstItem="UMP-J1-Z5p" firstAttribute="centerX" secondItem="JIx-cL-R5w" secondAttribute="centerX" id="NcZ-GP-ste"/>
                                 <constraint firstItem="qui-ab-szz" firstAttribute="centerY" secondItem="JIx-cL-R5w" secondAttribute="centerY" id="W7g-jr-cZq"/>
                                 <constraint firstAttribute="trailing" secondItem="qui-ab-szz" secondAttribute="trailing" constant="8" id="ZcQ-1U-vaz"/>
                                 <constraint firstAttribute="bottom" secondItem="qui-ab-szz" secondAttribute="bottom" constant="8" id="btp-Ie-xzC"/>
+                                <constraint firstAttribute="bottom" secondItem="UMP-J1-Z5p" secondAttribute="bottom" constant="3" id="mqI-HI-Uvi"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
@@ -308,9 +343,10 @@
                 <outlet property="contentLabel" destination="qui-ab-szz" id="SW9-kM-NyX"/>
                 <outlet property="dateLabel" destination="F1q-Ut-WQc" id="y9F-s9-QdU"/>
                 <outlet property="imageView" destination="cJO-Wj-HZ3" id="Efj-HW-sCT"/>
+                <outlet property="lineView" destination="UMP-J1-Z5p" id="xJV-4N-lwj"/>
                 <outlet property="titleLabel" destination="xxL-Ex-JLB" id="efy-Vt-f9t"/>
             </connections>
-            <point key="canvasLocation" x="82" y="161"/>
+            <point key="canvasLocation" x="82" y="150.5"/>
         </view>
     </objects>
 </document>
