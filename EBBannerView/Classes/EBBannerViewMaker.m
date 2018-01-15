@@ -73,4 +73,12 @@
     return _object;
 }
 
+-(BOOL)vibrateOnMute{
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        _vibrateOnMute = YES;
+    });
+    return _vibrateOnMute;
+}
+
 @end

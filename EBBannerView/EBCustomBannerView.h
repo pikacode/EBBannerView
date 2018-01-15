@@ -43,4 +43,6 @@ typedef enum : NSUInteger {
 
 @property(nonatomic, strong)NSArray<NSNumber*>*centerModeDurations;//default is @[@0.3, @0.2, @0.1];
 
+@property(nonatomic, assign)BOOL vibrateOnMute;//default is YES
+
 @end

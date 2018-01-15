@@ -77,7 +77,7 @@ static EBBannerWindow *sharedWindow;
         AudioServicesCreateSystemSoundID((__bridge CFURLRef)(url), &soundID);
     }
     [[EBMuteDetector sharedDetecotr] detectComplete:^(BOOL isMute) {
-        if (isMute) {
+        if (isMute && _maker.vibrateOnMute) {
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         }else{
             AudioServicesPlaySystemSound(soundID);

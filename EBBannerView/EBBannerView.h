@@ -45,7 +45,7 @@ typedef enum : NSInteger {
 @property(nonatomic, strong)id object;//default is content
 @property(nonatomic, assign)UInt32 soundID;//default is 1312
 @property(nonatomic, strong)NSString *soundName;
-
+@property(nonatomic, assign)BOOL vibrateOnMute;//default is YES
 
 
 // next version to do

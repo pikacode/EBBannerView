@@ -29,6 +29,7 @@
     maker.landscapeFrame = view.frame;
     maker.portraitFrame = view.frame;
     maker.centerModeDurations = @[@0.3, @0.2, @0.1];
+    maker.vibrateOnMute = YES;
     return maker;
 }
 @end
@@ -98,7 +99,7 @@ static EBBannerWindow *sharedWindow;
             soundID = _maker.soundID;
         }
         [[EBMuteDetector sharedDetecotr] detectComplete:^(BOOL isMute) {
-            if (isMute) {
+            if (isMute && _maker.vibrateOnMute) {
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
             }else{
                 AudioServicesPlaySystemSound(soundID);
