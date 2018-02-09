@@ -2,8 +2,8 @@
 //  main.m
 //  demo
 //
-//  Created by 吴星辰 on 2017/10/16.
-//  Copyright © 2017年 吴星辰. All rights reserved.
+//  Created by pikacode@qq.com on 2017/10/16.
+//  Copyright © 2017年 pikacode@qq.com. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

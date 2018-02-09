@@ -2,8 +2,8 @@
 //  EBBannerView+Categories.h
 //  demo
 //
-//  Created by 吴星辰 on 2017/10/20.
-//  Copyright © 2017年 吴星辰. All rights reserved.
+//  Created by pikacode@qq.com on 2017/10/20.
+//  Copyright © 2017年 pikacode@qq.com. All rights reserved.
 //
 
 #import "EBBannerView.h"

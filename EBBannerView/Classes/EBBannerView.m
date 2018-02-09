@@ -2,7 +2,7 @@
 //  EBBannerView.m
 //  iOS-Foreground-Push-Notification
 //
-//  Created by wuxingchen on 0/7/21.
+//  Created by pikacode@qq.com on 0/7/21.
 //  Copyright © 200年 57300022@qq.com. All rights reserved.
 //
 
