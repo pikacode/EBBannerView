@@ -133,7 +133,9 @@ static EBBannerWindow *sharedWindow;
         }
     }];
     if (bannerView == nil) {
-        bannerView = [[NSBundle bundleForClass:self.class] loadNibNamed:@"EBBannerView" owner:nil options:nil][style-9];
+        NSArray *views = [[NSBundle bundleForClass:self.class] loadNibNamed:@"EBBannerView" owner:nil options:nil];
+        NSUInteger index = MIN(style - 9, views.count - 1);
+        bannerView = views[index];
         [[NSNotificationCenter defaultCenter] addObserver:bannerView selector:@selector(applicationDidChangeStatusBarOrientationNotification) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
         [bannerView addGestureRecognizer];
         [sharedBannerViews addObject:bannerView];

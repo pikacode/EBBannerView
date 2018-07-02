@@ -1,1 +1,1 @@
-../../../../../EBBannerView/Classes/EBMuteDetector.h
+../../../EBBannerView/EBBannerView/Classes/EBMuteDetector.h

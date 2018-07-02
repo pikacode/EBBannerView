@@ -41,6 +41,7 @@
             EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
                 make.style = EBBannerViewStyleiOS9;
                 make.content = @"MINE eye hath played the painter and hath stelled";
+                
                 //make.object = ...
             }];
             [banner show];
@@ -62,6 +63,8 @@
             EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) {
                 make.style = 10;
                 make.content = @"ios 10 style";
+                make.content = @"MINE eye hath played the painter and hath stelled Thy beauty's form in table of my heart;My body is the frame wherein 'tis held,And perspective it is best painter's art.For through the painter must you see his skillTo fine where your true image pictured lies,Which in my bosom's shop is hanging still,That hath his windows glazèd with thine eyes.";
+
             }];
             [banner show];
         }
