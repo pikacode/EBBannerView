@@ -98,8 +98,9 @@ static EBBannerWindow *sharedWindow;
         }else{
             soundID = _maker.soundID;
         }
+        WEAK_SELF(weakSelf);
         [[EBMuteDetector sharedDetecotr] detectComplete:^(BOOL isMute) {
-            if (isMute && _maker.vibrateOnMute) {
+            if (isMute && weakSelf.maker.vibrateOnMute) {
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
             }else{
                 AudioServicesPlaySystemSound(soundID);
@@ -146,8 +147,8 @@ static EBBannerWindow *sharedWindow;
         [UIView animateWithDuration:_maker.animationDuration animations:^{
             weakSelf.maker.view.frame = [weakSelf showFrame];
         } completion:^(BOOL finished) {
-            if (_maker.stayDuration > 0) {
-                [NSTimer eb_scheduledTimerWithTimeInterval:_maker.stayDuration block:^(NSTimer *timer) {
+            if (weakSelf.maker.stayDuration > 0) {
+                [NSTimer eb_scheduledTimerWithTimeInterval:weakSelf.maker.stayDuration block:^(NSTimer *timer) {
                     [weakSelf hide];
                 } repeats:NO];
             }

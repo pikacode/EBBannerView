@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 
 typedef enum : NSInteger {
+    EBBannerViewStyleiOS8 = 8,
     EBBannerViewStyleiOS9 = 9,
     EBBannerViewStyleiOS10 = 10,
-    EBBannerViewStyleiOS11 = 11
+    EBBannerViewStyleiOS11 = 11,
+    EBBannerViewStyleiOS12 = 12
 } EBBannerViewStyle;
 
 @protocol EBCustomBannerViewProtocol;
@@ -26,10 +28,10 @@ typedef enum : NSInteger {
 +(instancetype)bannerWithBlock:(void(^)(EBBannerViewMaker *make))block;
 -(void)show;
 
-// next version to do:
-//release shared banner
-+(void)clearMemoryForStyle:(EBBannerViewStyle)style;
-+(void)clearMemories;
+//u don't have to call hide, this only use for (long_text && forbidAutoHiddenWhenSwipeDown = YES)
+-(void)hide;
+
++(instancetype)current;//can be nil
 
 @end
 
@@ -40,31 +42,17 @@ typedef enum : NSInteger {
 @property(nonatomic, strong)NSString *title;//default is app name
 @property(nonatomic, strong)NSString *date;//default is "now" = "现在"
 @property(nonatomic, strong)NSString *content;
-@property(nonatomic, assign)NSTimeInterval animationDuration;//default is 0.3
+@property(nonatomic, assign)NSTimeInterval showAnimationDuration;//default is 0.3
+@property(nonatomic, assign)NSTimeInterval hideAnimationDuration;//default is 0.5
 @property(nonatomic, assign)NSTimeInterval stayDuration;//default is 4.0
+@property(nonatomic, assign)NSTimeInterval swipeDownStayDuration;//default is 4.0
 @property(nonatomic, strong)id object;//default is content
 @property(nonatomic, assign)UInt32 soundID;//default is 1312
 @property(nonatomic, strong)NSString *soundName;
 @property(nonatomic, assign)BOOL vibrateOnMute;//default is YES
+@property(nonatomic, assign)BOOL showDetailOrHideWhenClickLongText;//default is YES showDetail
 
-
-// next version to do
-/*
- coverLastOnes:
-    YES: new banner will cover last ones by animation
-    NO:  new banner will instead last one, which will disappear immediately
- 
-    e.g.
-                         set 'NO'                     set 'YES'
-    show:"aaa"      [banner_A "aaa"](shared)      [banner_A "aaa"](shared)
-    show:"bbb"      [banner_A "bbb"]              [banner_B "bbb"]
-    show:"ccc"      [banner_A "ccc"]              [banner_C "ccc"] or [banner_A "ccc"](if A is hidden)
-                                                  B will be released after hidding
- 
-    show:"ddd"      [banner_A "ddd"]              [banner_D "ddd"] or [banner_A "ddd"] (if A is hidden)
-                                                  B,C will be released after hidding
- */
-@property(nonatomic, assign)BOOL coverLastOnes;//default is NO
++(instancetype)defaultMaker;
 
 @end
 

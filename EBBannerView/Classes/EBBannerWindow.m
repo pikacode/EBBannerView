@@ -24,7 +24,6 @@ static EBEmptyWindow *emptyWindow;
         sharedWindow.layer.masksToBounds = NO;
         UIWindow *originKeyWindow = UIApplication.sharedApplication.keyWindow;
         [sharedWindow makeKeyAndVisible];
-        [originKeyWindow makeKeyAndVisible];
         
         /* fix bug:
          EBBannerViewController setSupportedInterfaceOrientations -> Portrait

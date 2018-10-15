@@ -13,6 +13,8 @@
 #import "EBBannerView+Categories.h"
 #import "EBBannerWindow.h"
 
+#define kAnimationDamping 0.8
+
 NSString *const EBBannerViewDidClickNotification = @"EBBannerViewDidClickNotification";
 
 @interface EBBannerView(){
@@ -46,12 +48,9 @@ static EBBannerWindow *sharedWindow;
 
 +(instancetype)bannerWithBlock:(void(^)(EBBannerViewMaker *make))block{
     
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedWindow = [EBBannerWindow sharedWindow];
-    });
+    sharedWindow = [EBBannerWindow sharedWindow];
     
-    EBBannerViewMaker *maker = [EBBannerViewMaker new];
+    EBBannerViewMaker *maker = [EBBannerViewMaker defaultMaker];
     block(maker);
     maker.style = MAX(maker.style, 9);
     
@@ -66,6 +65,15 @@ static EBBannerWindow *sharedWindow;
     return bannerView;
 }
 
++(instancetype)current{
+    EBBannerView *view = sharedWindow.rootViewController.view.subviews.lastObject;
+    if ([view isKindOfClass:[EBBannerView class]] && view.superview) {
+        return view;
+    } else {
+        return nil;
+    }
+}
+
 -(void)show{
     if (_hideTimer) {
         [_hideTimer invalidate];
@@ -76,8 +84,9 @@ static EBBannerWindow *sharedWindow;
         NSURL *url = [[NSBundle mainBundle] URLForResource:_maker.soundName withExtension:nil];
         AudioServicesCreateSystemSoundID((__bridge CFURLRef)(url), &soundID);
     }
+    WEAK_SELF(weakSelf);
     [[EBMuteDetector sharedDetecotr] detectComplete:^(BOOL isMute) {
-        if (isMute && _maker.vibrateOnMute) {
+        if (isMute && weakSelf.maker.vibrateOnMute) {
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         }else{
             AudioServicesPlaySystemSound(soundID);
@@ -89,16 +98,23 @@ static EBBannerWindow *sharedWindow;
     self.dateLabel.text = _maker.date;
     self.contentLabel.text = _maker.content;
     self.lineView.hidden = self.calculatedContentHeight < 34;
+    //iOS8 使用新样式label显示bug
+    if (UIDevice.currentDevice.systemVersion.intValue < 9 && _maker.style > 9) {
+        self.contentLabel.numberOfLines = 1;
+    }
 
     [sharedWindow.rootViewController.view addSubview:self];
     
     self.frame = CGRectMake(self.fixedX, -self.standardHeight, self.fixedWidth, self.standardHeight);
     
-    WEAK_SELF(weakSelf);
-    [UIView animateWithDuration:_maker.animationDuration animations:^{
+    CGFloat damping = _maker.style == 9 ? 1 : kAnimationDamping;
+    [UIView animateWithDuration:_maker.showAnimationDuration delay:0 usingSpringWithDamping:damping initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+
         weakSelf.frame = CGRectMake(weakSelf.fixedX, weakSelf.fixedY, weakSelf.fixedWidth, weakSelf.standardHeight);
     } completion:^(BOOL finished) {
-        _hideTimer = [NSTimer scheduledTimerWithTimeInterval:weakSelf.maker.stayDuration target:weakSelf selector:@selector(hide) userInfo:nil repeats:NO];
+        
+        EBBannerView *strongSelf = weakSelf;
+        strongSelf->_hideTimer = [NSTimer scheduledTimerWithTimeInterval:weakSelf.maker.stayDuration target:weakSelf selector:@selector(hide) userInfo:nil repeats:NO];
     }];
 }
 
@@ -108,30 +124,16 @@ static EBBannerWindow *sharedWindow;
     }] show];
 }
 
-+(void)clearMemoryForStyle:(EBBannerViewStyle)style{
-    // next version to do
-}
-
-+(void)clearMemories{
-    // next version to do
-}
-
-
-
-
-
-
-
-
 #pragma mark - private
 
 +(instancetype)bannerViewWithStyle:(EBBannerViewStyle)style{
-    __block EBBannerView *bannerView;
-    [sharedBannerViews enumerateObjectsUsingBlock:^(EBBannerView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (obj.maker.style == style) {
-            bannerView = obj;
+    EBBannerView *bannerView;
+    for (EBBannerView *view in sharedBannerViews) {
+        if (view.maker.style == style) {
+            bannerView = view;
+            break;
         }
-    }];
+    }
     if (bannerView == nil) {
         NSArray *views = [[NSBundle bundleForClass:self.class] loadNibNamed:@"EBBannerView" owner:nil options:nil];
         NSUInteger index = MIN(style - 9, views.count - 1);
@@ -145,9 +147,11 @@ static EBBannerWindow *sharedWindow;
 
 -(void)hide{
     WEAK_SELF(weakSelf);
-    [UIView animateWithDuration:_maker.animationDuration animations:^{
-        weakSelf.frame = CGRectMake(weakSelf.fixedX, -weakSelf.standardHeight, weakSelf.fixedWidth, weakSelf.standardHeight);
+    [UIView animateWithDuration:_maker.hideAnimationDuration delay:0 usingSpringWithDamping:kAnimationDamping initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        
+        weakSelf.frame = CGRectMake(weakSelf.fixedX, -weakSelf.standardHeight - (weakSelf.frame.size.height - weakSelf.standardHeight), weakSelf.fixedWidth, weakSelf.frame.size.height);
     } completion:^(BOOL finished) {
+        
         [weakSelf removeFromSuperview];
     }];
 }
@@ -173,8 +177,14 @@ static EBBannerWindow *sharedWindow;
 }
 
 -(void)tapGesture:(UITapGestureRecognizer*)tapGesture{
-    [[NSNotificationCenter defaultCenter] postNotificationName:EBBannerViewDidClickNotification object:_maker.object];
-    [self hide];
+    if (_maker.showDetailOrHideWhenClickLongText && !self.lineView.hidden) {
+        UISwipeGestureRecognizer *g = [UISwipeGestureRecognizer new];
+        g.direction = UISwipeGestureRecognizerDirectionDown;
+        [self swipeDownGesture:g];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:EBBannerViewDidClickNotification object:_maker.object];
+        [self hide];
+    }
 }
 
 -(void)swipeUpGesture:(UISwipeGestureRecognizer*)gesture{
@@ -185,12 +195,23 @@ static EBBannerWindow *sharedWindow;
 
 -(void)swipeDownGesture:(UISwipeGestureRecognizer*)gesture{
     if (gesture.direction == UISwipeGestureRecognizerDirectionDown && !self.lineView.hidden) {
+        if (UIDevice.currentDevice.systemVersion.intValue < 9 && _maker.style > 9) {
+            self.contentLabel.numberOfLines = 0;
+        }
         self.isExpand = YES;
+        self.lineView.hidden = YES;
+        
+        [_hideTimer invalidate];
+        _hideTimer = nil;
+        _hideTimer = [NSTimer scheduledTimerWithTimeInterval:_maker.swipeDownStayDuration target:self selector:@selector(hide) userInfo:nil repeats:NO];
+        
         WEAK_SELF(weakSelf);
         CGFloat originContentHeight = self.contentLabel.frame.size.height;
-        [UIView animateWithDuration:_maker.animationDuration animations:^{
+        [UIView animateWithDuration:_maker.hideAnimationDuration delay:0 usingSpringWithDamping:kAnimationDamping initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
             weakSelf.frame = CGRectMake(weakSelf.fixedX, weakSelf.fixedY, weakSelf.fixedWidth, weakSelf.standardHeight + weakSelf.calculatedContentHeight - originContentHeight + 1);
         } completion:^(BOOL finished) {
+            
             weakSelf.frame = CGRectMake(weakSelf.fixedX, weakSelf.fixedY, weakSelf.fixedWidth, weakSelf.standardHeight + weakSelf.calculatedContentHeight - originContentHeight + 1);
         }];
     }
@@ -199,22 +220,15 @@ static EBBannerWindow *sharedWindow;
 #pragma mark - @property
 
 -(CGFloat)standardHeight{
-    CGFloat height;
     switch (_maker.style) {
+        case EBBannerViewStyleiOS8:
         case EBBannerViewStyleiOS9:
-            height = 70;
-            break;
+            return 70;
         case EBBannerViewStyleiOS10:
-            height = 90;
-            break;
         case EBBannerViewStyleiOS11:
-            height = 90;
-            break;
-        default:
-            height = 70;
-            break;
+        case EBBannerViewStyleiOS12:
+            return 90;
     }
-    return height;
 }
 
 -(CGFloat)calculatedContentHeight{
