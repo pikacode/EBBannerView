@@ -1,1 +1,1 @@
-../../../EBBannerView/EBBannerView/EBBannerViewController.h
+../../../../../EBBannerView/EBBannerViewController.h
