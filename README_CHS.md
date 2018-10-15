@@ -53,7 +53,6 @@ QQ群: 345192153
 	end
 
 
-
 ## 使用
 
 
@@ -110,8 +109,10 @@ EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) 
 - `title`：标题，默认值 app 的名称，类型 NSString
 - `date`：时间，默认值 NSLocalizedString(@"现在", nil)，类型 NSString
 - `content`：内容，类型 NSString
-- `animationDuration`：显示/隐藏动画时间，类型 NSTimeInterval
-- `stayDuration`：隐藏之前停留显示的时间，类型 NSTimeInterval
+- `showAnimationDuration`：显示动画时间，默认值 0.3
+- `hideAnimationDuration`：隐藏动画时间，默认值 0.5
+- `stayDuration`：隐藏之前停留显示的时间，默认值 4，类型 NSTimeInterval
+- `swipeDownStayDuration`：长内容 banner 展开时，hide 之前停留的时间，默认值 4，类型 NSTimeInterval，可以设置一个极大的值使 banner 展开时始终显示，直到用户再次点击 banner 或者手动调用 hide 时才隐藏
 - `object`：监听点击事件 `EBBannerViewDidClickNotification` 后可以获取到，见后文，默认值为 `content`，类型 id
 - `soundID`：播放的提示音（静音时会自动振动），类型 UInt32
   - 该参数是 iOS 系统自带的声音 id，默认使用的是`三全音`，id = 1312
@@ -120,8 +121,7 @@ EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) 
 - `soundName`：播放自定义的声音文件，类型 NSString
   - 直接将声音文件拖拽到工程目录
   - 赋值时包含拓展名，例 sound.mp3
-
-
+- `showDetailOrHideWhenClickLongText`：点击内含长内容的 banner 时是展开所有内容还是收起整个 banner，YES 展开/NO 收起，默认值 YES，类型 BOOL
 
 
 ### 自定义样式

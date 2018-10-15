@@ -65,6 +65,15 @@ static EBBannerWindow *sharedWindow;
     return bannerView;
 }
 
++(instancetype)current{
+    EBBannerView *view = sharedWindow.rootViewController.view.subviews.lastObject;
+    if ([view isKindOfClass:[EBBannerView class]] && view.superview) {
+        return view;
+    } else {
+        return nil;
+    }
+}
+
 -(void)show{
     if (_hideTimer) {
         [_hideTimer invalidate];
@@ -89,13 +98,17 @@ static EBBannerWindow *sharedWindow;
     self.dateLabel.text = _maker.date;
     self.contentLabel.text = _maker.content;
     self.lineView.hidden = self.calculatedContentHeight < 34;
+    //iOS8 使用新样式label显示bug
+    if (UIDevice.currentDevice.systemVersion.intValue < 9 && _maker.style > 9) {
+        self.contentLabel.numberOfLines = 1;
+    }
 
     [sharedWindow.rootViewController.view addSubview:self];
     
     self.frame = CGRectMake(self.fixedX, -self.standardHeight, self.fixedWidth, self.standardHeight);
     
     CGFloat damping = _maker.style == 9 ? 1 : kAnimationDamping;
-    [UIView animateWithDuration:_maker.animationDuration delay:0 usingSpringWithDamping:damping initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:_maker.showAnimationDuration delay:0 usingSpringWithDamping:damping initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 
         weakSelf.frame = CGRectMake(weakSelf.fixedX, weakSelf.fixedY, weakSelf.fixedWidth, weakSelf.standardHeight);
     } completion:^(BOOL finished) {
@@ -134,15 +147,9 @@ static EBBannerWindow *sharedWindow;
 
 -(void)hide{
     WEAK_SELF(weakSelf);
-//    [UIView animateWithDuration:_maker.animationDuration animations:^{
-//        weakSelf.frame = CGRectMake(weakSelf.fixedX, -weakSelf.standardHeight, weakSelf.fixedWidth, weakSelf.standardHeight);
-//    } completion:^(BOOL finished) {
-//        [weakSelf removeFromSuperview];
-//    }];
-    
-    [UIView animateWithDuration:_maker.animationDuration delay:0 usingSpringWithDamping:kAnimationDamping initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:_maker.hideAnimationDuration delay:0 usingSpringWithDamping:kAnimationDamping initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         
-        weakSelf.frame = CGRectMake(weakSelf.fixedX, -weakSelf.standardHeight, weakSelf.fixedWidth, weakSelf.standardHeight);
+        weakSelf.frame = CGRectMake(weakSelf.fixedX, -weakSelf.standardHeight - (weakSelf.frame.size.height - weakSelf.standardHeight), weakSelf.fixedWidth, weakSelf.frame.size.height);
     } completion:^(BOOL finished) {
         
         [weakSelf removeFromSuperview];
@@ -170,8 +177,14 @@ static EBBannerWindow *sharedWindow;
 }
 
 -(void)tapGesture:(UITapGestureRecognizer*)tapGesture{
-    [[NSNotificationCenter defaultCenter] postNotificationName:EBBannerViewDidClickNotification object:_maker.object];
-    [self hide];
+    if (_maker.showDetailOrHideWhenClickLongText && !self.lineView.hidden) {
+        UISwipeGestureRecognizer *g = [UISwipeGestureRecognizer new];
+        g.direction = UISwipeGestureRecognizerDirectionDown;
+        [self swipeDownGesture:g];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:EBBannerViewDidClickNotification object:_maker.object];
+        [self hide];
+    }
 }
 
 -(void)swipeUpGesture:(UISwipeGestureRecognizer*)gesture{
@@ -182,10 +195,19 @@ static EBBannerWindow *sharedWindow;
 
 -(void)swipeDownGesture:(UISwipeGestureRecognizer*)gesture{
     if (gesture.direction == UISwipeGestureRecognizerDirectionDown && !self.lineView.hidden) {
+        if (UIDevice.currentDevice.systemVersion.intValue < 9 && _maker.style > 9) {
+            self.contentLabel.numberOfLines = 0;
+        }
         self.isExpand = YES;
+        self.lineView.hidden = YES;
+        
+        [_hideTimer invalidate];
+        _hideTimer = nil;
+        _hideTimer = [NSTimer scheduledTimerWithTimeInterval:_maker.swipeDownStayDuration target:self selector:@selector(hide) userInfo:nil repeats:NO];
+        
         WEAK_SELF(weakSelf);
         CGFloat originContentHeight = self.contentLabel.frame.size.height;
-        [UIView animateWithDuration:_maker.animationDuration delay:0 usingSpringWithDamping:kAnimationDamping initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [UIView animateWithDuration:_maker.hideAnimationDuration delay:0 usingSpringWithDamping:kAnimationDamping initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             
             weakSelf.frame = CGRectMake(weakSelf.fixedX, weakSelf.fixedY, weakSelf.fixedWidth, weakSelf.standardHeight + weakSelf.calculatedContentHeight - originContentHeight + 1);
         } completion:^(BOOL finished) {

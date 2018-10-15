@@ -56,7 +56,6 @@ And more：
 
 
 
-
 ## Usage
 
 
@@ -112,8 +111,10 @@ EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) 
 - `title`：the title, default is app name, type NSString
 - `date`：the date, default is localized string @"现在" =  @"now", type NSString
 - `content`：the content, type NSString
-- `animationDuration`：the animation time(show/hide the banner), type NSTimeInterval
-- `stayDuration`：how long the banner will stay before hide, type NSTimeInterval
+- `showAnimationDuration`：the animation time(show the banner), type NSTimeInterval, default is 0.3
+- `showAnimationDuration`：the animation time(hide the banner), type NSTimeInterval, default is 0.5
+- `stayDuration`：how long the banner will stay before hide, type NSTimeInterval, default is 4.0
+- `swipeDownStayDuration`：how long a long text banner will stay before hide when it is expanded, default is 4.0. U can set it a large value, then the banner will not hide, until customer click it or call 'hide'
 - `object`：you can set it when create, then get it when clicked by adding an observer (see below), default is `content`，type id
 - `soundID`：the sound will play when the banner is showing (when the mute is turn on iPhone will vibrate), type UInt32
 
@@ -124,6 +125,7 @@ EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) 
 - `soundName`：play a cusome sound file, type NSString
   - drag the file to Xcode proj
   - pass the file name and extension，e.g. `banner.soundName = @"sound.mp3"` 
+- `showDetailOrHideWhenClickLongText`： when click a long text banner, expand it for all height or hide it, YES = expand/NO = hide, default is YES
 
 
 

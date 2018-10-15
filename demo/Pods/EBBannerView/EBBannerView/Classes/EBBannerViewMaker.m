@@ -17,10 +17,13 @@
     maker.title = [infoDictionary objectForKey:@"CFBundleDisplayName"] ?: [infoDictionary objectForKey:@"CFBundleName"];
     maker.date = NSLocalizedString(@"现在", nil);
     maker.content = @"";
-    maker.animationDuration = 0.3;
+    maker.showAnimationDuration = 0.3;
+    maker.hideAnimationDuration = 0.5;
     maker.stayDuration = 4;
+    maker.swipeDownStayDuration = 4;
     maker.soundID = 1312;
     maker.vibrateOnMute = YES;
+    maker.showDetailOrHideWhenClickLongText = YES;
     return maker;
 }
 

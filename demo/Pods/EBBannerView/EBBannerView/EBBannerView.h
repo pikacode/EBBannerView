@@ -28,6 +28,11 @@ typedef enum : NSInteger {
 +(instancetype)bannerWithBlock:(void(^)(EBBannerViewMaker *make))block;
 -(void)show;
 
+//u don't have to call hide, this only use for (long_text && forbidAutoHiddenWhenSwipeDown = YES)
+-(void)hide;
+
++(instancetype)current;//can be nil
+
 @end
 
 @interface EBBannerViewMaker : NSObject
@@ -37,12 +42,15 @@ typedef enum : NSInteger {
 @property(nonatomic, strong)NSString *title;//default is app name
 @property(nonatomic, strong)NSString *date;//default is "now" = "现在"
 @property(nonatomic, strong)NSString *content;
-@property(nonatomic, assign)NSTimeInterval animationDuration;//default is 0.3
+@property(nonatomic, assign)NSTimeInterval showAnimationDuration;//default is 0.3
+@property(nonatomic, assign)NSTimeInterval hideAnimationDuration;//default is 0.5
 @property(nonatomic, assign)NSTimeInterval stayDuration;//default is 4.0
+@property(nonatomic, assign)NSTimeInterval swipeDownStayDuration;//default is 4.0
 @property(nonatomic, strong)id object;//default is content
 @property(nonatomic, assign)UInt32 soundID;//default is 1312
 @property(nonatomic, strong)NSString *soundName;
 @property(nonatomic, assign)BOOL vibrateOnMute;//default is YES
+@property(nonatomic, assign)BOOL showDetailOrHideWhenClickLongText;//default is YES showDetail
 
 +(instancetype)defaultMaker;
 
