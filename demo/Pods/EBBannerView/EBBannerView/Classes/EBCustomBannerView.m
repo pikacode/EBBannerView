@@ -2,8 +2,8 @@
 //  EBCustomBannerView.m
 //  demo
 //
-//  Created by 吴星辰 on 2017/10/20.
-//  Copyright © 2017年 吴星辰. All rights reserved.
+//  Created by pikacode@qq.com on 2017/10/20.
+//  Copyright © 2017年 pikacode@qq.com. All rights reserved.
 //
 
 #import "EBCustomBannerView.h"
@@ -29,6 +29,7 @@
     maker.landscapeFrame = view.frame;
     maker.portraitFrame = view.frame;
     maker.centerModeDurations = @[@0.3, @0.2, @0.1];
+    maker.vibrateOnMute = YES;
     return maker;
 }
 @end
@@ -97,8 +98,9 @@ static EBBannerWindow *sharedWindow;
         }else{
             soundID = _maker.soundID;
         }
+        WEAK_SELF(weakSelf);
         [[EBMuteDetector sharedDetecotr] detectComplete:^(BOOL isMute) {
-            if (isMute) {
+            if (isMute && weakSelf.maker.vibrateOnMute) {
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
             }else{
                 AudioServicesPlaySystemSound(soundID);
@@ -145,8 +147,8 @@ static EBBannerWindow *sharedWindow;
         [UIView animateWithDuration:_maker.animationDuration animations:^{
             weakSelf.maker.view.frame = [weakSelf showFrame];
         } completion:^(BOOL finished) {
-            if (_maker.stayDuration > 0) {
-                [NSTimer eb_scheduledTimerWithTimeInterval:_maker.stayDuration block:^(NSTimer *timer) {
+            if (weakSelf.maker.stayDuration > 0) {
+                [NSTimer eb_scheduledTimerWithTimeInterval:weakSelf.maker.stayDuration block:^(NSTimer *timer) {
                     [weakSelf hide];
                 } repeats:NO];
             }

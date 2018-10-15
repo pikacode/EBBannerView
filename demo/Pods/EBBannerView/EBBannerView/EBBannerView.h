@@ -2,11 +2,19 @@
 //  EBBannerView.h
 //  iOS-Foreground-Push-Notification
 //
-//  Created by wuxingchen on 16/7/21.
+//  Created by pikacode@qq.com on 16/7/21.
 //  Copyright © 2016年 57380422@qq.com. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+
+typedef enum : NSInteger {
+    EBBannerViewStyleiOS8 = 8,
+    EBBannerViewStyleiOS9 = 9,
+    EBBannerViewStyleiOS10 = 10,
+    EBBannerViewStyleiOS11 = 11,
+    EBBannerViewStyleiOS12 = 12
+} EBBannerViewStyle;
 
 @protocol EBCustomBannerViewProtocol;
 @class EBCustomBannerView, EBBannerViewMaker;
@@ -22,12 +30,6 @@
 
 @end
 
-typedef enum : NSInteger {
-    EBBannerViewStyleiOS9 = 9,
-    EBBannerViewStyleiOS10 = 10,
-    EBBannerViewStyleiOS11 = 11
-} EBBannerViewStyle;
-
 @interface EBBannerViewMaker : NSObject
 
 @property(nonatomic, assign)EBBannerViewStyle style;//default is UIDevice.currentDevice.systemVersion.intValue
@@ -40,8 +42,13 @@ typedef enum : NSInteger {
 @property(nonatomic, strong)id object;//default is content
 @property(nonatomic, assign)UInt32 soundID;//default is 1312
 @property(nonatomic, strong)NSString *soundName;
+@property(nonatomic, assign)BOOL vibrateOnMute;//default is YES
+
++(instancetype)defaultMaker;
 
 @end
 
 //add observer for this notification to handle tap event and get the 'object' above
 extern NSString *const EBBannerViewDidClickNotification;//监听点击弹窗的事件
+
+ 

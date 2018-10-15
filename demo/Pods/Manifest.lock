@@ -1,12 +1,16 @@
 PODS:
-  - EBBannerView (1.0.6)
+  - EBBannerView (1.0.7)
 
 DEPENDENCIES:
-  - EBBannerView (= 1.0.6)
+  - EBBannerView (= 1.0.7)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - EBBannerView
 
 SPEC CHECKSUMS:
-  EBBannerView: 5db9d139c995d686b9f37a7a1ed8c640346f0386
+  EBBannerView: 8baaa673cee45c6c85660133d63c16e735c55b44
 
-PODFILE CHECKSUM: 9b1220e76a55b35b769dd42b827a8bb6554240c7
+PODFILE CHECKSUM: ae8aedc04176a0e783ceb523ba8a8910d97c74cb
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

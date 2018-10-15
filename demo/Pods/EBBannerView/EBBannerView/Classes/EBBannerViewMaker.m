@@ -9,61 +9,29 @@
 
 @implementation EBBannerViewMaker
 
--(EBBannerViewStyle)style{
-    if (!_style) {
-        _style = MAX(UIDevice.currentDevice.systemVersion.intValue, 9);
-    }
-    return _style;
++(instancetype)defaultMaker{
+    EBBannerViewMaker *maker = [EBBannerViewMaker new];
+    maker.style = MAX(UIDevice.currentDevice.systemVersion.intValue, 9);
+    maker.icon = [UIImage imageNamed:@"AppIcon40x40"] ?: [UIImage imageNamed:@"AppIcon60x60"] ?: [UIImage imageNamed:@"AppIcon80x80"];
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    maker.title = [infoDictionary objectForKey:@"CFBundleDisplayName"] ?: [infoDictionary objectForKey:@"CFBundleName"];
+    maker.date = NSLocalizedString(@"现在", nil);
+    maker.content = @"";
+    maker.animationDuration = 0.3;
+    maker.stayDuration = 4;
+    maker.soundID = 1312;
+    maker.vibrateOnMute = YES;
+    return maker;
 }
 
--(UIImage *)icon{
-    if (!_icon) {
-        _icon = [UIImage imageNamed:@"AppIcon40x40"] ?: [UIImage imageNamed:@"AppIcon60x60"] ?: [UIImage imageNamed:@"AppIcon80x80"];
+-(void)setStyle:(EBBannerViewStyle)style{
+    if (style < 9) {
+        _style = EBBannerViewStyleiOS9;
+    } else if (style > 12) {
+        _style = EBBannerViewStyleiOS12;
+    } else {
+        _style = style;
     }
-    return _icon;
-}
-
--(NSString *)title{
-    if (!_title) {
-        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-        _title = [infoDictionary objectForKey:@"CFBundleDisplayName"] ?: [infoDictionary objectForKey:@"CFBundleName"];
-    }
-    return _title ?: @"";
-}
-
--(NSString *)date{
-    if (!_date) {
-        _date = NSLocalizedString(@"现在", nil);
-    }
-    return _date;
-}
-
--(NSString *)content{
-    if (!_content) {
-        _content = @"";
-    }
-    return _content;
-}
-
--(NSTimeInterval)animationDuration{
-    if (!_animationDuration) {
-        _animationDuration = 0.3;
-    }
-    return _animationDuration;
-}
-
--(NSTimeInterval)stayDuration{
-    if (!_stayDuration) {
-        _stayDuration = 4;
-    }
-    return _stayDuration;
-}
-
--(UInt32)soundID{
-    if (_soundID == 0) {
-        _soundID = 1312;
-    }
-    return _soundID;
 }
 
 -(id)object{

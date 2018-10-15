@@ -2,8 +2,8 @@
 //  EBCustomBannerView.h
 //  demo
 //
-//  Created by 吴星辰 on 2017/10/20.
-//  Copyright © 2017年 吴星辰. All rights reserved.
+//  Created by pikacode@qq.com on 2017/10/20.
+//  Copyright © 2017年 pikacode@qq.com. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -42,5 +42,7 @@ typedef enum : NSUInteger {
 @property(nonatomic, assign)EBCustomBannerViewAppearMode landscapeMode;//default is top
 
 @property(nonatomic, strong)NSArray<NSNumber*>*centerModeDurations;//default is @[@0.3, @0.2, @0.1];
+
+@property(nonatomic, assign)BOOL vibrateOnMute;//default is YES
 
 @end

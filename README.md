@@ -10,7 +10,7 @@ QQ群: 345192153
 
 Only one line to show:
 
-- a banner the same style as iOS Push Notifications (auto show iOS 9/10/11 styles up to system version)
+- a banner the same style as iOS Push Notifications (auto show iOS 9/10/11/12 styles up to system version)
 - auto play a sound or vibrate when the banner is showing
 
 

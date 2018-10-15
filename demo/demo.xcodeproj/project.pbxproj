@@ -190,7 +190,6 @@
 				0D292C1D1F94A27200BA5B87 /* Sources */,
 				0D292C1E1F94A27200BA5B87 /* Frameworks */,
 				0D292C1F1F94A27200BA5B87 /* Resources */,
-				AC0246AC4DB1FCE5CAE6C4CE /* [CP] Embed Pods Frameworks */,
 				5984C61B8C2B4544D85B08A0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -275,21 +274,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-demo/Pods-demo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AC0246AC4DB1FCE5CAE6C4CE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-demo/Pods-demo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D7B4024248B6A442EBC295AD /* [CP] Check Pods Manifest.lock */ = {
@@ -490,7 +474,7 @@
 				INFOPLIST_FILE = demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = pikacode.demo.ebbannerview;
+				PRODUCT_BUNDLE_IDENTIFIER = pikacode.demo.ebbannerview112;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -506,7 +490,7 @@
 				INFOPLIST_FILE = demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = pikacode.demo.ebbannerview;
+				PRODUCT_BUNDLE_IDENTIFIER = pikacode.demo.ebbannerview112;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
