@@ -26,6 +26,7 @@
 }
 
 - (IBAction)buttonPressed:(UIButton*)sender {
+
     switch (sender.tag) {
         case 0:
 //⭐️1.current system style (当前系统样式)

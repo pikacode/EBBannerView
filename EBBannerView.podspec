@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "EBBannerView"
-  s.version      = "1.0.8"
-  s.summary      = "展示跟iOS9/10/11推送一样的横幅/提示音/振动，或自定义view|Show a banner the same with iOS9/10/11 nofitication(sound/vibrate), or customize."
+  s.version      = "1.0.9"
+  s.summary      = "展示跟iOS9/10/11/12推送一样的横幅/提示音/振动，或自定义view|Show a banner the same with iOS9/10/11/12 nofitication(sound/vibrate), or customize."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-App在前台时展示跟iOS9,10,11推送通知一样UI的横幅/自动提示音或振动，而且支持自定义样式。Show a banner the same UI with iOS9,10,11 nofitication(auto play sound/vibrate) on foreground, support custom UI.
+App在前台时展示跟iOS9,10,11,12推送通知一样UI的横幅/自动提示音或振动，而且支持自定义样式。Show a banner the same UI with iOS9,10,11,12 nofitication(auto play sound/vibrate) on foreground, support custom UI.
                    DESC
 
   s.homepage     = "https://github.com/pikacode/EBBannerView"
