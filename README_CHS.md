@@ -2,9 +2,7 @@ view [English README.md](/README.md)
 
 Email：pikacode@qq.com
 
-QQ群: 345192153
-
-加微信进群：pikacode
+微信：pikacode
 
 
 # EBBannerView
