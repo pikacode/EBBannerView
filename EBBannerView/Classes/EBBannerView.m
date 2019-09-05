@@ -237,7 +237,7 @@ static EBBannerWindow *sharedWindow;
 -(CGFloat)calculatedContentHeight{
     CGSize size = CGSizeMake(self.contentLabel.frame.size.width, MAXFLOAT);
     NSDictionary *dict = [NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:self.contentLabel.font.pointSize] forKey:NSFontAttributeName];
-    CGFloat calculatedHeight = [self.contentLabel.text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size.height;
+    CGFloat calculatedHeight = ceil([self.contentLabel.text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size.height);
     return calculatedHeight;
 }
 
