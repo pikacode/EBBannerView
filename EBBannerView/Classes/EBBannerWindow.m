@@ -19,21 +19,57 @@ static EBEmptyWindow *emptyWindow;
 +(instancetype)sharedWindow{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedWindow = [[self alloc] initWithFrame:CGRectZero];
+        if (@available(iOS 13.0,*)) {
+            NSSet *scenes = UIApplication.sharedApplication.connectedScenes;
+            __block UIScene *scene;
+            [scenes enumerateObjectsUsingBlock:^(UIScene   * _Nonnull  obj, BOOL * _Nonnull stop) {
+                if (obj.activationState == UISceneActivationStateForegroundActive && [obj isKindOfClass:[UIWindowScene class]]) {
+                    scene = obj;
+                    *stop = YES;
+                }
+            }];
+            sharedWindow = [[self alloc] initWithWindowScene:(UIWindowScene *)scene];
+            sharedWindow.userInteractionEnabled = NO;
+            [sharedWindow setHidden:NO];
+        }else{
+            sharedWindow = [[self alloc] initWithFrame:CGRectZero];
+        }
         sharedWindow.windowLevel = UIWindowLevelAlert;
         sharedWindow.layer.masksToBounds = NO;
         UIWindow *originKeyWindow = UIApplication.sharedApplication.keyWindow;
-        [sharedWindow makeKeyAndVisible];
+        if (@available(iOS 13.0,*)) {
+            
+        }else {
+            [sharedWindow makeKeyAndVisible];
+        }
         
         /* fix bug:
          EBBannerViewController setSupportedInterfaceOrientations -> Portrait
          push to a VC with orientation Left
          UITextFiled's pad will show a wrong orientation with Portrait
          */
-        emptyWindow = [[EBEmptyWindow alloc] initWithFrame:CGRectZero];
+        if (@available(iOS 13.0,*)) {
+            NSSet *scenes = UIApplication.sharedApplication.connectedScenes;
+            __block UIScene *scene;
+            [scenes enumerateObjectsUsingBlock:^(UIScene   * _Nonnull  obj, BOOL * _Nonnull stop) {
+                if (obj.activationState == UISceneActivationStateForegroundActive && [obj isKindOfClass:[UIWindowScene class]]) {
+                    scene = obj;
+                    *stop = YES;
+                }
+            }];
+            emptyWindow = [[EBEmptyWindow alloc] initWithWindowScene:(UIWindowScene *)scene];
+            emptyWindow.frame = CGRectZero;
+            [emptyWindow setHidden:NO];
+        }else{
+            emptyWindow = [[EBEmptyWindow alloc] initWithFrame:CGRectZero];
+        }
         emptyWindow.windowLevel = UIWindowLevelAlert;
-        [emptyWindow makeKeyAndVisible];
-        [originKeyWindow makeKeyAndVisible];
+        if (@available(iOS 13.0,*)) {
+            
+        }else{
+            [emptyWindow makeKeyAndVisible];
+            [originKeyWindow makeKeyAndVisible];
+        }
         
         [EBBannerViewController setSupportedInterfaceOrientations:UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscape];
         [EBBannerViewController setStatusBarHidden:NO];
