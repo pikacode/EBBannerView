@@ -19,58 +19,47 @@ static EBEmptyWindow *emptyWindow;
 +(instancetype)sharedWindow{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        if (@available(iOS 13.0,*)) {
-            NSSet *scenes = UIApplication.sharedApplication.connectedScenes;
-            __block UIScene *scene;
-            [scenes enumerateObjectsUsingBlock:^(UIScene   * _Nonnull  obj, BOOL * _Nonnull stop) {
-                if (obj.activationState == UISceneActivationStateForegroundActive && [obj isKindOfClass:[UIWindowScene class]]) {
-                    scene = obj;
-                    *stop = YES;
-                }
-            }];
-            sharedWindow = [[self alloc] initWithWindowScene:(UIWindowScene *)scene];
-            sharedWindow.userInteractionEnabled = NO;
-            [sharedWindow setHidden:NO];
-        }else{
-            sharedWindow = [[self alloc] initWithFrame:CGRectZero];
-        }
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
+        NSSet *scenes = UIApplication.sharedApplication.connectedScenes;
+        __block UIScene *scene;
+        [scenes enumerateObjectsUsingBlock:^(UIScene   * _Nonnull  obj, BOOL * _Nonnull stop) {
+            if (obj.activationState == UISceneActivationStateForegroundActive && [obj isKindOfClass:[UIWindowScene class]]) {
+                scene = obj;
+                *stop = YES;
+            }
+        }];
+        sharedWindow = [[self alloc] initWithWindowScene:(UIWindowScene *)scene];
+        sharedWindow.userInteractionEnabled = NO;
+        [sharedWindow setHidden:NO];
+        
+#else
+        sharedWindow = [[self alloc] initWithFrame:CGRectZero];
+#endif
+        
         sharedWindow.windowLevel = UIWindowLevelAlert;
         sharedWindow.layer.masksToBounds = NO;
         UIWindow *originKeyWindow = UIApplication.sharedApplication.keyWindow;
-        if (@available(iOS 13.0,*)) {
-            
-        }else {
-            [sharedWindow makeKeyAndVisible];
-        }
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < 130000
+        [sharedWindow makeKeyAndVisible];
+#endif
         
         /* fix bug:
          EBBannerViewController setSupportedInterfaceOrientations -> Portrait
          push to a VC with orientation Left
          UITextFiled's pad will show a wrong orientation with Portrait
          */
-        if (@available(iOS 13.0,*)) {
-            NSSet *scenes = UIApplication.sharedApplication.connectedScenes;
-            __block UIScene *scene;
-            [scenes enumerateObjectsUsingBlock:^(UIScene   * _Nonnull  obj, BOOL * _Nonnull stop) {
-                if (obj.activationState == UISceneActivationStateForegroundActive && [obj isKindOfClass:[UIWindowScene class]]) {
-                    scene = obj;
-                    *stop = YES;
-                }
-            }];
-            emptyWindow = [[EBEmptyWindow alloc] initWithWindowScene:(UIWindowScene *)scene];
-            emptyWindow.frame = CGRectZero;
-            [emptyWindow setHidden:NO];
-        }else{
-            emptyWindow = [[EBEmptyWindow alloc] initWithFrame:CGRectZero];
-        }
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
+        emptyWindow = [[EBEmptyWindow alloc] initWithWindowScene:(UIWindowScene *)scene];
+        emptyWindow.frame = CGRectZero;
+        [emptyWindow setHidden:NO];
+#else
+        emptyWindow = [[EBEmptyWindow alloc] initWithFrame:CGRectZero];
+#endif
         emptyWindow.windowLevel = UIWindowLevelAlert;
-        if (@available(iOS 13.0,*)) {
-            
-        }else{
-            [emptyWindow makeKeyAndVisible];
-            [originKeyWindow makeKeyAndVisible];
-        }
-        
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < 130000
+        [emptyWindow makeKeyAndVisible];
+        [originKeyWindow makeKeyAndVisible];
+#endif
         [EBBannerViewController setSupportedInterfaceOrientations:UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscape];
         [EBBannerViewController setStatusBarHidden:NO];
         
