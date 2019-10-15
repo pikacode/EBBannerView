@@ -12,7 +12,7 @@
 +(instancetype)defaultMaker{
     EBBannerViewMaker *maker = [EBBannerViewMaker new];
     maker.style = MAX(UIDevice.currentDevice.systemVersion.intValue, 9);
-    maker.icon = [UIImage imageNamed:@"AppIcon40x40"] ?: [UIImage imageNamed:@"AppIcon60x60"] ?: [UIImage imageNamed:@"AppIcon80x80"];
+    maker.icon = [UIImage imageNamed:@"AppIcon40x40"] ?: [UIImage imageNamed:@"AppIcon60x60"] ?: [UIImage imageNamed:@"AppIcon80x80"] ?: [UIImage imageNamed:@"AppIcon"];
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     maker.title = [infoDictionary objectForKey:@"CFBundleDisplayName"] ?: [infoDictionary objectForKey:@"CFBundleName"];
     maker.date = NSLocalizedString(@"现在", nil);

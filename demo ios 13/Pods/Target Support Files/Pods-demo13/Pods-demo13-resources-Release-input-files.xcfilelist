@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-demo13/Pods-demo13-resources.sh
+${PODS_ROOT}/../../EBBannerView/Classes/EBBannerView.xib
+${PODS_ROOT}/../../EBBannerView/Classes/EBBannerViewController.xib
+${PODS_ROOT}/../../EBBannerView/Classes/EBMuteDetector.mp3

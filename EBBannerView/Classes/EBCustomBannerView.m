@@ -77,7 +77,7 @@ static EBBannerWindow *sharedWindow;
         [sharedCustomViews enumerateObjectsUsingBlock:^(EBCustomBannerView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             obj.maker.view.frame = obj.maker.landscapeFrame;
         }];
-    }else{
+    } else {
         [sharedCustomViews enumerateObjectsUsingBlock:^(EBCustomBannerView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             obj.maker.view.frame = obj.maker.portraitFrame;
         }];
@@ -95,14 +95,14 @@ static EBBannerWindow *sharedWindow;
         if (_maker.soundName) {
             NSURL *url = [[NSBundle mainBundle] URLForResource:_maker.soundName withExtension:nil];
             AudioServicesCreateSystemSoundID((__bridge CFURLRef)(url), &soundID);
-        }else{
+        } else {
             soundID = _maker.soundID;
         }
         WEAK_SELF(weakSelf);
         [[EBMuteDetector sharedDetecotr] detectComplete:^(BOOL isMute) {
             if (isMute && weakSelf.maker.vibrateOnMute) {
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-            }else{
+            } else {
                 AudioServicesPlaySystemSound(soundID);
             }
         }];

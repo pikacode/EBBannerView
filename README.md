@@ -9,7 +9,7 @@ Email：pikacode@qq.com
 
 Only one line to show:
 
-- a banner the same style as iOS Push Notifications (auto show iOS 9/10/11/12 styles up to system version)
+- a banner the same style as iOS Push Notifications (auto show iOS 9~13 styles up to system version)
 - auto play a sound or vibrate when the banner is showing
 
 
@@ -72,7 +72,7 @@ And more：
 
 #### 1.Show a iOS style banner with one line
 
-up to system version，will show iOS 9/10/11 style，auto show app icon/name.
+up to system version，will show iOS 9~13 style，auto show app icon/name.
 
 ```objc
 [EBBannerView showWithContent:@"custom content"];

@@ -1,0 +1,16 @@
+PODS:
+  - EBBannerView (1.1.0)
+
+DEPENDENCIES:
+  - EBBannerView (from `../../EBBannerView`)
+
+EXTERNAL SOURCES:
+  EBBannerView:
+    :path: "../../EBBannerView"
+
+SPEC CHECKSUMS:
+  EBBannerView: 3d987535d0236c1f87c2b064267d94002c23dd1e
+
+PODFILE CHECKSUM: 23968f70e412e70c79ac1399f880caf17dfc39d2
+
+COCOAPODS: 1.7.5

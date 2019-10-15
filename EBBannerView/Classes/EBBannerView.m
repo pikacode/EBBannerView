@@ -17,7 +17,7 @@
 
 NSString *const EBBannerViewDidClickNotification = @"EBBannerViewDidClickNotification";
 
-@interface EBBannerView(){
+@interface EBBannerView() {
     NSTimer *_hideTimer;
 }
 
@@ -87,7 +87,7 @@ static EBBannerWindow *sharedWindow;
     [[EBMuteDetector sharedDetecotr] detectComplete:^(BOOL isMute) {
         if (isMute && weakSelf.maker.vibrateOnMute) {
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-        }else{
+        } else {
             AudioServicesPlaySystemSound(soundID);
         }
     }];
@@ -242,8 +242,9 @@ static EBBannerWindow *sharedWindow;
 }
 
 -(BOOL)isiPhoneX{
-    if(@available(iOS 11.0, *)) {
-        return UIApplication.sharedApplication.delegate.window.safeAreaInsets.bottom > 0;
+    if (@available(iOS 11.0, *)) {
+        return UIApplication.sharedApplication.keyWindow.safeAreaInsets.bottom > 0;
+//        return UIApplication.sharedApplication.delegate.window.safeAreaInsets.bottom > 0;
     } else {
         return NO;
     }

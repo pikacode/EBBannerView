@@ -36,7 +36,7 @@ void EBSoundMuteNotificationCompletionProc(SystemSoundID  ssID,void* clientData)
     dispatch_once(&onceToken, ^{
         sharedDetecotr = [EBMuteDetector new];
         NSURL* url = [[NSBundle bundleForClass:[self class]] URLForResource:@"EBMuteDetector" withExtension:@"mp3"];
-        if (AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &sharedDetecotr->_soundId) == kAudioServicesNoError){
+        if (AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &sharedDetecotr->_soundId) == kAudioServicesNoError) {
             AudioServicesAddSystemSoundCompletion(sharedDetecotr.soundId, CFRunLoopGetMain(), kCFRunLoopDefaultMode, EBSoundMuteNotificationCompletionProc,(__bridge void *)(self));
             UInt32 yes = 1;
             AudioServicesSetProperty(kAudioServicesPropertyIsUISound, sizeof(sharedDetecotr.soundId),&sharedDetecotr->_soundId,sizeof(yes), &yes);
@@ -54,7 +54,7 @@ void EBSoundMuteNotificationCompletionProc(SystemSoundID  ssID,void* clientData)
 }
 
 -(void)dealloc{
-    if (self.soundId != -1){
+    if (self.soundId != -1) {
         AudioServicesRemoveSystemSoundCompletion(self.soundId);
         AudioServicesDisposeSystemSoundID(self.soundId);
     }

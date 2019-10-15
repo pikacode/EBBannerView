@@ -19,7 +19,12 @@ static EBEmptyWindow *emptyWindow;
 +(instancetype)sharedWindow{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedWindow = [[self alloc] initWithFrame:CGRectZero];
+        if (@available(iOS 13.0, *)) {
+            sharedWindow = [[EBBannerWindow alloc] initWithWindowScene:UIApplication.sharedApplication.keyWindow.windowScene];
+        } else {
+            // Fallback on earlier versions
+            sharedWindow = [[self alloc] initWithFrame:CGRectZero];
+        }
         sharedWindow.windowLevel = UIWindowLevelAlert;
         sharedWindow.layer.masksToBounds = NO;
         UIWindow *originKeyWindow = UIApplication.sharedApplication.keyWindow;
@@ -64,8 +69,12 @@ static EBEmptyWindow *emptyWindow;
     if (view) {
         CGPoint point1 = [self convertPoint:point toView:view];
         return [view hitTest:point1 withEvent:event];
-    }else{
-        return [super hitTest:point withEvent:event];
+    } else {
+        if (@available(iOS 13.0, *)) {
+            return [UIApplication.sharedApplication.keyWindow hitTest:point withEvent:event];
+        } else {
+            return [super hitTest:point withEvent:event];
+        }
     }
 }
 
@@ -76,7 +85,11 @@ static EBEmptyWindow *emptyWindow;
 }
 
 -(void)dealloc{
-    [self removeObserver:self forKeyPath:@"frame"];
+    if (@available(iOS 13.0, *)) {
+        
+    } else {
+        [self removeObserver:self forKeyPath:@"frame"];
+    }
 }
 
 @end

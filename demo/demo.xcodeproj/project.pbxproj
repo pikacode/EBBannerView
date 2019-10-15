@@ -260,7 +260,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-demo/Pods-demo-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-demo/Pods-demo-resources.sh",
 				"${PODS_ROOT}/../../EBBannerView/Classes/EBBannerView.xib",
 				"${PODS_ROOT}/../../EBBannerView/Classes/EBBannerViewController.xib",
 				"${PODS_ROOT}/../../EBBannerView/Classes/EBMuteDetector.mp3",
@@ -273,7 +273,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-demo/Pods-demo-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-demo/Pods-demo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D7B4024248B6A442EBC295AD /* [CP] Check Pods Manifest.lock */ = {

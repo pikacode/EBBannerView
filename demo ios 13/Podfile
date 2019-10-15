@@ -1,0 +1,4 @@
+target 'demo13' do
+#    pod 'EBBannerView', '1.1.1'
+   pod 'EBBannerView', :path => '../../EBBannerView'
+end
