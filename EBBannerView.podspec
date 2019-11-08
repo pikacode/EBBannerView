@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "EBBannerView"
-  s.version      = "1.1.1"
+  s.version      = "1.1.2"
   s.summary      = "展示跟iOS9~13推送一样的横幅/提示音/振动，或自定义view|Show a banner the same with iOS9/10/11/12 nofitication(sound/vibrate), or customize."
 
   # This description is used to generate tags and improve search results.

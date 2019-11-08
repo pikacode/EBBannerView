@@ -1,5 +1,5 @@
 PODS:
-  - EBBannerView (1.1.0)
+  - EBBannerView (1.1.2)
 
 DEPENDENCIES:
   - EBBannerView (from `../../EBBannerView`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../../EBBannerView"
 
 SPEC CHECKSUMS:
-  EBBannerView: 3d987535d0236c1f87c2b064267d94002c23dd1e
+  EBBannerView: 268002f8d9d3e979cb8649cbfefd0da5ddef72b3
 
-PODFILE CHECKSUM: ca8ccef25743728fdcab283f2cc793ce586ee81e
+PODFILE CHECKSUM: 90f7b9d231aa1e228ab4f7e64027378e898d42e8
 
 COCOAPODS: 1.7.5

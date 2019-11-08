@@ -19,8 +19,13 @@ static EBEmptyWindow *emptyWindow;
 +(instancetype)sharedWindow{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        if (@available(iOS 13.0, *)) {
-            sharedWindow = [[EBBannerWindow alloc] initWithWindowScene:UIApplication.sharedApplication.keyWindow.windowScene];
+        SEL sel = @selector(initWithWindowScene:);
+        if ([EBBannerWindow.new respondsToSelector:sel]) {
+            id obj = [UIApplication.sharedApplication.keyWindow valueForKey:@"windowScene"];
+            #pragma clang diagnostic push
+            #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            sharedWindow = [[EBBannerWindow alloc] performSelector:sel withObject:obj];
+            #pragma clang diagnostic pop
         } else {
             // Fallback on earlier versions
             sharedWindow = [[self alloc] initWithFrame:CGRectZero];

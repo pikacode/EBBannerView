@@ -107,6 +107,9 @@ static EBBannerWindow *sharedWindow;
     self.frame = CGRectMake(self.fixedX, -self.standardHeight, self.fixedWidth, self.standardHeight);
     
     CGFloat damping = _maker.style == 9 ? 1 : kAnimationDamping;
+    
+    sharedWindow.hidden = NO;
+    
     [UIView animateWithDuration:_maker.showAnimationDuration delay:0 usingSpringWithDamping:damping initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 
         weakSelf.frame = CGRectMake(weakSelf.fixedX, weakSelf.fixedY, weakSelf.fixedWidth, weakSelf.standardHeight);
@@ -154,7 +157,9 @@ static EBBannerWindow *sharedWindow;
         
         weakSelf.frame = CGRectMake(weakSelf.fixedX, -weakSelf.standardHeight - (weakSelf.frame.size.height - weakSelf.standardHeight), weakSelf.fixedWidth, weakSelf.frame.size.height);
     } completion:^(BOOL finished) {
-        
+        if (weakSelf.superview.subviews.count == 1) {
+            sharedWindow.hidden = YES;
+        }
         [weakSelf removeFromSuperview];
     }];
 }
