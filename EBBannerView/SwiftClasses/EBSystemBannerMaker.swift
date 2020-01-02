@@ -7,10 +7,11 @@
 
 import UIKit
 import CoreFoundation
+import AudioToolbox
 
 enum EBBannerSound {
     case name(_ name: String)
-    case id(_ id: UInt32)
+    case id(_ id: SystemSoundID)
     static var `default` = EBBannerSound.id(1312)
 }
 

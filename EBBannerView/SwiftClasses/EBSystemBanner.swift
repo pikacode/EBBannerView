@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 enum EBBannerStyle: Int, CaseIterable {
     case iOS8 = 8
@@ -104,12 +105,9 @@ class EBSystemBanner: NSObject {
     
     @discardableResult
     func show() -> EBSystemBanner {
-        
-        
-        
+        view.show()
         return self
     }
-    
     
     /// observe this notification to get a banner in your code when clicked
     static let onClickNotification: Notification.Name = Notification.Name(rawValue: "EBBannerViewOnClickNotification")
@@ -118,13 +116,37 @@ class EBSystemBanner: NSObject {
     
     /// private
     
-    private static var current: EBSystemBanner?
     
     private let maker =  EBSystemBannerMaker.default
  
+    
     private lazy var view: EBSystemBannerView = {
-        return EBSystemBannerView()
+        
+        let window = EBBannerWindow.shared
+        var bannerView = EBSystemBanner.sharedBannerViews.filter{ $0.style == style }.first
+        
+        if bannerView == nil {
+            let views = Bundle(for: EBSystemBanner.self).loadNibNamed("EBSystemBannerView", owner: nil, options: nil)!
+            let index = min(style.rawValue - 9, views.count - 1)
+            let view = views[index] as! EBSystemBannerView
+            view.addNotification()
+            view.addGestureRecognizer()
+            view.layer.shadowColor = UIColor.black.cgColor
+            view.layer.shadowRadius = 3.5
+            view.layer.shadowOpacity = 0.35
+            view.layer.shadowOffset = .zero
+            EBSystemBanner.sharedBannerViews.append(view)
+            bannerView = view
+        }
+        bannerView?.maker = maker
+        if style == .iOS9 {
+            bannerView?.dateLabel.textColor = UIColor.color(at: bannerView!.dateLabel.center).withAlphaComponent(0.7)
+            let lineCenter = bannerView!.lineView.center
+            bannerView?.lineView.backgroundColor = UIColor.color(at: CGPoint(x: lineCenter.x, y: lineCenter.y - 7)).withAlphaComponent(0.5)
+        }
+        return bannerView!
     }()
+    
 }
 
 extension EBSystemBanner: EBThen {}
@@ -132,10 +154,24 @@ extension EBSystemBanner: EBThen {}
 // MARK: -  private method
 
 extension EBSystemBanner {
+            
+    private static var sharedBannerViews = [EBSystemBannerView]()
+
     //u don't have to call hide, this only use for (long_text && forbidAutoHiddenWhenSwipeDown = true)
     func hide() {
-        
+        view.hide()
     }
+    
+    private static var current: EBSystemBannerView? {
+        let view = EBBannerWindow.shared.rootViewController?.view.subviews.last
+        if let aview = view as? EBSystemBannerView, view?.superview != nil {
+            let banner = sharedBannerViews.filter{ $0 == aview }.first
+            return banner
+        } else {
+            return nil
+        }
+    }
+    
 }
 
 // MARK: -  convenience get method
@@ -166,3 +202,8 @@ extension EBThen where Self: AnyObject {
     return self
   }
 }
+
+
+
+
+ 

@@ -10,7 +10,7 @@ import AudioToolbox
 
 class EBCustomBanner: NSObject {
     
-    static lazy var sharedBanners = { [EBCustomBanner]() }()
+    static var sharedBanners = [EBCustomBanner]()
     static let sharedWindow = EBBannerWindow.shared
 
     enum TransitionStyle {
