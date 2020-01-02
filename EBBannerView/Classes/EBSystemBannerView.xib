@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clipsSubviews="YES" tag="9" contentMode="scaleToFill" id="iN0-l3-epB" userLabel="Banner View iOS 9" customClass="EBBannerView">
+        <view clipsSubviews="YES" tag="9" contentMode="scaleToFill" id="iN0-l3-epB" userLabel="Banner View iOS 9" customClass="EBSystemBannerView" customModule="EBBannerViewSwift" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -108,7 +107,7 @@
             </connections>
             <point key="canvasLocation" x="82" y="-139.5"/>
         </view>
-        <view clipsSubviews="YES" tag="10" contentMode="scaleToFill" id="FuQ-h0-Tnu" userLabel="Banner View iOS 10" customClass="EBBannerView">
+        <view clipsSubviews="YES" tag="10" contentMode="scaleToFill" id="FuQ-h0-Tnu" userLabel="Banner View iOS 10" customClass="EBSystemBanner">
             <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -228,7 +227,7 @@
             </connections>
             <point key="canvasLocation" x="82" y="5"/>
         </view>
-        <view clipsSubviews="YES" tag="11" contentMode="scaleToFill" id="bKA-bm-N9w" userLabel="Banner View iOS 11" customClass="EBBannerView">
+        <view clipsSubviews="YES" tag="11" contentMode="scaleToFill" id="bKA-bm-N9w" userLabel="Banner View iOS 11" customClass="EBSystemBanner">
             <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -348,7 +347,7 @@
             </connections>
             <point key="canvasLocation" x="82" y="150.5"/>
         </view>
-        <view clipsSubviews="YES" tag="11" contentMode="scaleToFill" id="ZcT-r6-Sxd" userLabel="Banner View iOS 12" customClass="EBBannerView">
+        <view clipsSubviews="YES" tag="11" contentMode="scaleToFill" id="ZcT-r6-Sxd" userLabel="Banner View iOS 12" customClass="EBSystemBanner">
             <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>

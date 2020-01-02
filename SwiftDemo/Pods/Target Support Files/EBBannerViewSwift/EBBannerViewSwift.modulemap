@@ -1,0 +1,6 @@
+framework module EBBannerViewSwift {
+  umbrella header "EBBannerViewSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}

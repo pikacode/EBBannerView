@@ -1,0 +1,7 @@
+
+use_frameworks!
+
+target 'SwiftDemo' do
+#    pod 'EBBannerView', '1.1.2'
+   pod 'EBBannerViewSwift', :path => '../../EBBannerView'
+end

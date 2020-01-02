@@ -41,9 +41,9 @@
 		0C23694B64EE59E5766E6E2870AD674A /* EBMuteDetector.mp3 */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = audio.mp3; name = EBMuteDetector.mp3; path = EBBannerView/Classes/EBMuteDetector.mp3; sourceTree = "<group>"; };
 		0CB22B1C6A6935F3C701BCAAED2712A1 /* EBEmptyWindow.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EBEmptyWindow.h; sourceTree = "<group>"; };
 		2791C4739E36803F374C205BDC4AC7E4 /* EBCustomBannerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EBCustomBannerView.m; sourceTree = "<group>"; };
-		36512317970E485F254B46B157E063D9 /* EBBannerView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = EBBannerView.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		36512317970E485F254B46B157E063D9 /* EBBannerView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = EBBannerView.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5DE4B42385EE9DBBCE728626A699C823 /* EBBannerView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EBBannerView.xcconfig; sourceTree = "<group>"; };
-		620C2E500E91AE09F121C9670613B82F /* libPods-demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-demo.a"; path = "libPods-demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		620C2E500E91AE09F121C9670613B82F /* libPods-demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65215EE9F2F77A24ECB9AEC76A25B299 /* Pods-demo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-demo-acknowledgements.markdown"; sourceTree = "<group>"; };
 		6AB3C30089176671065CD1C0BAFEEA87 /* EBMuteDetector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EBMuteDetector.h; sourceTree = "<group>"; };
 		71D61FAC2A6684CD8382AB9D7F65A979 /* EBBannerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EBBannerView.m; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 		8E318BD6732315B8DC3C9B19E6D0E465 /* EBBannerView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EBBannerView-dummy.m"; sourceTree = "<group>"; };
 		9755406A571D88BD4AEAC3EBCD1799AB /* EBBannerView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EBBannerView-prefix.pch"; sourceTree = "<group>"; };
 		9CF2F464A1F222F8C5FC2B5E2CD67A15 /* EBBannerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EBBannerView.h; path = EBBannerView/EBBannerView.h; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A5BA0A0B418E04A8A5E7F4BD40B46964 /* EBBannerViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = EBBannerViewController.xib; path = EBBannerView/Classes/EBBannerViewController.xib; sourceTree = "<group>"; };
 		A9794588810985EABBF68859CB1FBB21 /* EBBannerViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EBBannerViewController.m; sourceTree = "<group>"; };
 		BE22CB6940ABA456A76106EA38199292 /* Pods-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-demo.release.xcconfig"; sourceTree = "<group>"; };
@@ -62,12 +62,12 @@
 		C9A9721127AC79ECEBCA9A14F80C31B9 /* EBBannerWindow.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EBBannerWindow.h; sourceTree = "<group>"; };
 		C9D938E499B5CDF5DFC784D6AA61801F /* EBBannerViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EBBannerViewController.h; path = EBBannerView/EBBannerViewController.h; sourceTree = "<group>"; };
 		CB52E66926AB9BC50637F9CA88E16E56 /* Pods-demo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-demo-dummy.m"; sourceTree = "<group>"; };
-		D53C8EFED8F7242109AE94487FBA7DCE /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		D53C8EFED8F7242109AE94487FBA7DCE /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		D5DDEF1592F2D2EB1EA3D963865552D5 /* EBBannerViewMaker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EBBannerViewMaker.m; sourceTree = "<group>"; };
 		D93C1952F6DE8C64E64710AD8E3AA681 /* EBCustomBannerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EBCustomBannerView.h; path = EBBannerView/EBCustomBannerView.h; sourceTree = "<group>"; };
-		DCCE1D29786AADF681B45E66155E3FBE /* libEBBannerView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libEBBannerView.a; path = libEBBannerView.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCCE1D29786AADF681B45E66155E3FBE /* libEBBannerView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEBBannerView.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E990D9D145BCFAC430C284853D425FD6 /* Pods-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-demo.debug.xcconfig"; sourceTree = "<group>"; };
-		EDCDE4743ECDF76BEFCBC35C338B456E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		EDCDE4743ECDF76BEFCBC35C338B456E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FA570D44F710C5633457F545A4D03C27 /* EBBannerView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = EBBannerView.xib; path = EBBannerView/Classes/EBBannerView.xib; sourceTree = "<group>"; };
 		FE8E78EFE94F6B85ABA434C86A510965 /* EBMuteDetector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EBMuteDetector.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -392,8 +392,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

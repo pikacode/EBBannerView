@@ -116,7 +116,6 @@ EBBannerView *banner = [EBBannerView bannerWithBlock:^(EBBannerViewMaker *make) 
 - `swipeDownStayDuration`：how long a long text banner will stay before hide when it is expanded, default is 4.0. U can set it a large value, then the banner will not hide, until customer click it or call 'hide'
 - `object`：you can set it when create, then get it when clicked by adding an observer (see below), default is `content`，type id
 - `soundID`：the sound will play when the banner is showing (when the mute is turn on iPhone will vibrate), type UInt32
-
   - it's iOS system sound id, default push notification sound "Tritone" is 1312
   - More sound id to see here [iOS Predefined sounds](http://iphonedevwiki.net/index.php/AudioServices#) or here [AudioServices sounds](http://www.cocoachina.com/bbs/read.php?tid=134344)
 
@@ -199,7 +198,7 @@ EBCustomBannerView *customView = [EBCustomBannerView customView:view block:^(EBC
 - add an observer for `EBBannerViewDidClickNotification` and handle click event
 - pass an object when init the banner, and get it when clicked
 
-```objc
+```soobjc
 #import <EBBannerView.h>
 {
    ...
