@@ -10,9 +10,10 @@ import CoreFoundation
 import AudioToolbox
 
 enum EBBannerSound {
+    case none
     case name(_ name: String)
     case id(_ id: SystemSoundID)
-    static var `default` = EBBannerSound.id(1312)
+    static var `default` = EBBannerSound.id(1312) // stytem sound `Tritone`
 }
 
 class EBSystemBannerMaker: NSObject {

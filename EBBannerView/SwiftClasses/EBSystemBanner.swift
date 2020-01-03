@@ -17,13 +17,13 @@ enum EBBannerStyle: Int, CaseIterable {
     case iOS13 = 13
 }
 
-class EBSystemBanner: NSObject {
+public class EBSystemBanner: NSObject {
 
     /// Fast way to show `content` with all default values
     ///
     ///     EBSystemBanner.show("some content")
     @discardableResult
-    static func show(_ content: String) -> EBSystemBanner { return EBSystemBanner().content(content).show() }
+    public static func show(_ content: String) -> EBSystemBanner { return EBSystemBanner().content(content).show() }
    
     
     /// Create an instance and then Set the properties below instead of default values
@@ -118,10 +118,8 @@ class EBSystemBanner: NSObject {
     
     
     private let maker =  EBSystemBannerMaker.default
- 
     
     private lazy var view: EBSystemBannerView = {
-        
         let window = EBBannerWindow.shared
         var bannerView = EBSystemBanner.sharedBannerViews.filter{ $0.style == style }.first
         

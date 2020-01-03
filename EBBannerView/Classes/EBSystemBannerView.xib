@@ -107,7 +107,7 @@
             </connections>
             <point key="canvasLocation" x="82" y="-139.5"/>
         </view>
-        <view clipsSubviews="YES" tag="10" contentMode="scaleToFill" id="FuQ-h0-Tnu" userLabel="Banner View iOS 10" customClass="EBSystemBanner">
+        <view clipsSubviews="YES" tag="10" contentMode="scaleToFill" id="FuQ-h0-Tnu" userLabel="Banner View iOS 10" customClass="EBSystemBannerView" customModule="EBBannerViewSwift" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -227,7 +227,7 @@
             </connections>
             <point key="canvasLocation" x="82" y="5"/>
         </view>
-        <view clipsSubviews="YES" tag="11" contentMode="scaleToFill" id="bKA-bm-N9w" userLabel="Banner View iOS 11" customClass="EBSystemBanner">
+        <view clipsSubviews="YES" tag="11" contentMode="scaleToFill" id="bKA-bm-N9w" userLabel="Banner View iOS 11" customClass="EBSystemBannerView" customModule="EBBannerViewSwift" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -347,7 +347,7 @@
             </connections>
             <point key="canvasLocation" x="82" y="150.5"/>
         </view>
-        <view clipsSubviews="YES" tag="12" contentMode="scaleToFill" id="ZcT-r6-Sxd" userLabel="Banner View iOS 12" customClass="EBSystemBanner">
+        <view clipsSubviews="YES" tag="12" contentMode="scaleToFill" id="ZcT-r6-Sxd" userLabel="Banner View iOS 12" customClass="EBSystemBannerView" customModule="EBBannerViewSwift" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -467,7 +467,7 @@
             </connections>
             <point key="canvasLocation" x="82" y="290"/>
         </view>
-        <view clipsSubviews="YES" tag="13" contentMode="scaleToFill" id="EMB-ot-5Qb" userLabel="Banner View iOS 13" customClass="EBSystemBanner">
+        <view clipsSubviews="YES" tag="13" contentMode="scaleToFill" id="EMB-ot-5Qb" userLabel="Banner View iOS 13" customClass="EBSystemBannerView" customModule="EBBannerViewSwift" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>

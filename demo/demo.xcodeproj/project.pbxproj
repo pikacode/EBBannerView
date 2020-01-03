@@ -261,15 +261,15 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-demo/Pods-demo-resources.sh",
-				"${PODS_ROOT}/../../EBBannerView/Classes/EBBannerView.xib",
 				"${PODS_ROOT}/../../EBBannerView/Classes/EBBannerViewController.xib",
 				"${PODS_ROOT}/../../EBBannerView/Classes/EBMuteDetector.mp3",
+				"${PODS_ROOT}/../../EBBannerView/Classes/EBSystemBannerView.xib",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EBBannerView.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EBBannerViewController.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EBMuteDetector.mp3",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EBSystemBannerView.nib",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

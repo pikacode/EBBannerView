@@ -97,14 +97,14 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "${PODS_ROOT}/../../EBBannerView/Classes/EBBannerView.xib"
   install_resource "${PODS_ROOT}/../../EBBannerView/Classes/EBBannerViewController.xib"
   install_resource "${PODS_ROOT}/../../EBBannerView/Classes/EBMuteDetector.mp3"
+  install_resource "${PODS_ROOT}/../../EBBannerView/Classes/EBSystemBannerView.xib"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "${PODS_ROOT}/../../EBBannerView/Classes/EBBannerView.xib"
   install_resource "${PODS_ROOT}/../../EBBannerView/Classes/EBBannerViewController.xib"
   install_resource "${PODS_ROOT}/../../EBBannerView/Classes/EBMuteDetector.mp3"
+  install_resource "${PODS_ROOT}/../../EBBannerView/Classes/EBSystemBannerView.xib"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

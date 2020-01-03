@@ -9,12 +9,15 @@ import UIKit
 
 class EBBannerWindow: UIWindow {
 
+    @available(iOS 13.0, *)
+    public override init(windowScene: UIWindowScene){
+        super.init(windowScene: windowScene)
+    }
+    
     static let shared: EBBannerWindow = {
         var window: EBBannerWindow
-        let sel = Selector("initWithWindowScene:")
-        if EBBannerWindow(frame: .zero).responds(to: sel) {
-            let obj = UIApplication.shared.keyWindow?.value(forKey: "windowScene")
-            window = EBBannerWindow.perform(sel, with: obj)?.takeRetainedValue() as! EBBannerWindow
+        if #available(iOS 13.0, *) {
+            window = EBBannerWindow(windowScene: UIApplication.shared.keyWindow!.windowScene!)
         } else {
             window = EBBannerWindow(frame: .zero)
         }

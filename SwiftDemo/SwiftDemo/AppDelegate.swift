@@ -2,24 +2,17 @@
 //  AppDelegate.swift
 //  SwiftDemo
 //
-//  Created by pikacode on 2019/12/16.
-//  Copyright © 2019 pikacode. All rights reserved.
+//  Created by pikacode on 2020/1/3.
+//  Copyright © 2020 pikacode. All rights reserved.
 //
 
 import UIKit
-import Combine
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        
-        let a = Just("hh")
-        
         return true
     }
 

@@ -2,8 +2,8 @@
 //  SceneDelegate.swift
 //  SwiftDemo
 //
-//  Created by pikacode on 2019/12/16.
-//  Copyright © 2019 pikacode. All rights reserved.
+//  Created by pikacode on 2020/1/3.
+//  Copyright © 2020 pikacode. All rights reserved.
 //
 
 import UIKit
@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        
+
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView()
 

@@ -135,7 +135,7 @@ extension EBSystemBannerView {
         hideTimer?.invalidate()
         hideTimer = nil
         
-        var soundID: SystemSoundID = 1312
+        var soundID: SystemSoundID = 0
         switch maker.sound {
         case .id(let id):
             soundID = id
@@ -143,6 +143,8 @@ extension EBSystemBannerView {
             if let url = Bundle.main.url(forResource: name, withExtension: nil) {
                 AudioServicesCreateSystemSoundID(url as CFURL, &soundID)
             }
+        case .none:
+            break;
         }
         
         EBMuteDetector.shared.detect { (isMute) in
@@ -150,7 +152,6 @@ extension EBSystemBannerView {
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             } else {
                 AudioServicesPlaySystemSound(soundID)
-                
             }
         }
         
