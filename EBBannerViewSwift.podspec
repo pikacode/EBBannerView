@@ -18,7 +18,7 @@ App在前台时展示跟iOS9,10,11,12推送通知一样UI的横幅/自动提示�
   s.license      = "MIT"
   
   s.author             = { "pikacode" => "pikacode@qq.com" }
- 
+  s.swift_versions = ['5.0', '5.1']
  
    s.platform     = :ios, "8.0"
  
