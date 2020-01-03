@@ -52,7 +52,7 @@ And more：
 ```python
 use_frameworks!
 target 'YourTargetName' do
-  pod 'EBBannerViewSwift'
+  pod 'EBBannerViewSwift', '1.1.3'
 end
 ```
 

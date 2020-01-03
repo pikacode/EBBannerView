@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
  
   s.name         = "EBBannerViewSwift"
-  s.version      = "0.1.0.beta"
+  s.version      = "1.1.3"
   s.summary      = "展示跟iOS9~13推送一样的横幅/提示音/振动，或自定义view|Show a banner the same with iOS9/10/11/12 nofitication(sound/vibrate), or customize."
 
  
