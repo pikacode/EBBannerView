@@ -11,13 +11,35 @@ import EBBannerViewSwift
 
 struct ContentView: View {
     var body: some View {
-        Button(action: {
-            EBSystemBanner()
-                .icon(UIImage(named: "icon"))
-                .content("some content")
-                .show()        
-        }) {
-            Text("Button")
+        VStack {
+            Button(action: {
+                /// ⭐️ Fast Way
+                EBSystemBanner.show("some content")
+            }) {
+                Text("Fast Way")
+            }
+            Text("")
+            Button(action: {
+                /// ⭐️ Custom Way
+                let anyObj: Any? = nil
+                let banner = EBSystemBanner()
+                                .style(.iOS13)
+                                .icon(UIImage(named: "icon"))
+                                .appName("Twitter")
+                                .title("title")
+                                .content("some content")
+                                .date("now")
+                                .vibrateOnMute(true)
+                                .object(anyObj)
+                                .sound(.name("sing.mp3"))
+                                .onClick { (b) in
+                                    print(b.title!)
+                                    print(b.object!)
+                                }
+                banner.show()
+            }) {
+                Text("Custom Way")
+            }
         }
     }
 }

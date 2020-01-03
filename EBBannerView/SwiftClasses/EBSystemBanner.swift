@@ -175,21 +175,21 @@ extension EBSystemBanner {
 // MARK: -  convenience get method
 
 extension EBSystemBanner {
-    var style: EBBannerStyle                     { return maker.style }
-    var icon: UIImage?                           { return maker.icon }
-    var appName: String?                         { return maker.appName }
-    var title: String?                           { return maker.title }
-    var content: String?                         { return maker.content }
-    var date: String?                            { return maker.date }
-    var showDuration: TimeInterval               { return maker.showDuration }
-    var hideDuration: TimeInterval               { return maker.hideDuration }
-    var stayDuration: TimeInterval               { return maker.stayDuration }
-    var spreadStayDuration: TimeInterval         { return maker.spreadStayDuration }
-    var object: Any?                             { return maker.object }
-    var sound: EBBannerSound                     { return maker.sound }
-    var vibrateOnMute: Bool                      { return maker.vibrateOnMute }
-    var showDetailsOrHideWhenClickLongText: Bool { return maker.showDetailsOrHideWhenClickLongText }
-    var onClick: (EBSystemBanner) -> ()            { return maker.onClick }
+    public var style: EBBannerStyle                     { return maker.style }
+    public var icon: UIImage?                           { return maker.icon }
+    public var appName: String?                         { return maker.appName }
+    public var title: String?                           { return maker.title }
+    public var content: String?                         { return maker.content }
+    public var date: String?                            { return maker.date }
+    public var showDuration: TimeInterval               { return maker.showDuration }
+    public var hideDuration: TimeInterval               { return maker.hideDuration }
+    public var stayDuration: TimeInterval               { return maker.stayDuration }
+    public var spreadStayDuration: TimeInterval         { return maker.spreadStayDuration }
+    public var object: Any?                             { return maker.object }
+    public var sound: EBBannerSound                     { return maker.sound }
+    public var vibrateOnMute: Bool                      { return maker.vibrateOnMute }
+    public var showDetailsOrHideWhenClickLongText: Bool { return maker.showDetailsOrHideWhenClickLongText }
+    public var onClick: (EBSystemBanner) -> ()            { return maker.onClick }
 }
 
 //偷偷写个then，没人看到我 没人看到我🙈

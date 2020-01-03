@@ -1,3 +1,7 @@
+##### Swift beta version is now available! [Swift README.md](README_Swift.md)
+
+##### Swift beta 版本现已推出! [中文 Swift README.md](README_CHS_Swift.md)
+
 查看中文文档 [Chinese README.md](/README_CHS.md)
 
 Email：pikacode@qq.com
