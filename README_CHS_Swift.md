@@ -135,3 +135,11 @@ banner.show()
   - 直接将声音文件拖拽到工程目录
   - 赋值时包含拓展名，例 sound.mp3
 - `showDetailOrHideWhenClickLongText`：点击内含长内容的 banner 时是展开所有内容还是收起整个 banner，YES 展开/NO 收起，默认值 YES，类型 BOOL
+
+
+
+#### 了解更多详情，请查阅:
+
+- 下载 Swift demo
+- 查看源码注释
+- 参照 objc 版本的 readme 文档

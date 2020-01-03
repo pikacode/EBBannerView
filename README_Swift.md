@@ -141,5 +141,5 @@ banner.show()
 #### Look for more details please:
 
 - download the demo 
-- view source code
-- view objc readme
+- view the comment in source code
+- compare with objc readme
