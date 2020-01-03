@@ -12,7 +12,10 @@ import EBBannerViewSwift
 struct ContentView: View {
     var body: some View {
         Button(action: {
-            EBSystemBanner.show("content")
+            EBSystemBanner()
+                .icon(UIImage(named: "icon"))
+                .content("some content")
+                .show()        
         }) {
             Text("Button")
         }

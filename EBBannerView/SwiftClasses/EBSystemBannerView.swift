@@ -56,7 +56,9 @@ extension EBSystemBannerView {
     
     var calculatedContentHeight: CGFloat {
         let size = CGSize(width: contentLabel.frame.size.width, height: CGFloat.greatestFiniteMagnitude)
-        let calculatedHeight = ((contentLabel.text ?? "") as NSString).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [.font : contentLabel.font.pointSize], context: nil).size.height
+        let text = contentLabel.text ?? ""
+        let str = text as NSString
+        let calculatedHeight = str.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [.font : contentLabel.font.pointSize], context: nil).size.height
         return calculatedHeight
     }
 
@@ -156,7 +158,7 @@ extension EBSystemBannerView {
         }
         
         imageView.image = maker.icon
-        titleLabel.text = maker.title
+        titleLabel.text = maker.appName
         dateLabel.text = maker.date
         contentLabel.text = maker.content
         dateLabel.text = maker.date

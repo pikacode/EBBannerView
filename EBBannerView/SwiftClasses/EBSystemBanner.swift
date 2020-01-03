@@ -8,7 +8,7 @@
 import UIKit
 import AudioToolbox
 
-enum EBBannerStyle: Int, CaseIterable {
+public enum EBBannerStyle: Int, CaseIterable {
     case iOS8 = 8
     case iOS9 = 9
     case iOS10 = 10
@@ -46,25 +46,25 @@ public class EBSystemBanner: NSObject {
     ///     │  title                                                                         |
     ///     │  content                                                                   |
     ///     └──────────────────────┘
-    func style(_ style: EBBannerStyle)                    -> EBSystemBanner { return then { $0.maker.style = style } }
+    public func style(_ style: EBBannerStyle)                    -> EBSystemBanner { return then { $0.maker.style = style } }
     
-    func icon(_ icon: UIImage?)                           -> EBSystemBanner { return then { $0.maker.icon = icon } }
+    public func icon(_ icon: UIImage?)                           -> EBSystemBanner { return then { $0.maker.icon = icon } }
     
-    func appName(_ appName: String?)                      -> EBSystemBanner { return then { $0.maker.appName = appName } }
+    public func appName(_ appName: String?)                      -> EBSystemBanner { return then { $0.maker.appName = appName } }
     
-    func title(_ title: String?)                          -> EBSystemBanner { return then { $0.maker.title = title } }
+    public func title(_ title: String?)                          -> EBSystemBanner { return then { $0.maker.title = title } }
     
-    func content(_ content: String?)                      -> EBSystemBanner { return then { $0.maker.content = content } }
+    public func content(_ content: String?)                      -> EBSystemBanner { return then { $0.maker.content = content } }
     
-    func date(_ date: String?)                            -> EBSystemBanner { return then { $0.maker.date = date } }
+    public func date(_ date: String?)                            -> EBSystemBanner { return then { $0.maker.date = date } }
     
-    func showDuration(_ duration: TimeInterval)           -> EBSystemBanner { return then { $0.maker.showDuration = duration } }
+    public func showDuration(_ duration: TimeInterval)           -> EBSystemBanner { return then { $0.maker.showDuration = duration } }
     
-    func hideDuration(_ duration: TimeInterval)           -> EBSystemBanner { return then { $0.maker.hideDuration = duration } }
+    public func hideDuration(_ duration: TimeInterval)           -> EBSystemBanner { return then { $0.maker.hideDuration = duration } }
     
-    func stayDuration(_ duration: TimeInterval)           -> EBSystemBanner { return then { $0.maker.stayDuration = duration } }
+    public func stayDuration(_ duration: TimeInterval)           -> EBSystemBanner { return then { $0.maker.stayDuration = duration } }
     
-    func spreadStayDuration(_ duration: TimeInterval)     -> EBSystemBanner { return then { $0.maker.spreadStayDuration = duration } }
+    public func spreadStayDuration(_ duration: TimeInterval)     -> EBSystemBanner { return then { $0.maker.spreadStayDuration = duration } }
     
     /// Pass an object to banner and then get it on click
     ///
@@ -76,7 +76,7 @@ public class EBSystemBanner: NSObject {
     ///         .onClick {
     ///             print($0.object!)
     ///         }
-    func object(_ object: Any?)                           -> EBSystemBanner { return then { $0.maker.object = object } }
+    public func object(_ object: Any?)                           -> EBSystemBanner { return then { $0.maker.object = object } }
     
     /// Play a sound when a banner appears
     ///
@@ -92,19 +92,19 @@ public class EBSystemBanner: NSObject {
     ///         .sound(.name("MySound.mp3"))
     ///         .content("some")
     ///         .show()
-    func sound(_ sound: EBBannerSound)                    -> EBSystemBanner { return then { $0.maker.sound = sound } }
+    public func sound(_ sound: EBBannerSound)                    -> EBSystemBanner { return then { $0.maker.sound = sound } }
     
-    func vibrateOnMute(_ bool: Bool)                      -> EBSystemBanner { return then { $0.maker.vibrateOnMute = bool } }
+    public func vibrateOnMute(_ bool: Bool)                      -> EBSystemBanner { return then { $0.maker.vibrateOnMute = bool } }
     
     /// when click a long text banner, spread it for all height or hide it, true = expand/false = hide, default is true
-    func showDetailsOrHideWhenClickLongText(_ bool: Bool) -> EBSystemBanner { return then { $0.maker.showDetailsOrHideWhenClickLongText = bool } }
+    public func showDetailsOrHideWhenClickLongText(_ bool: Bool) -> EBSystemBanner { return then { $0.maker.showDetailsOrHideWhenClickLongText = bool } }
     
     @discardableResult
-    func onClick(_ block: @escaping (EBSystemBanner) -> ()) -> EBSystemBanner { return then { $0.maker.onClick = block } }
+    public func onClick(_ block: @escaping (EBSystemBanner) -> ()) -> EBSystemBanner { return then { $0.maker.onClick = block } }
 
     
     @discardableResult
-    func show() -> EBSystemBanner {
+    public func show() -> EBSystemBanner {
         view.show()
         return self
     }

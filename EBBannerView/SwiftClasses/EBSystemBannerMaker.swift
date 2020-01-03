@@ -9,7 +9,7 @@ import UIKit
 import CoreFoundation
 import AudioToolbox
 
-enum EBBannerSound {
+public enum EBBannerSound {
     case none
     case name(_ name: String)
     case id(_ id: SystemSoundID)

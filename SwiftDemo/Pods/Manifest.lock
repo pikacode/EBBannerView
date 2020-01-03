@@ -1,5 +1,5 @@
 PODS:
-  - EBBannerViewSwift (1.1.2)
+  - EBBannerViewSwift (0.1.0.beta)
 
 DEPENDENCIES:
   - EBBannerViewSwift (from `../../EBBannerView`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../../EBBannerView"
 
 SPEC CHECKSUMS:
-  EBBannerViewSwift: ef7ce9d3b5d7f764ee8191ba88d8f6e3c6bb5c58
+  EBBannerViewSwift: 689a31607554f185eef20419cef45247c027fca9
 
 PODFILE CHECKSUM: ba302527e4fa784347887a972c714addc0968aed
 
