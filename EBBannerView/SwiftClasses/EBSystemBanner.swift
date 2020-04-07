@@ -116,7 +116,7 @@ public class EBSystemBanner: NSObject {
     
     /// private
     
-    private weak var maker = EBSystemBannerMaker.default.then{ $0.banner = self }
+    private lazy var maker = EBSystemBannerMaker.default.then{ $0.banner = self }
     
     private lazy var view: EBSystemBannerView = {
         let window = EBBannerWindow.shared
