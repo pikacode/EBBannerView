@@ -53,8 +53,9 @@ extension EBSystemBannerView {
     var calculatedContentHeight: CGFloat {
         let size = CGSize(width: contentLabel.frame.size.width, height: CGFloat.greatestFiniteMagnitude)
         let text = contentLabel.text ?? ""
-        let calculatedHeight = 20//text.stringHeightWith(fontSize: contentLabel?.font.pointSize ?? 14, width: size.width, lineSpace: 2)//20//str.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [.font : contentLabel.font.pointSize], context: nil).size.height //20
-        return CGFloat(calculatedHeight)
+        let str = text as NSString
+        let calculatedHeight = str.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [.font : contentLabel.font], context: nil).size.height //20
+        return calculatedHeight
     }
 
     var isPortrait: Bool { return UIScreen.main.bounds.size.width < UIScreen.main.bounds.size.height }
@@ -107,11 +108,17 @@ extension EBSystemBannerView {
         hideTimer = nil
         hideTimer = Timer.scheduledTimer(timeInterval: maker.spreadStayDuration, target: self, selector: #selector(hide), userInfo: nil, repeats: false)
         let originContentHeight = contentLabel.frame.size.height
-        UIView.animate(withDuration: maker.hideDuration, delay: 0, usingSpringWithDamping: EBSystemBannerView.damping, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-            self.frame = CGRect(x: self.fixedX, y: self.fixedY, width: self.standardHeight, height: self.calculatedContentHeight - originContentHeight + 1)
-        }) { (finish) in
+        
+        
+        UIView.animate(withDuration: 0.1) {
             self.frame = CGRect(x: self.fixedX, y: self.fixedY, width: self.fixedWidth, height: self.standardHeight + self.calculatedContentHeight - originContentHeight + 1)
         }
+        
+//        UIView.animate(withDuration: maker.hideDuration, delay: 0, usingSpringWithDamping: EBSystemBannerView.damping, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+//            self.frame = CGRect(x: self.fixedX, y: self.fixedY, width: self.standardHeight, height: self.calculatedContentHeight - originContentHeight + 1)
+//        }) { (finish) in
+//            self.frame = CGRect(x: self.fixedX, y: self.fixedY, width: self.fixedWidth, height: self.standardHeight + self.calculatedContentHeight - originContentHeight + 1)
+//        }
     }
     
     @objc func tapSelector(ges: UISwipeGestureRecognizer) {
