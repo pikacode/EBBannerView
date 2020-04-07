@@ -18,12 +18,11 @@ public enum EBBannerSound {
 
 class EBSystemBannerMaker: NSObject {
 
-    static let `default` = { () -> EBSystemBannerMaker in
-        let maker = EBSystemBannerMaker()
-        return maker
+    static var `default`: EBSystemBannerMaker = {
+        return EBSystemBannerMaker()
     }()
     
-    weak var banner: EBSystemBanner?
+    var banner: EBSystemBanner?
     
     var style: EBBannerStyle = {
         var i = (UIDevice.current.systemVersion as NSString).integerValue
