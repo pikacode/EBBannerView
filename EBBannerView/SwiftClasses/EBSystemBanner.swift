@@ -76,7 +76,13 @@ public class EBSystemBanner: NSObject {
     ///         .onClick {
     ///             print($0.object!)
     ///         }
-    public func object(_ object: Any?)                           -> EBSystemBanner { return then { $0.maker.object = object } }
+    public func object(_ object: Any?)                           -> EBSystemBanner {
+        return then {
+            $0.maker.object = object
+//            NotificationCenter.default.addObserver(self, selector: #selector(onClick(_:)), name: EBSystemBanner.onClickNotification, object: nil)
+        }
+        
+    }
     
     /// Play a sound when a banner appears
     ///
@@ -100,7 +106,11 @@ public class EBSystemBanner: NSObject {
     public func showDetailsOrHideWhenClickLongText(_ bool: Bool) -> EBSystemBanner { return then { $0.maker.showDetailsOrHideWhenClickLongText = bool } }
     
     @discardableResult
-    public func onClick(_ block: @escaping (EBSystemBanner) -> ()) -> EBSystemBanner { return then { $0.maker.onClick = block } }
+    @objc public func onClick(_ block: @escaping (EBSystemBanner) -> ()) -> EBSystemBanner {
+        return then {
+            $0.maker.onClick = block
+        }
+    }
 
     
     @discardableResult
@@ -136,7 +146,9 @@ public class EBSystemBanner: NSObject {
             EBSystemBanner.sharedBannerViews.append(view)
             bannerView = view
         }
+        maker.banner = self
         bannerView?.maker = maker
+        
         if style == .iOS9 {
             bannerView?.dateLabel.textColor = UIColor.color(at: bannerView!.dateLabel.center).withAlphaComponent(0.7)
             let lineCenter = bannerView!.lineView.center
@@ -189,14 +201,20 @@ extension EBSystemBanner {
     public var sound: EBBannerSound                     { return maker.sound }
     public var vibrateOnMute: Bool                      { return maker.vibrateOnMute }
     public var showDetailsOrHideWhenClickLongText: Bool { return maker.showDetailsOrHideWhenClickLongText }
-    public var onClick: (EBSystemBanner) -> ()            { return maker.onClick }
+    public var onClick: (EBSystemBanner) -> ()          { return maker.onClick }
 }
 
 //偷偷写个then，没人看到我 没人看到我🙈
 protocol EBThen {}
 extension EBThen where Self: AnyObject {
   func then(_ block: (Self) throws -> Void) rethrows -> Self {
-    try block(self)
+//    try block(self)
+    do {
+        try block(self)
+    } catch {
+        print("错误///")
+    }
+    
     return self
   }
 }

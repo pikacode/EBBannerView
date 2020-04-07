@@ -28,10 +28,6 @@ class EBSystemBannerView: UIView {
             return super.hitTest(point, with: event)
         }
     }
-  
-    
-
-    
     
 }
  
@@ -57,9 +53,8 @@ extension EBSystemBannerView {
     var calculatedContentHeight: CGFloat {
         let size = CGSize(width: contentLabel.frame.size.width, height: CGFloat.greatestFiniteMagnitude)
         let text = contentLabel.text ?? ""
-        let str = text as NSString
-        let calculatedHeight = str.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [.font : contentLabel.font.pointSize], context: nil).size.height
-        return calculatedHeight
+        let calculatedHeight = 20//text.stringHeightWith(fontSize: contentLabel?.font.pointSize ?? 14, width: size.width, lineSpace: 2)//20//str.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [.font : contentLabel.font.pointSize], context: nil).size.height //20
+        return CGFloat(calculatedHeight)
     }
 
     var isPortrait: Bool { return UIScreen.main.bounds.size.width < UIScreen.main.bounds.size.height }
@@ -126,6 +121,7 @@ extension EBSystemBannerView {
             swipeDownSelector(ges: ges)
         } else {
             NotificationCenter.default.post(name: EBSystemBanner.onClickNotification, object: maker.object)
+            maker.onClick(maker.banner)
             hide()
         }
     }
