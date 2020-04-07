@@ -63,5 +63,6 @@ class EBSystemBannerMaker: NSObject {
     var showDetailsOrHideWhenClickLongText = true
     
     var onClick = { (view: EBSystemBanner) in }
- 
+    
+    var banner: EBSystemBanner! 
 }
