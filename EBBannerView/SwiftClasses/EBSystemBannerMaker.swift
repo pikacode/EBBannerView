@@ -18,9 +18,7 @@ public enum EBBannerSound {
 
 class EBSystemBannerMaker: NSObject {
 
-    static var `default`: EBSystemBannerMaker = {
-        return EBSystemBannerMaker()
-    }()
+    static var `default`: EBSystemBannerMaker = { return EBSystemBannerMaker() }()
     
     var banner: EBSystemBanner?
     
