@@ -23,6 +23,8 @@ class EBSystemBannerMaker: NSObject {
         return maker
     }()
     
+    weak var banner: EBSystemBanner?
+    
     var style: EBBannerStyle = {
         var i = (UIDevice.current.systemVersion as NSString).integerValue
         i = max(i, EBBannerStyle.allCases.first!.rawValue)

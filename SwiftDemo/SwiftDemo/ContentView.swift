@@ -20,8 +20,9 @@ struct ContentView: View {
             }
             Text("")
             Button(action: {
-                /// ⭐️ Custom Way
+                
                 let anyObj: Any? = nil
+                /// ⭐️ Custom Way
                 let banner = EBSystemBanner()
                                 .style(.iOS13)
                                 .icon(UIImage(named: "icon"))
@@ -36,6 +37,8 @@ struct ContentView: View {
                                     print(b.title!)
                                     print(b.object!)
                                 }
+                                
+                /// show
                 banner.show()
             }) {
                 Text("Custom Way")

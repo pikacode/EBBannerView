@@ -127,6 +127,8 @@ extension EBSystemBannerView {
         } else {
             NotificationCenter.default.post(name: EBSystemBanner.onClickNotification, object: maker.object)
             hide()
+            guard let banner = maker.banner else { return }
+            maker.onClick(banner)
         }
     }
     
