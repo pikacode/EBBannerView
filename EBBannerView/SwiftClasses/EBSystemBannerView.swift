@@ -58,7 +58,7 @@ extension EBSystemBannerView {
         let size = CGSize(width: contentLabel.frame.size.width, height: CGFloat.greatestFiniteMagnitude)
         let text = contentLabel.text ?? ""
         let str = text as NSString
-        let calculatedHeight = str.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [.font : contentLabel.font.pointSize], context: nil).size.height
+        let calculatedHeight = str.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [.font : contentLabel.font!], context: nil).size.height
         return calculatedHeight
     }
 
