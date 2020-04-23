@@ -190,7 +190,7 @@
 				0D292C1D1F94A27200BA5B87 /* Sources */,
 				0D292C1E1F94A27200BA5B87 /* Frameworks */,
 				0D292C1F1F94A27200BA5B87 /* Resources */,
-				5984C61B8C2B4544D85B08A0 /* [CP] Copy Pods Resources */,
+				5AA309ED22B1E67FF73EE596 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,19 +254,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5984C61B8C2B4544D85B08A0 /* [CP] Copy Pods Resources */ = {
+		5AA309ED22B1E67FF73EE596 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-demo/Pods-demo-resources.sh",
+				"${PODS_ROOT}/../../EBBannerView/Classes/EBBannerView.xib",
 				"${PODS_ROOT}/../../EBBannerView/Classes/EBBannerViewController.xib",
 				"${PODS_ROOT}/../../EBBannerView/Classes/EBMuteDetector.mp3",
 				"${PODS_ROOT}/../../EBBannerView/Classes/EBSystemBannerView.xib",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EBBannerView.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EBBannerViewController.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EBMuteDetector.mp3",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EBSystemBannerView.nib",
