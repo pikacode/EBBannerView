@@ -9,10 +9,12 @@
 #import "EBBannerWindow.h"
 #import "EBBannerViewController.h"
 #import "EBBannerView+Categories.h"
+#import "EBEmptyWindow.h"
 
 @implementation EBBannerWindow
 
 static EBBannerWindow *sharedWindow;
+static EBEmptyWindow *emptyWindow;
 
 +(instancetype)sharedWindow{
     static dispatch_once_t onceToken;
@@ -28,9 +30,20 @@ static EBBannerWindow *sharedWindow;
             // Fallback on earlier versions
             sharedWindow = [[self alloc] initWithFrame:CGRectZero];
         }
-        sharedWindow.windowLevel = UIWindowLevelNormal;
+        sharedWindow.windowLevel = UIWindowLevelAlert;
         sharedWindow.layer.masksToBounds = NO;
-        [sharedWindow setHidden:NO];
+        UIWindow *originKeyWindow = UIApplication.sharedApplication.keyWindow;
+        [sharedWindow makeKeyAndVisible];
+        
+        /* fix bug:
+         EBBannerViewController setSupportedInterfaceOrientations -> Portrait
+         push to a VC with orientation Left
+         UITextFiled's pad will show a wrong orientation with Portrait
+         */
+        emptyWindow = [[EBEmptyWindow alloc] initWithFrame:CGRectZero];
+        emptyWindow.windowLevel = UIWindowLevelAlert;
+        [emptyWindow makeKeyAndVisible];
+        [originKeyWindow makeKeyAndVisible];
         
         [EBBannerViewController setSupportedInterfaceOrientations:UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscape];
         [EBBannerViewController setStatusBarHidden:NO];
