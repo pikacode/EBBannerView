@@ -9,12 +9,10 @@
 #import "EBBannerWindow.h"
 #import "EBBannerViewController.h"
 #import "EBBannerView+Categories.h"
-#import "EBEmptyWindow.h"
 
 @implementation EBBannerWindow
 
 static EBBannerWindow *sharedWindow;
-static EBEmptyWindow *emptyWindow;
 
 +(instancetype)sharedWindow{
     static dispatch_once_t onceToken;
@@ -30,20 +28,9 @@ static EBEmptyWindow *emptyWindow;
             // Fallback on earlier versions
             sharedWindow = [[self alloc] initWithFrame:CGRectZero];
         }
-        sharedWindow.windowLevel = UIWindowLevelAlert;
+        sharedWindow.windowLevel = UIWindowLevelNormal;
         sharedWindow.layer.masksToBounds = NO;
-        UIWindow *originKeyWindow = UIApplication.sharedApplication.keyWindow;
-        [sharedWindow makeKeyAndVisible];
-        
-        /* fix bug:
-         EBBannerViewController setSupportedInterfaceOrientations -> Portrait
-         push to a VC with orientation Left
-         UITextFiled's pad will show a wrong orientation with Portrait
-         */
-        emptyWindow = [[EBEmptyWindow alloc] initWithFrame:CGRectZero];
-        emptyWindow.windowLevel = UIWindowLevelAlert;
-        [emptyWindow makeKeyAndVisible];
-        [originKeyWindow makeKeyAndVisible];
+        [sharedWindow setHidden:NO];
         
         [EBBannerViewController setSupportedInterfaceOrientations:UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscape];
         [EBBannerViewController setStatusBarHidden:NO];
@@ -76,10 +63,16 @@ static EBEmptyWindow *emptyWindow;
         return [view hitTest:point1 withEvent:event];
     } else {
         if (@available(iOS 13.0, *)) {
-            return [UIApplication.sharedApplication.keyWindow hitTest:point withEvent:event];
-        } else {
-            return [super hitTest:point withEvent:event];
+            if (UIApplication.sharedApplication.windows.count > 0) {
+                UIWindow *window = UIApplication.sharedApplication.windows[0];
+                if (window.isKeyWindow) {
+                    return [window hitTest:point withEvent:event];
+                }
+            }
+            //iOS13以后，keyWindow不再是最开始创建的window，而是当前显示的window，这么写会造成某些场景死循环。
+//            return [UIApplication.sharedApplication.keyWindow hitTest:point withEvent:event];
         }
+        return [super hitTest:point withEvent:event];
     }
 }
 
