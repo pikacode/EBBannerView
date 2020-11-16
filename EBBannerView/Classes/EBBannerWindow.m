@@ -76,10 +76,16 @@ static EBEmptyWindow *emptyWindow;
         return [view hitTest:point1 withEvent:event];
     } else {
         if (@available(iOS 13.0, *)) {
-            return [UIApplication.sharedApplication.keyWindow hitTest:point withEvent:event];
-        } else {
-            return [super hitTest:point withEvent:event];
+            if (UIApplication.sharedApplication.windows.count > 0) {
+                UIWindow *window = UIApplication.sharedApplication.windows[0];
+                if (window.isKeyWindow) {
+                    return [window hitTest:point withEvent:event];
+                }
+            }
+            //iOS13以后，keyWindow不再是最开始创建的window，而是当前显示的window，这么写会造成某些场景死循环。
+//            return [UIApplication.sharedApplication.keyWindow hitTest:point withEvent:event];
         }
+        return [super hitTest:point withEvent:event];
     }
 }
 
